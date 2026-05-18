@@ -1,0 +1,3542 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "VulpesX.Shared.Controls/1.0.0": {
+        "dependencies": {
+          "Telerik.UI.for.Wpf.AllControls.NoXaml": "2025.4.1111",
+          "VulpesX.Models": "1.0.0",
+          "VulpesX.Shared": "1.0.0"
+        },
+        "runtime": {
+          "VulpesX.Shared.Controls.dll": {}
+        }
+      },
+      "Azure.Core/1.47.3": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "8.0.0",
+          "System.ClientModel": "1.6.1",
+          "System.Memory.Data": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Azure.Core.dll": {
+            "assemblyVersion": "1.47.3.0",
+            "fileVersion": "1.4700.325.42004"
+          }
+        }
+      },
+      "Azure.Storage.Blobs/12.26.0": {
+        "dependencies": {
+          "Azure.Core": "1.47.3",
+          "Azure.Storage.Common": "12.25.0"
+        },
+        "runtime": {
+          "lib/net8.0/Azure.Storage.Blobs.dll": {
+            "assemblyVersion": "12.26.0.0",
+            "fileVersion": "12.2600.25.51304"
+          }
+        }
+      },
+      "Azure.Storage.Common/12.25.0": {
+        "dependencies": {
+          "Azure.Core": "1.47.3",
+          "System.IO.Hashing": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Azure.Storage.Common.dll": {
+            "assemblyVersion": "12.25.0.0",
+            "fileVersion": "12.2500.25.51304"
+          }
+        }
+      },
+      "Dapper/2.1.66": {
+        "runtime": {
+          "lib/net8.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.1.66.48463"
+          }
+        }
+      },
+      "EntityFramework/6.5.1": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "System.CodeDom": "6.0.0",
+          "System.ComponentModel.Annotations": "5.0.0",
+          "System.Configuration.ConfigurationManager": "6.0.1",
+          "System.Data.SqlClient": "4.8.6"
+        },
+        "runtime": {
+          "lib/netstandard2.1/EntityFramework.SqlServer.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.500.124.31603"
+          },
+          "lib/netstandard2.1/EntityFramework.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.500.124.31603"
+          }
+        }
+      },
+      "MediaFoundation/2025.4.1111": {
+        "runtime": {
+          "lib/net462/MediaFoundation.dll": {
+            "assemblyVersion": "3.1.0.32450",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "Microsoft.AnalysisServices.AdomdClient/19.84.1": {
+        "dependencies": {
+          "Microsoft.Identity.Client": "4.77.1",
+          "Microsoft.Identity.Client.Broker": "4.56.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AnalysisServices.AdomdClient.dll": {
+            "assemblyVersion": "19.84.1.0",
+            "fileVersion": "16.0.142.20"
+          },
+          "lib/net8.0/Microsoft.AnalysisServices.Runtime.Core.dll": {
+            "assemblyVersion": "19.84.1.0",
+            "fileVersion": "16.0.142.20"
+          },
+          "lib/net8.0/Microsoft.AnalysisServices.Runtime.Windows.dll": {
+            "assemblyVersion": "19.84.1.0",
+            "fileVersion": "16.0.142.20"
+          }
+        },
+        "resources": {
+          "lib/net8.0/ar/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net8.0/ar/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net8.0/bg/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "bg"
+          },
+          "lib/net8.0/bg/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "bg"
+          },
+          "lib/net8.0/ca/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "ca"
+          },
+          "lib/net8.0/ca/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "ca"
+          },
+          "lib/net8.0/cs/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net8.0/cs/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net8.0/da/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net8.0/da/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net8.0/de/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net8.0/de/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net8.0/el/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "el"
+          },
+          "lib/net8.0/el/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "el"
+          },
+          "lib/net8.0/es/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net8.0/es/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net8.0/et/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "et"
+          },
+          "lib/net8.0/et/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "et"
+          },
+          "lib/net8.0/eu/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "eu"
+          },
+          "lib/net8.0/eu/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "eu"
+          },
+          "lib/net8.0/fi/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "fi"
+          },
+          "lib/net8.0/fi/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "fi"
+          },
+          "lib/net8.0/fr/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net8.0/fr/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net8.0/gl/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "gl"
+          },
+          "lib/net8.0/gl/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "gl"
+          },
+          "lib/net8.0/he/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "he"
+          },
+          "lib/net8.0/he/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "he"
+          },
+          "lib/net8.0/hi/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "hi"
+          },
+          "lib/net8.0/hi/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "hi"
+          },
+          "lib/net8.0/hr/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "hr"
+          },
+          "lib/net8.0/hr/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "hr"
+          },
+          "lib/net8.0/hu/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net8.0/hu/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net8.0/id/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "id"
+          },
+          "lib/net8.0/id/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "id"
+          },
+          "lib/net8.0/it/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net8.0/it/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net8.0/ja/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net8.0/ja/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net8.0/kk/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "kk"
+          },
+          "lib/net8.0/kk/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "kk"
+          },
+          "lib/net8.0/ko/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net8.0/ko/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net8.0/lt/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "lt"
+          },
+          "lib/net8.0/lt/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "lt"
+          },
+          "lib/net8.0/lv/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "lv"
+          },
+          "lib/net8.0/lv/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "lv"
+          },
+          "lib/net8.0/ms/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "ms"
+          },
+          "lib/net8.0/ms/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "ms"
+          },
+          "lib/net8.0/nl/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net8.0/nl/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net8.0/no/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "no"
+          },
+          "lib/net8.0/no/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "no"
+          },
+          "lib/net8.0/pl/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net8.0/pl/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net8.0/pt-PT/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "pt-PT"
+          },
+          "lib/net8.0/pt-PT/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "pt-PT"
+          },
+          "lib/net8.0/pt/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net8.0/pt/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net8.0/ro/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "ro"
+          },
+          "lib/net8.0/ro/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "ro"
+          },
+          "lib/net8.0/ru/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net8.0/ru/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net8.0/sk/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net8.0/sk/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net8.0/sl/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/net8.0/sl/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/net8.0/sr-Cyrl/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "sr-Cyrl"
+          },
+          "lib/net8.0/sr-Cyrl/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "sr-Cyrl"
+          },
+          "lib/net8.0/sr-Latn/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "sr-Latn"
+          },
+          "lib/net8.0/sr-Latn/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "sr-Latn"
+          },
+          "lib/net8.0/sv/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net8.0/sv/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net8.0/th/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "th"
+          },
+          "lib/net8.0/th/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "th"
+          },
+          "lib/net8.0/tr/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net8.0/tr/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net8.0/uk/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "uk"
+          },
+          "lib/net8.0/uk/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "uk"
+          },
+          "lib/net8.0/vi/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "vi"
+          },
+          "lib/net8.0/vi/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "vi"
+          },
+          "lib/net8.0/zh-Hans/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/net8.0/zh-Hans/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/net8.0/zh-Hant/Microsoft.AnalysisServices.AdomdClient.resources.dll": {
+            "locale": "zh-Hant"
+          },
+          "lib/net8.0/zh-Hant/Microsoft.AnalysisServices.Runtime.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win-x64/native/msasxpress.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2022.160.142.20"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/8.0.0": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {},
+      "Microsoft.Extensions.DependencyInjection/10.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.0": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.52411"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1325.6609"
+          }
+        }
+      },
+      "Microsoft.Identity.Client/4.77.1": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "8.14.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Identity.Client.dll": {
+            "assemblyVersion": "4.77.1.0",
+            "fileVersion": "4.77.1.0"
+          }
+        }
+      },
+      "Microsoft.Identity.Client.Broker/4.56.0": {
+        "dependencies": {
+          "Microsoft.Identity.Client": "4.77.1",
+          "Microsoft.Identity.Client.NativeInterop": "0.13.8"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Identity.Client.Broker.dll": {
+            "assemblyVersion": "4.56.0.0",
+            "fileVersion": "4.56.0.0"
+          }
+        }
+      },
+      "Microsoft.Identity.Client.NativeInterop/0.13.8": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Identity.Client.NativeInterop.dll": {
+            "assemblyVersion": "0.13.8.0",
+            "fileVersion": "0.13.8.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/msalruntime_arm64.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/msalruntime.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/msalruntime_x86.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/8.14.0": {
+        "runtime": {
+          "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll": {
+            "assemblyVersion": "8.14.0.0",
+            "fileVersion": "8.14.0.60815"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.NETCore.Targets/1.1.0": {},
+      "Microsoft.Win32.Registry/4.7.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0",
+          "System.Security.Principal.Windows": "4.7.0"
+        }
+      },
+      "Microsoft.Win32.SystemEvents/6.0.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "runtime.native.System/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        }
+      },
+      "runtime.native.System.Data.SqlClient.sni/4.7.0": {
+        "dependencies": {
+          "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
+          "runtime.win-x64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
+          "runtime.win-x86.runtime.native.System.Data.SqlClient.sni": "4.4.0"
+        }
+      },
+      "runtime.native.System.IO.Compression/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        }
+      },
+      "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/sni.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "4.6.25512.1"
+          }
+        }
+      },
+      "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+        "runtimeTargets": {
+          "runtimes/win-x64/native/sni.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "4.6.25512.1"
+          }
+        }
+      },
+      "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+        "runtimeTargets": {
+          "runtimes/win-x86/native/sni.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "4.6.25512.1"
+          }
+        }
+      },
+      "SharpDX/2.5.0": {
+        "runtime": {
+          "lib/net40/SharpDX.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "SharpDX.D3DCompiler/2.5.0": {
+        "dependencies": {
+          "SharpDX": "2.5.0"
+        },
+        "runtime": {
+          "lib/net40/SharpDX.D3DCompiler.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "SharpDX.Direct2D1/2.5.0": {
+        "dependencies": {
+          "SharpDX": "2.5.0",
+          "SharpDX.DXGI": "2.5.0"
+        },
+        "runtime": {
+          "lib/net40/SharpDX.Direct2D1.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "SharpDX.Direct3D10/2.5.0": {
+        "dependencies": {
+          "SharpDX": "2.5.0",
+          "SharpDX.D3DCompiler": "2.5.0",
+          "SharpDX.DXGI": "2.5.0"
+        },
+        "runtime": {
+          "lib/net40/SharpDX.Direct3D10.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "SharpDX.Direct3D9/2.5.0": {
+        "dependencies": {
+          "SharpDX": "2.5.0"
+        },
+        "runtime": {
+          "lib/net40/SharpDX.Direct3D9.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "SharpDX.DXGI/2.5.0": {
+        "dependencies": {
+          "SharpDX": "2.5.0"
+        },
+        "runtime": {
+          "lib/net40/SharpDX.DXGI.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "SkiaSharp/3.119.1": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        },
+        "runtime": {
+          "lib/net8.0/SkiaSharp.dll": {
+            "assemblyVersion": "3.119.0.0",
+            "fileVersion": "3.119.1.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/3.119.1": {
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/3.119.1": {
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "System.Buffers/4.3.0": {
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading": "4.3.0"
+        }
+      },
+      "System.ClientModel/1.6.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "System.Memory.Data": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/System.ClientModel.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.600.125.41908"
+          }
+        }
+      },
+      "System.CodeDom/6.0.0": {
+        "runtime": {
+          "lib/net6.0/System.CodeDom.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Collections/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.ComponentModel.Annotations/5.0.0": {},
+      "System.Configuration.ConfigurationManager/6.0.1": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "6.0.0",
+          "System.Security.Permissions": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.922.41905"
+          }
+        }
+      },
+      "System.Data.SqlClient/4.8.6": {
+        "dependencies": {
+          "Microsoft.Win32.Registry": "4.7.0",
+          "System.Security.Principal.Windows": "4.7.0",
+          "runtime.native.System.Data.SqlClient.sni": "4.7.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Data.SqlClient.dll": {
+            "assemblyVersion": "4.6.1.6",
+            "fileVersion": "4.700.23.52603"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.6.1.6",
+            "fileVersion": "4.700.23.52603"
+          },
+          "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.6.1.6",
+            "fileVersion": "4.700.23.52603"
+          }
+        }
+      },
+      "System.Diagnostics.Debug/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/6.0.1": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "System.Diagnostics.Tracing/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Drawing.Common/6.0.0": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/net6.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          },
+          "runtimes/win/lib/net6.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Globalization/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.IO/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "System.IO.Compression/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.Buffers": "4.3.0",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "runtime.native.System": "4.3.0",
+          "runtime.native.System.IO.Compression": "4.3.0"
+        }
+      },
+      "System.IO.Hashing/8.0.0": {
+        "runtime": {
+          "lib/net8.0/System.IO.Hashing.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "System.Memory.Data/8.0.1": {
+        "runtime": {
+          "lib/net8.0/System.Memory.Data.dll": {
+            "assemblyVersion": "8.0.0.1",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
+      "System.Private.ServiceModel/4.7.0": {
+        "dependencies": {
+          "System.Reflection.DispatchProxy": "4.5.0",
+          "System.Security.Cryptography.Xml": "4.5.0",
+          "System.Security.Principal.Windows": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Private.ServiceModel.dll": {
+            "assemblyVersion": "4.7.0.0",
+            "fileVersion": "4.700.19.56502"
+          }
+        }
+      },
+      "System.Reflection/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.IO": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Reflection.DispatchProxy/4.5.0": {},
+      "System.Reflection.Primitives/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Resources.ResourceManager/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Globalization": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Runtime/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Runtime.Extensions/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Runtime.Handles/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Runtime.InteropServices/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Handles": "4.3.0"
+        }
+      },
+      "System.Security.AccessControl/6.0.0": {},
+      "System.Security.Cryptography.Cng/4.5.0": {},
+      "System.Security.Cryptography.Pkcs/4.5.0": {
+        "dependencies": {
+          "System.Security.Cryptography.Cng": "4.5.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/6.0.0": {
+        "runtime": {
+          "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Security.Cryptography.Xml/4.5.0": {
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "4.5.0",
+          "System.Security.Permissions": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.Xml.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Security.Permissions/6.0.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0",
+          "System.Windows.Extensions": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/4.7.0": {},
+      "System.ServiceModel.Http/4.7.0": {
+        "dependencies": {
+          "System.Private.ServiceModel": "4.7.0",
+          "System.ServiceModel.Primitives": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.ServiceModel.Http.dll": {
+            "assemblyVersion": "4.7.0.0",
+            "fileVersion": "4.700.19.56502"
+          }
+        }
+      },
+      "System.ServiceModel.Primitives/4.7.0": {
+        "dependencies": {
+          "System.Private.ServiceModel": "4.7.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.ServiceModel.Primitives.dll": {
+            "assemblyVersion": "4.7.0.0",
+            "fileVersion": "4.700.19.56502"
+          },
+          "lib/netcoreapp2.1/System.ServiceModel.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.700.19.56502"
+          }
+        }
+      },
+      "System.Text.Encoding/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Threading/4.3.0": {
+        "dependencies": {
+          "System.Runtime": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "System.Threading.Tasks/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Windows.Extensions/6.0.0": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Windows.Extensions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Windows.Extensions.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "Telerik.Licensing/1.6.31": {
+        "runtime": {
+          "lib/net9.0/Telerik.Licensing.Runtime.dll": {
+            "assemblyVersion": "1.6.31.0",
+            "fileVersion": "1.6.31.0"
+          }
+        }
+      },
+      "Telerik.Pivot.Core.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Pivot.Core.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Pivot.DataProviders.Adomd.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Microsoft.AnalysisServices.AdomdClient": "19.84.1",
+          "Microsoft.Identity.Client": "4.77.1",
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Pivot.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Pivot.DataProviders.Adomd.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Pivot.DataProviders.Queryable.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Pivot.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Pivot.DataProviders.Queryable.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Pivot.DataProviders.Xmla.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Pivot.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Pivot.DataProviders.Xmla.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.UI.for.Wpf.AllControls.NoXaml/2025.4.1111": {
+        "dependencies": {
+          "MediaFoundation": "2025.4.1111",
+          "Telerik.Pivot.Core.for.Wpf": "2025.4.1111",
+          "Telerik.Pivot.DataProviders.Adomd.for.Wpf": "2025.4.1111",
+          "Telerik.Pivot.DataProviders.Queryable.for.Wpf": "2025.4.1111",
+          "Telerik.Pivot.DataProviders.Xmla.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Cloud.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Cloud.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Chart.Direct2D.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Chart.Skia.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Chart.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.ConversationalUI.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.DataServices.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.DataVisualization.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Diagrams.Extensions.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Diagrams.Ribbon.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Diagrams.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Docking.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.EntityFramework60.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Expressions.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.FileDialogs.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.FixedDocumentViewers.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.FixedDocumentViewersUI.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.GanttView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.GridView.Export.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.GridView.SpreadsheetStreamingExport.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.GridView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.ImageEditor.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Media.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Pivot.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.PivotFieldList.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.RibbonView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.RichTextBoxUI.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.ScheduleView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Spreadsheet.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.SpreadsheetUI.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.SyntaxEditor.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.VirtualGrid.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf.de": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf.es": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf.fr": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf.it": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf.nl": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf.tr": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Diagrams.Core.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.FormatProviders.Html.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.FormatProviders.OpenXml.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.FormatProviders.Pdf.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.FormatProviders.Rtf.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.FormatProviders.Xaml.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Proofing.DataGrid.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Proofing.Dictionaries.En-US.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Proofing.RadGridView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Proofing.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.MediaFoundation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.PersistenceFramework.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Scheduling.Core.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.SyntaxEditor.Core.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Crystal.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Expression_Dark.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Fluent.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Green.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Material.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Office2013.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Office2016.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Office2016Touch.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Office2019.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Office_Black.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Office_Blue.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Office_Silver.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Summer.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Transparent.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Vista.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.VisualStudio2013.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.VisualStudio2019.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Windows11.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Windows7.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Windows8.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Themes.Windows8Touch.for.Wpf": "2025.4.1111"
+        }
+      },
+      "Telerik.Windows.Cloud.Controls.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Cloud.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Cloud.Controls.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Cloud.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Cloud.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Chart.Direct2D.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "SharpDX": "2.5.0",
+          "SharpDX.DXGI": "2.5.0",
+          "SharpDX.Direct2D1": "2.5.0",
+          "SharpDX.Direct3D10": "2.5.0",
+          "SharpDX.Direct3D9": "2.5.0",
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Chart.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Chart.Direct2D.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Chart.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Chart.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Chart.Skia.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Chart.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Chart.Skia.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.ConversationalUI.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.ConversationalUI.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Data.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Data.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.DataServices.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.DataServices.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.DataVisualization.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "System.ServiceModel.Http": "4.7.0",
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.DataVisualization.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Diagrams.Extensions.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Diagrams.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Diagrams.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Diagrams.Extensions.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Diagrams.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Diagrams.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Diagrams.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Diagrams.Ribbon.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Diagrams.Extensions.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Diagrams.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.RibbonView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Diagrams.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Diagrams.Ribbon.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Docking.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Docking.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.EntityFramework60.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "EntityFramework": "6.5.1",
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.EntityFramework60.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Expressions.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Expressions.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.FileDialogs.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.GridView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.FileDialogs.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.FixedDocumentViewers.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.Fixed": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.FixedDocumentViewers.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.FixedDocumentViewersUI.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.FixedDocumentViewers.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.Fixed": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.FixedDocumentViewersUI.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.for.Wpf.de/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "resources": {
+          "lib/net462/de/Telerik.Windows.Controls.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.for.Wpf.es/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "resources": {
+          "lib/net462/es/Telerik.Windows.Controls.resources.dll": {
+            "locale": "es"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.for.Wpf.fr/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "resources": {
+          "lib/net462/fr/Telerik.Windows.Controls.resources.dll": {
+            "locale": "fr"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.for.Wpf.it/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "resources": {
+          "lib/net462/it/Telerik.Windows.Controls.resources.dll": {
+            "locale": "it"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.for.Wpf.nl/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "resources": {
+          "lib/net462/nl/Telerik.Windows.Controls.resources.dll": {
+            "locale": "nl"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.for.Wpf.tr/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "resources": {
+          "lib/net462/tr/Telerik.Windows.Controls.resources.dll": {
+            "locale": "tr"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.GanttView.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Scheduling.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.GanttView.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.GridView.Export.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.GridView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.Fixed": "2025.4.1104",
+          "Telerik.Windows.Documents.Spreadsheet": "2025.4.1104",
+          "Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml": "2025.4.1104",
+          "Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.GridView.Export.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.GridView.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.GridView.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.GridView.SpreadsheetStreamingExport.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.GridView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.SpreadsheetStreaming": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.GridView.SpreadsheetStreamingExport.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.ImageEditor.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.ImageEditor.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Input.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Input.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Media.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "MediaFoundation": "2025.4.1111",
+          "SkiaSharp": "3.119.1",
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.MediaFoundation.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Media.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Navigation.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Navigation.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Pivot.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Pivot.Core.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Pivot.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.PivotFieldList.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Pivot.Core.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Pivot.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.PivotFieldList.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.RibbonView.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.RibbonView.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.RichTextBoxUI.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.ImageEditor.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.RibbonView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.RichTextBoxUI.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.ScheduleView.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.ScheduleView.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.Spreadsheet.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Chart.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.GridView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.Spreadsheet": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.Spreadsheet.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.SpreadsheetUI.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.RibbonView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Spreadsheet.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.SpreadsheetUI.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.SyntaxEditor.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.SyntaxEditor.Core.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.SyntaxEditor.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Controls.VirtualGrid.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Controls.VirtualGrid.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Data.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Data.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Diagrams.Core.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Diagrams.Core.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Core/2025.4.1104": {
+        "dependencies": {
+          "System.IO.Compression": "4.3.0",
+          "Telerik.Licensing": "1.6.31"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Core.dll": {
+            "assemblyVersion": "2025.4.1104.462",
+            "fileVersion": "2025.4.1104.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Fixed/2025.4.1104": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Documents.Core": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Fixed.dll": {
+            "assemblyVersion": "2025.4.1104.462",
+            "fileVersion": "2025.4.1104.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Flow/2025.4.1104": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Documents.Core": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Flow.dll": {
+            "assemblyVersion": "2025.4.1104.462",
+            "fileVersion": "2025.4.1104.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.Flow": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.FormatProviders.Html.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Flow": "2025.4.1104",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.FormatProviders.Html.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.FormatProviders.OpenXml.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.FormatProviders.OpenXml.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.FormatProviders.Pdf.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.FormatProviders.Pdf.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.FormatProviders.Rtf.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.FormatProviders.Rtf.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.FormatProviders.Xaml.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.FormatProviders.Xaml.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Proofing.DataGrid.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Proofing.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Proofing.DataGrid.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Proofing.Dictionaries.En-US.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Proofing.Dictionaries.En-US.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Proofing.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Proofing.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Proofing.RadGridView.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.GridView.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Input.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.Navigation.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Data.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.Proofing.for.Wpf": "2025.4.1111",
+          "Telerik.Windows.Documents.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Proofing.RadGridView.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Spreadsheet/2025.4.1104": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Documents.Core": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Spreadsheet.dll": {
+            "assemblyVersion": "2025.4.1104.462",
+            "fileVersion": "2025.4.1104.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml/2025.4.1104": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.Spreadsheet": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll": {
+            "assemblyVersion": "2025.4.1104.462",
+            "fileVersion": "2025.4.1104.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf/2025.4.1104": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Documents.Core": "2025.4.1104",
+          "Telerik.Windows.Documents.Fixed": "2025.4.1104",
+          "Telerik.Windows.Documents.Spreadsheet": "2025.4.1104"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll": {
+            "assemblyVersion": "2025.4.1104.462",
+            "fileVersion": "2025.4.1104.462"
+          }
+        }
+      },
+      "Telerik.Windows.Documents.SpreadsheetStreaming/2025.4.1104": {
+        "dependencies": {
+          "System.IO.Compression": "4.3.0",
+          "Telerik.Licensing": "1.6.31"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Documents.SpreadsheetStreaming.dll": {
+            "assemblyVersion": "2025.4.1104.462",
+            "fileVersion": "2025.4.1104.462"
+          }
+        }
+      },
+      "Telerik.Windows.MediaFoundation.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "MediaFoundation": "2025.4.1111",
+          "System.Drawing.Common": "6.0.0",
+          "Telerik.Licensing": "1.6.31"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.MediaFoundation.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.PersistenceFramework.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.PersistenceFramework.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Scheduling.Core.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Scheduling.Core.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.SyntaxEditor.Core.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.SyntaxEditor.Core.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Crystal.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Crystal.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Expression_Dark.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Expression_Dark.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Fluent.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Fluent.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Green.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Green.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Material.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Material.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Office2013.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Office2013.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Office2016.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Office2016.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Office2016Touch.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Office2016Touch.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Office2019.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Office2019.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Office_Black.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Office_Black.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Office_Blue.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Office_Blue.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Office_Silver.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Office_Silver.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Summer.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Summer.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Transparent.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Transparent.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Vista.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Vista.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.VisualStudio2013.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.VisualStudio2013.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.VisualStudio2019.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.VisualStudio2019.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Windows11.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Windows11.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Windows7.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Windows7.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Windows8.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Windows8.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "Telerik.Windows.Themes.Windows8Touch.for.Wpf/2025.4.1111": {
+        "dependencies": {
+          "Telerik.Licensing": "1.6.31",
+          "Telerik.Windows.Controls.for.Wpf": "2025.4.1111"
+        },
+        "runtime": {
+          "lib/net462/Telerik.Windows.Themes.Windows8Touch.dll": {
+            "assemblyVersion": "2025.4.1111.462",
+            "fileVersion": "2025.4.1111.462"
+          }
+        }
+      },
+      "VulpesX.Models/1.0.0": {
+        "dependencies": {
+          "VulpesX.Shared": "1.0.0"
+        },
+        "runtime": {
+          "VulpesX.Models.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "VulpesX.Shared/1.0.0": {
+        "dependencies": {
+          "Azure.Storage.Blobs": "12.26.0",
+          "Dapper": "2.1.66",
+          "Microsoft.Extensions.DependencyInjection": "10.0.0"
+        },
+        "runtime": {
+          "VulpesX.Shared.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VulpesX.Shared.Controls/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Azure.Core/1.47.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u/uCNtUWT+Q/Is7/PAMy3KP9kq5vY5klRnyAvRxO/kEa5OnV3/X5lHlCajNANC7vmej6jAqceqLBJNO/VyCKzg==",
+      "path": "azure.core/1.47.3",
+      "hashPath": "azure.core.1.47.3.nupkg.sha512"
+    },
+    "Azure.Storage.Blobs/12.26.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EBRSHmI0eNzdufcIS1Rf7Ez9M8V1Jl7pMV4UWDERDMCv513KtAVsgz2ez2FQP9Qnwg7uEQrP+Uc7vBtumlr7sQ==",
+      "path": "azure.storage.blobs/12.26.0",
+      "hashPath": "azure.storage.blobs.12.26.0.nupkg.sha512"
+    },
+    "Azure.Storage.Common/12.25.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MHGWp4aLHRo0BdLj25U2qYdYK//Zz21k4bs3SVyNQEmJbBl3qZ8GuOmTSXJ+Zad93HnFXfvD8kyMr0gjA8Ftpw==",
+      "path": "azure.storage.common/12.25.0",
+      "hashPath": "azure.storage.common.12.25.0.nupkg.sha512"
+    },
+    "Dapper/2.1.66": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/q77jUgDOS+bzkmk3Vy9SiWMaetTw+NOoPAV0xPBsGVAyljd5S6P+4RUW7R3ZUGGr9lDRyPKgAMj2UAOwvqZYw==",
+      "path": "dapper/2.1.66",
+      "hashPath": "dapper.2.1.66.nupkg.sha512"
+    },
+    "EntityFramework/6.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sQRP2lWg1i3aAGWqdliAM8zrGx7LHMUk+9/MoxUjwfTZYGMXvZ2JYZTlyTm1PqDxvn3c9E3U76TWDON7Y5+CVA==",
+      "path": "entityframework/6.5.1",
+      "hashPath": "entityframework.6.5.1.nupkg.sha512"
+    },
+    "MediaFoundation/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Lb7BYp4VtCR3s3v2fwm31mwXBeiID1HcjvvOt2TET/L7zxmHncIaOCOAKAMqD1fGDyqZkp9cNobD32mQaDv4wQ==",
+      "path": "mediafoundation/2025.4.1111",
+      "hashPath": "mediafoundation.2025.4.1111.nupkg.sha512"
+    },
+    "Microsoft.AnalysisServices.AdomdClient/19.84.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oTNXKDM4W6ON888N0oejnBbSlGNlzMsnJm0eW4KWYzfM0YhicWBdqGiVWYqku7tBP28BnZhkgBL5pc6WnH+8AQ==",
+      "path": "microsoft.analysisservices.adomdclient/19.84.1",
+      "hashPath": "microsoft.analysisservices.adomdclient.19.84.1.nupkg.sha512"
+    },
+    "Microsoft.Bcl.AsyncInterfaces/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3WA9q9yVqJp222P3x1wYIGDAkpjAku0TMUaaQV22g6L67AI0LdOIrVS7Ht2vJfLHGSPVuqN94vIr15qn+HEkHw==",
+      "path": "microsoft.bcl.asyncinterfaces/8.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f0RBabswJq+gRu5a+hWIobrLWiUYPKMhCD9WO3sYBAdSy3FFH14LMvLVFZc2kPSCimBLxSuitUhsd6tb0TAY6A==",
+      "path": "microsoft.extensions.dependencyinjection/10.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L3AdmZ1WOK4XXT5YFPEwyt0ep6l8lGIPs7F5OOBZc77Zqeo01Of7XXICy47628sdVl0v/owxYJTe86DTgFwKCA==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
+      "path": "microsoft.extensions.logging.abstractions/8.0.3",
+      "hashPath": "microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512"
+    },
+    "Microsoft.Identity.Client/4.77.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K1BS0wRwh48xjsU2y7bwVh8qE9eqdRkroHX0EPp9GGo3GmS+B2gaPd95jq+HRpyFj8h3nn8LubDnIti+M/9YoQ==",
+      "path": "microsoft.identity.client/4.77.1",
+      "hashPath": "microsoft.identity.client.4.77.1.nupkg.sha512"
+    },
+    "Microsoft.Identity.Client.Broker/4.56.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Dzwo9X3hIgv+wcWZCEnyRuiHQXGvlb05WgKjkxjUScbf0dYQwmeUGwJNf1A4ge68wYNyQ25BZKtMpuhO/pPqRw==",
+      "path": "microsoft.identity.client.broker/4.56.0",
+      "hashPath": "microsoft.identity.client.broker.4.56.0.nupkg.sha512"
+    },
+    "Microsoft.Identity.Client.NativeInterop/0.13.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eccVwaDOan12YJrh6ntIBIXeKTNoWz+af2/c13lhvrDoX0ydVXitCXMJVz0dh2eJK5y2KJ7IfkEvNilB/A9V7A==",
+      "path": "microsoft.identity.client.nativeinterop/0.13.8",
+      "hashPath": "microsoft.identity.client.nativeinterop.0.13.8.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Abstractions/8.14.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iwbCpSjD3ehfTwBhtSNEtKPK0ICun6ov7Ibx6ISNA9bfwIyzI2Siwyi9eJFCJBwxowK9xcA1mj+jBWiigeqgcQ==",
+      "path": "microsoft.identitymodel.abstractions/8.14.0",
+      "hashPath": "microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "path": "microsoft.netcore.targets/1.1.0",
+      "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.Registry/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
+      "path": "microsoft.win32.registry/4.7.0",
+      "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
+      "path": "microsoft.win32.systemevents/6.0.0",
+      "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
+    },
+    "runtime.native.System/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
+      "path": "runtime.native.system/4.3.0",
+      "hashPath": "runtime.native.system.4.3.0.nupkg.sha512"
+    },
+    "runtime.native.System.Data.SqlClient.sni/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9kyFSIdN3T0qjDQ2R0HRXYIhS3l5psBzQi6qqhdLz+SzFyEy4sVxNOke+yyYv8Cu8rPER12c3RDjLT8wF3WBYQ==",
+      "path": "runtime.native.system.data.sqlclient.sni/4.7.0",
+      "hashPath": "runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512"
+    },
+    "runtime.native.System.IO.Compression/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
+      "path": "runtime.native.system.io.compression/4.3.0",
+      "hashPath": "runtime.native.system.io.compression.4.3.0.nupkg.sha512"
+    },
+    "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LbrynESTp3bm5O/+jGL8v0Qg5SJlTV08lpIpFesXjF6uGNMWqFnUQbYBJwZTeua6E/Y7FIM1C54Ey1btLWupdg==",
+      "path": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0",
+      "hashPath": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-38ugOfkYJqJoX9g6EYRlZB5U2ZJH51UP8ptxZgdpS07FgOEToV+lS11ouNK2PM12Pr6X/PpT5jK82G3DwH/SxQ==",
+      "path": "runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0",
+      "hashPath": "runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
+      "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
+      "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SharpDX/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q7sOiOZo3H0VqJPcaX1q53XGTGt4EVydLmx+CX07G4op1MuCeSsljhwY9KZKwYOWhQxTcxPAeJomEUv8CRkvUg==",
+      "path": "sharpdx/2.5.0",
+      "hashPath": "sharpdx.2.5.0.nupkg.sha512"
+    },
+    "SharpDX.D3DCompiler/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DfUBLQQew8kXQ7whrZXBXDgOLOWYCKANmo+45RRUQZZ6tVQasNVXd/TZu/vPvpq3Ud6JkY8oKMGlc8mg1ZfprQ==",
+      "path": "sharpdx.d3dcompiler/2.5.0",
+      "hashPath": "sharpdx.d3dcompiler.2.5.0.nupkg.sha512"
+    },
+    "SharpDX.Direct2D1/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T5mLEx6UfiVcje/7azW0dJcCcLwYKtyB6DohPVwJBAf4T5mNHr8bttpOWaAUULqaBYpy1mqhFNXgKwOUZYVwSg==",
+      "path": "sharpdx.direct2d1/2.5.0",
+      "hashPath": "sharpdx.direct2d1.2.5.0.nupkg.sha512"
+    },
+    "SharpDX.Direct3D10/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UYWeStJUl2nflPLCqbRoXgeE9M+PSRvWZ/DM4IVuaS0VjHKLdNRUjZTcRfWNs0x+bC0Yop3lFCySobMc/3cvIQ==",
+      "path": "sharpdx.direct3d10/2.5.0",
+      "hashPath": "sharpdx.direct3d10.2.5.0.nupkg.sha512"
+    },
+    "SharpDX.Direct3D9/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NllztkjUS1Bc8yz4VnaEs54vOcxfgdlbYd6NgpgAXhMYrACXG3OlJijUaiaUrUaju+kiysyRbVTG5n90NakdzQ==",
+      "path": "sharpdx.direct3d9/2.5.0",
+      "hashPath": "sharpdx.direct3d9.2.5.0.nupkg.sha512"
+    },
+    "SharpDX.DXGI/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n9w5zgcn4DoYtaOqmT/UHuf0m1SgwpArFc6LZYuGuPb0h4GhKiesXAPxQVsnXaBgK9d87QDA8wKIatkHuVh1VA==",
+      "path": "sharpdx.dxgi/2.5.0",
+      "hashPath": "sharpdx.dxgi.2.5.0.nupkg.sha512"
+    },
+    "SkiaSharp/3.119.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+Ru1BTSZQne3Vp+vbSb50Ke3Nlc3ZnItxx4+751J9WZ8YzLKAV/n+9DAo4zFTyeCI//ueT63c+VybmTTpYBEiw==",
+      "path": "skiasharp/3.119.1",
+      "hashPath": "skiasharp.3.119.1.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.macOS/3.119.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6hR3BdLhApjDxR1bFrJ7/lMydPfI01s3K+3WjIXFUlfC0MFCFCwRzv+JtzIkW9bDXs7XUVQS+6EVf0uzCasnGQ==",
+      "path": "skiasharp.nativeassets.macos/3.119.1",
+      "hashPath": "skiasharp.nativeassets.macos.3.119.1.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/3.119.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8C4GSXVJqSr0y3Tyyv5jz6MJSTVUyYkMjeKrzK+VyZPGLo89MNoUEclVuYahzOCDdtbfXrd2HtxXfDuvoSXrUw==",
+      "path": "skiasharp.nativeassets.win32/3.119.1",
+      "hashPath": "skiasharp.nativeassets.win32.3.119.1.nupkg.sha512"
+    },
+    "System.Buffers/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ratu44uTIHgeBeI0dE8DWvmXVBSo4u7ozRZZHOMmK/JPpYyo0dAfgSiHlpiObMQ5lEtEyIXA40sKRYg5J6A8uQ==",
+      "path": "system.buffers/4.3.0",
+      "hashPath": "system.buffers.4.3.0.nupkg.sha512"
+    },
+    "System.ClientModel/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xcHHhDqB5MnOOY8yIn64Vzp6gtBEs6k5J1hluG04CrShSvQNXOx4PSDs7wJiXLDidlY/FZJmxJdKTKskyJwjvw==",
+      "path": "system.clientmodel/1.6.1",
+      "hashPath": "system.clientmodel.1.6.1.nupkg.sha512"
+    },
+    "System.CodeDom/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CPc6tWO1LAer3IzfZufDBRL+UZQcj5uS207NHALQzP84Vp/z6wF0Aa0YZImOQY8iStY0A2zI/e3ihKNPfUm8XA==",
+      "path": "system.codedom/6.0.0",
+      "hashPath": "system.codedom.6.0.0.nupkg.sha512"
+    },
+    "System.Collections/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3Dcj85/TBdVpL5Zr+gEEBUuFe2icOnLalmEh9hfck1PTYbbyWuZgh4fmm2ysCLTrqLQw6t3TgTyJ+VLp+Qb+Lw==",
+      "path": "system.collections/4.3.0",
+      "hashPath": "system.collections.4.3.0.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+      "path": "system.componentmodel.annotations/5.0.0",
+      "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jXw9MlUu/kRfEU0WyTptAVueupqIeE3/rl0EZDMlf8pcvJnitQ8HeVEp69rZdaStXwTV72boi/Bhw8lOeO+U2w==",
+      "path": "system.configuration.configurationmanager/6.0.1",
+      "hashPath": "system.configuration.configurationmanager.6.0.1.nupkg.sha512"
+    },
+    "System.Data.SqlClient/4.8.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2Ij/LCaTQRyAi5lAv7UUTV9R2FobC8xN9mE0fXBZohum/xLl8IZVmE98Rq5ugQHjCgTBRKqpXRb4ORulRdA6Ig==",
+      "path": "system.data.sqlclient/4.8.6",
+      "hashPath": "system.data.sqlclient.4.8.6.nupkg.sha512"
+    },
+    "System.Diagnostics.Debug/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZUhUOdqmaG5Jk3Xdb8xi5kIyQYAA4PnTNlHx1mu9ZY3qv4ELIdKbnL/akbGaKi2RnNUWaZsAs31rvzFdewTj2g==",
+      "path": "system.diagnostics.debug/4.3.0",
+      "hashPath": "system.diagnostics.debug.4.3.0.nupkg.sha512"
+    },
+    "System.Diagnostics.DiagnosticSource/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KiLYDu2k2J82Q9BJpWiuQqCkFjRBWVq4jDzKKWawVi9KWzyD0XG3cmfX0vqTQlL14Wi9EufJrbL0+KCLTbqWiQ==",
+      "path": "system.diagnostics.diagnosticsource/6.0.1",
+      "hashPath": "system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512"
+    },
+    "System.Diagnostics.Tracing/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rswfv0f/Cqkh78rA5S8eN8Neocz234+emGCtTF3lxPY96F+mmmUen6tbn0glN6PMvlKQb9bPAY5e9u7fgPTkKw==",
+      "path": "system.diagnostics.tracing/4.3.0",
+      "hashPath": "system.diagnostics.tracing.4.3.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NfuoKUiP2nUWwKZN6twGqXioIe1zVD0RIj2t976A+czLHr2nY454RwwXs6JU9Htc6mwqL6Dn/nEL3dpVf2jOhg==",
+      "path": "system.drawing.common/6.0.0",
+      "hashPath": "system.drawing.common.6.0.0.nupkg.sha512"
+    },
+    "System.Globalization/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kYdVd2f2PAdFGblzFswE4hkNANJBKRmsfa2X5LG2AcWE1c7/4t0pYae1L8vfZ5xvE2nK/R9JprtToA61OSHWIg==",
+      "path": "system.globalization/4.3.0",
+      "hashPath": "system.globalization.4.3.0.nupkg.sha512"
+    },
+    "System.IO/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
+      "path": "system.io/4.3.0",
+      "hashPath": "system.io.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Compression/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YHndyoiV90iu4iKG115ibkhrG+S3jBm8Ap9OwoUAzO5oPDAWcr0SFwQFm0HjM8WkEZWo0zvLTyLmbvTkW1bXgg==",
+      "path": "system.io.compression/4.3.0",
+      "hashPath": "system.io.compression.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Hashing/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ne1843evDugl0md7Fjzy6QjJrzsjh46ZKbhf8GwBXb5f/gw97J4bxMs0NQKifDuThh/f0bZ0e62NPl1jzTuRqA==",
+      "path": "system.io.hashing/8.0.0",
+      "hashPath": "system.io.hashing.8.0.0.nupkg.sha512"
+    },
+    "System.Memory.Data/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BVYuec3jV23EMRDeR7Dr1/qhx7369dZzJ9IWy2xylvb4YfXsrUxspWc4UWYid/tj4zZK58uGZqn2WQiaDMhmAg==",
+      "path": "system.memory.data/8.0.1",
+      "hashPath": "system.memory.data.8.0.1.nupkg.sha512"
+    },
+    "System.Private.ServiceModel/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BItrYCkoTV3VzVPsrew+uc34fmLb+3ncgspa7vbO3vkfY9JQCea4u34pHE+Bcv1Iy16MgRs3n2jKVRCDg0rPfg==",
+      "path": "system.private.servicemodel/4.7.0",
+      "hashPath": "system.private.servicemodel.4.7.0.nupkg.sha512"
+    },
+    "System.Reflection/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
+      "path": "system.reflection/4.3.0",
+      "hashPath": "system.reflection.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.DispatchProxy/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+UW1hq11TNSeb+16rIk8hRQ02o339NFyzMc4ma/FqmxBzM30l1c2IherBB4ld1MNcenS48fz8tbt50OW4rVULA==",
+      "path": "system.reflection.dispatchproxy/4.5.0",
+      "hashPath": "system.reflection.dispatchproxy.4.5.0.nupkg.sha512"
+    },
+    "System.Reflection.Primitives/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
+      "path": "system.reflection.primitives/4.3.0",
+      "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.Resources.ResourceManager/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/zrcPkkWdZmI4F92gL/TPumP98AVDu/Wxr3CSJGQQ+XN6wbRZcyfSKVoPo17ilb3iOr0cCRqJInGwNMolqhS8A==",
+      "path": "system.resources.resourcemanager/4.3.0",
+      "hashPath": "system.resources.resourcemanager.4.3.0.nupkg.sha512"
+    },
+    "System.Runtime/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "path": "system.runtime/4.3.0",
+      "hashPath": "system.runtime.4.3.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Runtime.Extensions/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
+      "path": "system.runtime.extensions/4.3.0",
+      "hashPath": "system.runtime.extensions.4.3.0.nupkg.sha512"
+    },
+    "System.Runtime.Handles/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OKiSUN7DmTWeYb3l51A7EYaeNMnvxwE249YtZz7yooT4gOZhmTjIn48KgSsw2k2lYdLgTKNJw/ZIfSElwDRVgg==",
+      "path": "system.runtime.handles/4.3.0",
+      "hashPath": "system.runtime.handles.4.3.0.nupkg.sha512"
+    },
+    "System.Runtime.InteropServices/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uv1ynXqiMK8mp1GM3jDqPCFN66eJ5w5XNomaK2XD+TuCroNTLFGeZ+WCmBMcBDyTFKou3P6cR6J/QsaqDp7fGQ==",
+      "path": "system.runtime.interopservices/4.3.0",
+      "hashPath": "system.runtime.interopservices.4.3.0.nupkg.sha512"
+    },
+    "System.Security.AccessControl/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AUADIc0LIEQe7MzC+I0cl0rAT8RrTAKFHl53yHjEUzNVIaUlhFY11vc2ebiVJzVBuOzun6F7FBA+8KAbGTTedQ==",
+      "path": "system.security.accesscontrol/6.0.0",
+      "hashPath": "system.security.accesscontrol.6.0.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Cng/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
+      "path": "system.security.cryptography.cng/4.5.0",
+      "hashPath": "system.security.cryptography.cng.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Pkcs/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TGQX51gxpY3K3I6LJlE2LAftVlIMqJf0cBGhz68Y89jjk3LJCB6SrwiD+YN1fkqemBvWGs+GjyMJukl6d6goyQ==",
+      "path": "system.security.cryptography.pkcs/4.5.0",
+      "hashPath": "system.security.cryptography.pkcs.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rp1gMNEZpvx9vP0JW0oHLxlf8oSiQgtno77Y4PLUBjSiDYoD77Y8uXHr1Ea5XG4/pIKhqAdxZ8v8OTUtqo9PeQ==",
+      "path": "system.security.cryptography.protecteddata/6.0.0",
+      "hashPath": "system.security.cryptography.protecteddata.6.0.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Xml/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-i2Jn6rGXR63J0zIklImGRkDIJL4b1NfPSEbIVHBlqoIb12lfXIigCbDRpDmIEzwSo/v1U5y/rYJdzZYSyCWxvg==",
+      "path": "system.security.cryptography.xml/4.5.0",
+      "hashPath": "system.security.cryptography.xml.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Permissions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T/uuc7AklkDoxmcJ7LGkyX1CcSviZuLCa4jg3PekfJ7SU0niF0IVTXwUiNVP9DSpzou2PpxJ+eNY2IfDM90ZCg==",
+      "path": "system.security.permissions/6.0.0",
+      "hashPath": "system.security.permissions.6.0.0.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
+      "path": "system.security.principal.windows/4.7.0",
+      "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
+    },
+    "System.ServiceModel.Http/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+BB61ycl1cSlRbJDpABoqMa7bRE4boJfK1CfWfbNzTGeADFVmDkhylpfmC1bKloxtf95p2owj8/n7kilgRBAow==",
+      "path": "system.servicemodel.http/4.7.0",
+      "hashPath": "system.servicemodel.http.4.7.0.nupkg.sha512"
+    },
+    "System.ServiceModel.Primitives/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YUXIMO4kL1v6dUVptJGixAx/8Ai5trQzVn3gbk0mpwxh77kGAs+MyBRoHN/5ZoxtwNn4E1dq3N4rJCAgAUaiJA==",
+      "path": "system.servicemodel.primitives/4.7.0",
+      "hashPath": "system.servicemodel.primitives.4.7.0.nupkg.sha512"
+    },
+    "System.Text.Encoding/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
+      "path": "system.text.encoding/4.3.0",
+      "hashPath": "system.text.encoding.4.3.0.nupkg.sha512"
+    },
+    "System.Threading/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VkUS0kOBcUf3Wwm0TSbrevDDZ6BlM+b/HRiapRFWjM5O0NS0LviG0glKmFK+hhPDd1XFeSdU1GmlLhb2CoVpIw==",
+      "path": "system.threading/4.3.0",
+      "hashPath": "system.threading.4.3.0.nupkg.sha512"
+    },
+    "System.Threading.Tasks/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
+      "path": "system.threading.tasks/4.3.0",
+      "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
+    },
+    "System.Windows.Extensions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
+      "path": "system.windows.extensions/6.0.0",
+      "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "Telerik.Licensing/1.6.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3EGdYcfWvZyB9dvK2Dutty9vnQHoNbz/k7817rqUII4haNQrrtLSeXfIwYjBsTHO262S+9nG76TkNbZof1v7Kg==",
+      "path": "telerik.licensing/1.6.31",
+      "hashPath": "telerik.licensing.1.6.31.nupkg.sha512"
+    },
+    "Telerik.Pivot.Core.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iEiheKmwZBP0fogCz17iO8lVsulE6ZLZatQvjLoyU2DtTj+r6hT0poI5OEmuNl3pI7WOA4P8zIg8uZwAsH0Rng==",
+      "path": "telerik.pivot.core.for.wpf/2025.4.1111",
+      "hashPath": "telerik.pivot.core.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Pivot.DataProviders.Adomd.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zKH8hQYh++NMKyaP/Nk1gp4RoRIGyPhb7bWANPjpYvBsa5yH894/6o+w+mV52/hdxFWn5Y9rc+1CjXjSbNqq/A==",
+      "path": "telerik.pivot.dataproviders.adomd.for.wpf/2025.4.1111",
+      "hashPath": "telerik.pivot.dataproviders.adomd.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Pivot.DataProviders.Queryable.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N3Zlniuj1G+1lPnVhHCb65Bqafs7wG2DZa0gj9oNT2Ca4hvPVWsJZ7XRfxbGA31RlAP/g7bik33KgUqgL9yRiQ==",
+      "path": "telerik.pivot.dataproviders.queryable.for.wpf/2025.4.1111",
+      "hashPath": "telerik.pivot.dataproviders.queryable.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Pivot.DataProviders.Xmla.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CImhtYTVR2Y1wgRP2bROfzi3SS6zaPjpYGZTDc2Wj/aEaGuWb6W3pv1IIWj9WoqIVgja1AOncjzGjldTEvJG2g==",
+      "path": "telerik.pivot.dataproviders.xmla.for.wpf/2025.4.1111",
+      "hashPath": "telerik.pivot.dataproviders.xmla.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.UI.for.Wpf.AllControls.NoXaml/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q+PbBiYj2vOodEByzMrUdDLaAF2F2IMrm9cJM1HGquoEhJuRSatFulT990lcClo38GPklclhfIh8HQMekECsLQ==",
+      "path": "telerik.ui.for.wpf.allcontrols.noxaml/2025.4.1111",
+      "hashPath": "telerik.ui.for.wpf.allcontrols.noxaml.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Cloud.Controls.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RZYCJd53MXuaayH4LXNPN+vNWObQ8KfUtJIuN0drET5ycFLJ4Ig+gQ6vaacmz+JCQYTILallmVXJs8Al4OmRCA==",
+      "path": "telerik.windows.cloud.controls.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.cloud.controls.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Cloud.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/A438JJ4ZrM3YFdkjDIEnqKOc20LmGbuOywKY7v2eF4MhcRWVT5m3NJnbxLzT/T73i89yFraOz5Cf+uvt5bEaA==",
+      "path": "telerik.windows.cloud.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.cloud.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Chart.Direct2D.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aA5z19E/T8h9ooS6yn/4wOathMU4y8HR3Ymj7iaUr1B60UaoREm94HZl7kDlGG/bS40sR+eHfk5q2NW1LUqOcw==",
+      "path": "telerik.windows.controls.chart.direct2d.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.chart.direct2d.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Chart.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LV5HTcyQug5Aj1cxE9jC3zlC1ZwtbbXj+OVyR76f8dTC0LeqYseN7cksoEZDcmAHaTwHuY3CrnDnEsuot2rtIw==",
+      "path": "telerik.windows.controls.chart.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.chart.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Chart.Skia.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KChD266VYCgspy1I0d9PimLbHX3ggECtdoGDzC2Iq5nM9ou/LCWtSOwyyDKJrRDlzAnBJh/gLqyVouM991Ea0Q==",
+      "path": "telerik.windows.controls.chart.skia.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.chart.skia.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.ConversationalUI.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2B+oNdeE0EtqzWikAoBdn08GO75EtXbr1QKa/YeKE/luIdQbYQ+/+MWRSmcAjdouCiOUx11njI1SqcwdmI+qAQ==",
+      "path": "telerik.windows.controls.conversationalui.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.conversationalui.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Data.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tZN9dFSSf9sJa8BQGCrCGo0f+SgDZTgLb0vM1GNARF8fj7Duutu7afONTehQGjneIx1l25hBoShFjjhXWzVWNQ==",
+      "path": "telerik.windows.controls.data.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.data.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.DataServices.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/RMUrjBUkDVNCqgt3ZxC9kv10V5eykkBBtuXEdkRUfSJmAt62p2u5zuRRtUHhhHL3xTDFsDM8ixC6G2zL9rRCg==",
+      "path": "telerik.windows.controls.dataservices.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.dataservices.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.DataVisualization.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aBATmaZeNoJilnBaehgaoMMFw/10LVtE0nxils7u/cyHe5/Y/djExOXSHsPnCz+GPrKM7YMtkauID0X621aS3Q==",
+      "path": "telerik.windows.controls.datavisualization.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.datavisualization.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Diagrams.Extensions.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JA5v51OLeYLnzMkhd2eKPj7ID8e4W4rfZunrjbnfHoT+pEIOQz0VdUe2NAUu7CYpXYSvShvnZbcQ59/noR4Ceg==",
+      "path": "telerik.windows.controls.diagrams.extensions.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.diagrams.extensions.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Diagrams.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LLOugOdpY3csbLa3+FwJ/4KqPEKqIa/vpBoH/9B8oG2+kRFPgx8iu9Evgjv25XtQcZ9/RkcMYDmCjPNKoM4SCg==",
+      "path": "telerik.windows.controls.diagrams.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.diagrams.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Diagrams.Ribbon.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dA9pwvom/g20yjNZMCfFIIyRfXMrpq5KZnkBe4I7fpQDAwlp8JclvIGcoCqJjNKLOItKrWTOoo5vL2aHZvdQ4w==",
+      "path": "telerik.windows.controls.diagrams.ribbon.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.diagrams.ribbon.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Docking.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lYuqdQ6uuUrMrNzppM3THzszqa8nXHB/yfaiO3lz+No71l/IrAcfDXPUtGbDEy4dQYlO+oMj3g6RAKwvtgiYdA==",
+      "path": "telerik.windows.controls.docking.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.docking.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.EntityFramework60.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Jc8/mp9MG9ClhbIbEkibT/e9B1cjZ0YJPG2UnWSes++3ZnD/BRimxUnxe4f6l4xTF8Gqfn1gOFQsFOeJdRQxDw==",
+      "path": "telerik.windows.controls.entityframework60.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.entityframework60.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Expressions.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jPmDE7PNpr0uC29DzE/JkWC1jyE1ZhOZQ6eJqSS243SGJv/n+t3/L0e23c77G1mRBf41law5PfvVj4qLbRIuiQ==",
+      "path": "telerik.windows.controls.expressions.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.expressions.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.FileDialogs.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rruh+QiLhzxf06ZlEm0/Y2yaIm+mt/MZBM5dxQYwjUmoOFprHmf5gbV5+0QTchMH+cvsIRXB2C8QR5RWKA1vjw==",
+      "path": "telerik.windows.controls.filedialogs.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.filedialogs.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.FixedDocumentViewers.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-70B3zMziLizOClzuoLBDqguJQ0iDqeu3vHHSa5TaWW5szgu1snHCZp6teN9Tyyq0WVzdTrQnu8Y4wwtp7HJ5Dw==",
+      "path": "telerik.windows.controls.fixeddocumentviewers.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.fixeddocumentviewers.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.FixedDocumentViewersUI.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XlrFXgiQ1/hafkxByu4KAaiLy38A/a4BfCJ3tb4nfqfKWTQkaBEdhjxtk+jM37LAdUnynI+uPs6jmpySkYMlYw==",
+      "path": "telerik.windows.controls.fixeddocumentviewersui.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.fixeddocumentviewersui.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b/gNc2P5OJU9Ew7EHcGiv5Qv/L7c9uc1l0CASt34BXp2Wa9uFVXVlS0dPJ+hsapwfZUKfyWVGlPBtXoKX1HNpg==",
+      "path": "telerik.windows.controls.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.for.Wpf.de/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Wp05hsO+bEMW8+g7YK2KG2T786mlSuHEP4ghbvAeYhqC9zNeozRYSxJU6LHQmTkCq6XxlnSJI1lkQ2YevGK/Yg==",
+      "path": "telerik.windows.controls.for.wpf.de/2025.4.1111",
+      "hashPath": "telerik.windows.controls.for.wpf.de.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.for.Wpf.es/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8azPU4hSQAf3TmAVkKMaDLKWjOIxqR+aVcaUcueGgiYxXBNFX/9SrGUB22eyFDJfpfjiVlmYR8a1t7W+3jSKmQ==",
+      "path": "telerik.windows.controls.for.wpf.es/2025.4.1111",
+      "hashPath": "telerik.windows.controls.for.wpf.es.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.for.Wpf.fr/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QX/ZJYtlfwgdudTp1rcZvS7RwRxS0wa0MA3fSIizFH2q0lYFIJSvGuDJdE8/8zXz85yW8bwUS5GdhnFG14ebsA==",
+      "path": "telerik.windows.controls.for.wpf.fr/2025.4.1111",
+      "hashPath": "telerik.windows.controls.for.wpf.fr.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.for.Wpf.it/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-//V/3039UotWwk7uVEen/5iKkq1R9hunq04arNqeeAbTX6hyMBkBNiQHfYk5MLxwkGwBgATA94MMTwhNbkrmhg==",
+      "path": "telerik.windows.controls.for.wpf.it/2025.4.1111",
+      "hashPath": "telerik.windows.controls.for.wpf.it.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.for.Wpf.nl/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nfn3LX50PLmqFr7C4mDpXbjEJ13Xd9dKy9FJ2h6BtxS9bgAHfMqwzN3K7T/BUsq7rcYUIznQOoUXT0fiTikuTw==",
+      "path": "telerik.windows.controls.for.wpf.nl/2025.4.1111",
+      "hashPath": "telerik.windows.controls.for.wpf.nl.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.for.Wpf.tr/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zhVIvNInld5kGkPY6vNL5uBXDNQjIE9/nV+ouDHtw5KCwxPK3IS+2GeviER78nDRwotniEyRc4zOQN0hg8wr/A==",
+      "path": "telerik.windows.controls.for.wpf.tr/2025.4.1111",
+      "hashPath": "telerik.windows.controls.for.wpf.tr.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.GanttView.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-84P9eCa1fjuYxTDrfU4RYUlIcME3djBdebA8/A1oMeiNOuYOPOxLkaPvXaoPCfQtIVOBz6rCdkzc5ANYVFxTDA==",
+      "path": "telerik.windows.controls.ganttview.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.ganttview.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.GridView.Export.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vUXqn0WFsYCGWxpyEGhvaw55XXrk00wtoKWJhXLOKorV8ymbOsDBsfTZjaaux2FtPg0vQsRJhn4xmntrWl+0Cw==",
+      "path": "telerik.windows.controls.gridview.export.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.gridview.export.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.GridView.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Yk2BLtjjmyio3jk8TJgButBlKhcYjMgyW4N80YNNIYywvigswny1TeNfTkSGu5IHYHAgn4CGiuNfNPGm+n8YHQ==",
+      "path": "telerik.windows.controls.gridview.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.gridview.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.GridView.SpreadsheetStreamingExport.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Or6ITGy+qwpCeeyYUqtrF9UWIwHe+5dkuJC6dl6mrVIlO6nCuIHrnnzH+gUPwIsofRqHS2y5gCkLokXkuj2OKA==",
+      "path": "telerik.windows.controls.gridview.spreadsheetstreamingexport.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.gridview.spreadsheetstreamingexport.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.ImageEditor.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kNq88sNfAvOdwWjMlRNuP5SWyJa+fmIAuHyLIX7qV5EiRHojQ/gsbOg9F5XMxEFpds9kh0CVcOLG9wpKiDyHuQ==",
+      "path": "telerik.windows.controls.imageeditor.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.imageeditor.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Input.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PtjBVGVnn9K8z1p6Ne59PujWWl8/1ukK6bYxiGEOXXPMFmFIdNL4KguP7CC4xBjqyjSRDHaEmW+ErXtLbehh5A==",
+      "path": "telerik.windows.controls.input.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.input.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Media.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wC0oUre5EjiNVz/SXeZ3Ztagc4qX/NkcuLJEEZAoEKtAIW7OlXgohbfisSweyu7yYmk35Q1hLQ60vod1+Bfc8A==",
+      "path": "telerik.windows.controls.media.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.media.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Navigation.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FtRspXpgnJz3dCwAIHCqhcxPk5mZVier6+R8ZnveRC2Td45/Y9GSD8lxfqZfhfJPyJQuk4x2MziQ1ja6Bz2fJA==",
+      "path": "telerik.windows.controls.navigation.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.navigation.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Pivot.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T3onjcbondUR/al5QglMxopq32XRt/ZyjPHeJqLPwFbomQlBejeLI2opY4yp5nX8ymfATuif4cD7e76GSqxstg==",
+      "path": "telerik.windows.controls.pivot.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.pivot.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.PivotFieldList.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K7wJRKoenyQPQxc+YLlwqSGxTy+QiVYS2BQv9ufqXIiCjYrTGhPW1PPfw5Ld3jVrZ8dV5ut5h1lWeQ8pP2gyHg==",
+      "path": "telerik.windows.controls.pivotfieldlist.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.pivotfieldlist.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.RibbonView.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pcICyy+TYoCEk9T0YD4kQnoZ7h9YdQad+Wr/GdWFP4HGs4VjPFbTSDuhWBmQnRkcTNsWDTzkuAaRXBjtOko0dQ==",
+      "path": "telerik.windows.controls.ribbonview.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.ribbonview.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.RichTextBoxUI.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4rHU20oNe+RahDHagHGeW1gzUe+vm8Z10z9u4gOfS3I8KMjdKzhU2CrFVNV2Qjcqgbnl80AHJJrmSECIjGzbBg==",
+      "path": "telerik.windows.controls.richtextboxui.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.richtextboxui.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.ScheduleView.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KDN1rmGAKAcl1NwaHNEgSrVS5DkZNtXDtQq4lwtmE2lghZt7aWmeZIC4zdc53AA72eOZVJ+wWTItFcE81Dlw5Q==",
+      "path": "telerik.windows.controls.scheduleview.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.scheduleview.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.Spreadsheet.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oQFtgsfoynv+eAlnC8nMH46hyHem4yinZDuiYa0Swyo9+FAVagCFelb4f0eczIPbdDf30//wThzmrqLgOmPjFA==",
+      "path": "telerik.windows.controls.spreadsheet.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.spreadsheet.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.SpreadsheetUI.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wkfOwfi+blfoSMj+e+S47HZ6T/DI8bf5Nd0RghJi2rCFKBt2TcwfkHn/zcKzg7EWmsQh7EAJ7LKAYIcBP+snbQ==",
+      "path": "telerik.windows.controls.spreadsheetui.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.spreadsheetui.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.SyntaxEditor.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ch0F2Ojv625Yv2uvSYIl1Ry+g/kbxFJe7X8fCI+bvGBkIUmcDNZaGQpB13pkI/AwGFp54dj1s1MOpdEpgSsFEQ==",
+      "path": "telerik.windows.controls.syntaxeditor.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.syntaxeditor.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Controls.VirtualGrid.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H5dwPyyQeGLMX0Uuu1muEfw6Sp5hkOrQl6e84YiBmd06GKKyd4P0NUEVE7PyxoeRrTZUHPFED+rFDKuS8k2Iww==",
+      "path": "telerik.windows.controls.virtualgrid.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.controls.virtualgrid.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Data.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K44Lb02jiFRLQNXWZ+jL8xqp4CUOLrg9CEWzLZ4yQEXOHeUay95gawuH4iKwrVU82KtZl4EsLhVf+T9FIwSOgw==",
+      "path": "telerik.windows.data.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.data.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Diagrams.Core.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L79AvMmemk7JPG91z9n68m5VdLUR5i32wjzsGRxu5VsFxMPkeYEvryyJSPUYqnDZkYkq6Vf/yUxw6+2CSfodFw==",
+      "path": "telerik.windows.diagrams.core.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.diagrams.core.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Core/2025.4.1104": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jb6NeRH5ddUjFW8zApqM4+x7G65Gg7UJyzmpRrgejVgCn5SphSheoLSG30d+RJAdFJS5R/oQb8woE4rQY/hytw==",
+      "path": "telerik.windows.documents.core/2025.4.1104",
+      "hashPath": "telerik.windows.documents.core.2025.4.1104.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Fixed/2025.4.1104": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FPwYg91Rjp0E1ljbGI6YQeVofnEJEUj2D5/3u0COjwDfHsxOXFfQaVb6LMnvMqr+8uX+WhMH8XKRIWniv5evnQ==",
+      "path": "telerik.windows.documents.fixed/2025.4.1104",
+      "hashPath": "telerik.windows.documents.fixed.2025.4.1104.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Flow/2025.4.1104": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7lzW6biPWiIWQ8FJvjVTG5lLu+7oA4qRBcIrMOlr4rD3y/nl6by8lVft/sgS8l5VN6bR0skg/WKpMmYjXSguhw==",
+      "path": "telerik.windows.documents.flow/2025.4.1104",
+      "hashPath": "telerik.windows.documents.flow.2025.4.1104.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rvXoDX/WIzGi3VDuUsG4Gort0NqeYpOJNw8/fG9yS4w8QZt989v9wCcYqBzYGVIQiiEprsOybd7uMIU25lP7pw==",
+      "path": "telerik.windows.documents.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.FormatProviders.Html.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j329EDp32uNPxjSOFEUPr42cmkcoOaGIiVo9KNUmFncFHda3GJZFTr++VApNz+pj80n3iPO4H1ayjYcLs0l+3g==",
+      "path": "telerik.windows.documents.formatproviders.html.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.formatproviders.html.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PRjeZdt4zW+fKCwQlKEiabCiUzxspKpPJDRe//gZdpjhUBd1N76cxfdVSX3RidqN5pB/QSrLq14xZ/4Pfb2g1A==",
+      "path": "telerik.windows.documents.formatproviders.msrichtextboxxaml.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.formatproviders.msrichtextboxxaml.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.FormatProviders.OpenXml.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3rPTPdmnGAgeGJ2HnSTQkDgcIgLaTGxsZEXdSaLhnuYSdnbIaxpP9ChYXELYT5PF1vkL75V2sYbtQTiX6725vA==",
+      "path": "telerik.windows.documents.formatproviders.openxml.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.formatproviders.openxml.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.FormatProviders.Pdf.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cBspK3wljkvTes3wzle06P5Fv14u+vECrHj32j7J6YWF8nbkK8PnXLj8r0HA/ncKZFad/pyxWIA+H5r3AzwwDQ==",
+      "path": "telerik.windows.documents.formatproviders.pdf.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.formatproviders.pdf.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.FormatProviders.Rtf.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ru2IShQIwr0X5VkpUTuVKg3/+Y5w/wDsDJTVu20K3IOqXwxh6vmlm58R38XhkGgqTTmd38YAyHVQVb7Kb3nXqQ==",
+      "path": "telerik.windows.documents.formatproviders.rtf.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.formatproviders.rtf.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.FormatProviders.Xaml.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bH/HbGW92g4HgX6X8GJXUpBoaEm4GoxdDbuGIGo34DjzOIqsJAExXC1ER8mQ12E8aaQGjbtIbwWigxMnrK1Maw==",
+      "path": "telerik.windows.documents.formatproviders.xaml.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.formatproviders.xaml.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Proofing.DataGrid.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K4t33Qu6JpldWVgOF7unF7T8xhom5EKjBlIsHrrHY2fWe9DPukGTfAk/LbUa0u0uUXzOlCMirxHpUJ9czFBX4Q==",
+      "path": "telerik.windows.documents.proofing.datagrid.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.proofing.datagrid.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Proofing.Dictionaries.En-US.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V2UMNAIuMkRqIX0rMjTRfIBV0UGtuXNVAzfutxh7xJ16bTnByXJ5ZZBrWJdSFefRDxLy9mFQRjy0Gh04c6KyCA==",
+      "path": "telerik.windows.documents.proofing.dictionaries.en-us.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.proofing.dictionaries.en-us.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Proofing.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NmtN7r/zifzPrLrZaddc/zmg0OXBkD9t/9nMRCXSf/oh6VrrU2s8tFyOlZDFykeCNlxQiww5E+gv99rSWKFGJw==",
+      "path": "telerik.windows.documents.proofing.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.proofing.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Proofing.RadGridView.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RdTvRWIIC3yGL23tN8lahGLpuMc8045TdSiX5tU6m9pNP1H383ccUvuC0ZrnHoZeUg9wi4OOa2LuBG+Kf1SSow==",
+      "path": "telerik.windows.documents.proofing.radgridview.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.documents.proofing.radgridview.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Spreadsheet/2025.4.1104": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-krJXPQ9FCyyonkO0Hj6EhdwQWHk5FOozx3p2DKVfvV0dphBqRryIY8j/2TX5ZCoSHnb38JVHFCNkNq2hSRSeEQ==",
+      "path": "telerik.windows.documents.spreadsheet/2025.4.1104",
+      "hashPath": "telerik.windows.documents.spreadsheet.2025.4.1104.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml/2025.4.1104": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DjFIgiMiEoeNSbvZ6dKRFWpaSn0dNVnc1GIovSvpkIW3MxPQARnD2TQLe9a7r3KPd8Uqe8DUwMOjlHy3XNwoRA==",
+      "path": "telerik.windows.documents.spreadsheet.formatproviders.openxml/2025.4.1104",
+      "hashPath": "telerik.windows.documents.spreadsheet.formatproviders.openxml.2025.4.1104.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf/2025.4.1104": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oNEcL+iOz/RUbo9JSprGhCuGOoE/yoMXExVNelMZniFwgLUJK2pChb/5ZsEUZxiOipPcWF9Iu2OjGaGQbdCl/g==",
+      "path": "telerik.windows.documents.spreadsheet.formatproviders.pdf/2025.4.1104",
+      "hashPath": "telerik.windows.documents.spreadsheet.formatproviders.pdf.2025.4.1104.nupkg.sha512"
+    },
+    "Telerik.Windows.Documents.SpreadsheetStreaming/2025.4.1104": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SZCEkQ7UHW0ubk4UXBDdXW23Fb1ZAz/0s7f8nqnDuZWsEcaBqoTW4ptfqWq+KojGvP4W8gPD3oF0N0uznllE9g==",
+      "path": "telerik.windows.documents.spreadsheetstreaming/2025.4.1104",
+      "hashPath": "telerik.windows.documents.spreadsheetstreaming.2025.4.1104.nupkg.sha512"
+    },
+    "Telerik.Windows.MediaFoundation.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L0AnvUkcTrQsF7qLsbgT41EJzLUBf8e3+srnh40uyMbcNJ5DlSea7Tq8FZPrPgbvIsVWVFjFiGH8Gmc+b5r7oA==",
+      "path": "telerik.windows.mediafoundation.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.mediafoundation.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.PersistenceFramework.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ApLRB10sb3W46IaAcFYUoT05swMPByVtnupzY1DwhuOhq5gUMTMPULhAznZ38vOPKjq0jQCR3BIhh+Pqhph5sg==",
+      "path": "telerik.windows.persistenceframework.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.persistenceframework.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Scheduling.Core.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Cnzoz4DSV+FcC7//GFM52wqM8frDC1jcWvmIxwc+1DsCcdu1CLb/yBl5U3dpZYo5PNwrW5MDlhB+WZeOM/vceQ==",
+      "path": "telerik.windows.scheduling.core.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.scheduling.core.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.SyntaxEditor.Core.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aAzC/vr7jgSeBSZqlMB4zxmnPeLB4Zl82QYusszm+/N8/sTz4E7CVVq/RkBJ5n0NjYKQSIXZkpKBzIk0nqDeGw==",
+      "path": "telerik.windows.syntaxeditor.core.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.syntaxeditor.core.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Crystal.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2bxqd/ksyljs2/81wp9dG1xsLql95qfdQBonFU3trcS5r0kNWVy3Ai6REoCh5/gIKS+3KLCJ0DH46TKBmq5vnA==",
+      "path": "telerik.windows.themes.crystal.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.crystal.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Expression_Dark.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CFWCv6nG3fqH/WZI3PPUdnS6ZGI833EYuoslrNNVc0pHOd9JaQYDL0GxaFYNOvfvOIy1gHl3+c1kzYLAV1l4dw==",
+      "path": "telerik.windows.themes.expression_dark.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.expression_dark.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Fluent.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZPii/rfWBE++SL0GaVzSmQHvodFKEjx/GIoAQarg4DWZAmgObddw4xEghlxQgxou5Q0oirg8tYvPa8AXeUtvug==",
+      "path": "telerik.windows.themes.fluent.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.fluent.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Green.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bQUPEsev0AyYSylmbA0m4CgS1omHtP5Uzl+9l6Vo0LCbPlDgOjfsn4ki2SYW/THlOm9QYAxXXdzoCUdHG9p69w==",
+      "path": "telerik.windows.themes.green.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.green.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Material.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hB+Pb2I+3EgoT4qg7RTTZ146wEJjgR67lEGaIw2j6ODu0CcRrfMCMXQty03+G2dWOL6sxoepp5VM+EPDLx9HvQ==",
+      "path": "telerik.windows.themes.material.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.material.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Office2013.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ga8UlwMPNANH60yOI233yFfWp6UuHYeoI+1AAgWJ1l70Z0fpBwBnX716+xUExTAdcYWVziwQPEzFdnd6dc44Bw==",
+      "path": "telerik.windows.themes.office2013.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.office2013.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Office2016.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PxChrFnhVEFqn9AQFa4UxltpGqWZRMDpS229R1NXqHCDd1+6XhmQeFgrTNuLicJUdPTK7FxnyZ+TEyupwJHoiQ==",
+      "path": "telerik.windows.themes.office2016.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.office2016.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Office2016Touch.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/ld4IXgyk/SwBIYTWF9bryMGa23+19b7HwRGMINW68vT5KAuiDr/TT6w6SEXEnLz1lVzkWyDn5dSK2L/AqjhHw==",
+      "path": "telerik.windows.themes.office2016touch.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.office2016touch.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Office2019.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6M5XuzaIoSIrgDvOkHINmQGcULyS0VtpvK2sO25MCjDg+vs3BExEi6toC2WgQ9Ai5dLbVmP4fUKC47lN9e/zAQ==",
+      "path": "telerik.windows.themes.office2019.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.office2019.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Office_Black.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-782UruSLkASTIskfcWs6XYcviIYARkJRKOay0AWx6G4YxUD6uEkQA6uBitzq02EA8iQUm0V79P0MEaQU3esiqA==",
+      "path": "telerik.windows.themes.office_black.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.office_black.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Office_Blue.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lYaYVeivCkbG5EEY/b4e7ypMrlTyKWQ6HFsB1PPUGselzR5/FiWwAeeLHP2kzgVL3JNS/3D++BoBQMPf1tkYjA==",
+      "path": "telerik.windows.themes.office_blue.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.office_blue.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Office_Silver.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wETfYBwHFQGuGntwlFHUNPiDwaI8VB7uPvKqNgkr8XyR93kwehR+tni1z+uiOM7bEamXVT3zFfXNKjwnPB2A0Q==",
+      "path": "telerik.windows.themes.office_silver.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.office_silver.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Summer.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oJPApINWAIW3mwdDrYevgKlTufdrbgu5WPFM9wpbg6zAq9ee5mu8nWY2b1hYFJfrxN1ULABN31wqbvOM5qgSZA==",
+      "path": "telerik.windows.themes.summer.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.summer.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Transparent.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6FuJSyHlzJ/CtEwJpTmeq/fbaC305gm0HT88XA995Kj7sHVBxRxlZlJSEsKXS/Gu7CvL04GYjJEbMSQKqzYC1w==",
+      "path": "telerik.windows.themes.transparent.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.transparent.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Vista.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pd2BqxfGiU6AjfLkqwJNcF2Li3FpKXNXWkF7/oa1/p8xcgK+eQThYgeRQXtuM66WAcD9oCnUgJv4XNddvYIj4g==",
+      "path": "telerik.windows.themes.vista.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.vista.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.VisualStudio2013.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cZTLALlI2lEhMzOAjwhKW5U4f+r39gxNcvKpszVew5CfZkfgQIJxse6UScjDYRG8sOZyyIBVeCSoEgQ6cYFOZw==",
+      "path": "telerik.windows.themes.visualstudio2013.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.visualstudio2013.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.VisualStudio2019.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nJbDHwfN10EvqoHsJtlH+XDHQIAWwQ2AqLrSK/ohW87mGC1vhmSc7lvZ/WYCvqwxrhssd1CzuHEeBlDp+mDACQ==",
+      "path": "telerik.windows.themes.visualstudio2019.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.visualstudio2019.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Windows11.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TA5l8I1ct31FIe2LNhrusRmin6jBRKch3mdkhzRRhRiLPQ7MFWlc7zszEdsw5Ub9IjAp2xaeB2KlauyLNdqW4A==",
+      "path": "telerik.windows.themes.windows11.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.windows11.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Windows7.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TEwzy0DmgdGHIV9j7trfrK96QcQG0xofxcrFqT4aXTwQVwgt26CKtx0a/vmM1Vo/GTpqw68Aw/JTLzDGILrIVA==",
+      "path": "telerik.windows.themes.windows7.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.windows7.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Windows8.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4VPjAUNWtADM5ot1rq9uXi37BAwUEvO0PW3/qdbtLseYKR1D2BvwfEoAm5rd0VQilYAXELctweTtxaqecolH+A==",
+      "path": "telerik.windows.themes.windows8.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.windows8.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "Telerik.Windows.Themes.Windows8Touch.for.Wpf/2025.4.1111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jhxQuw7Xyj1i+M/3y1OtYW++mcORuKOPiD3p9yOtS9aBTV1LmkOp97BlxqpkcWuJj1GL94ATnOXxiBk4K45UeA==",
+      "path": "telerik.windows.themes.windows8touch.for.wpf/2025.4.1111",
+      "hashPath": "telerik.windows.themes.windows8touch.for.wpf.2025.4.1111.nupkg.sha512"
+    },
+    "VulpesX.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VulpesX.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

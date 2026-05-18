@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="VulpesXDarkColor">#FF252526</Color>
+    <Color x:Key="VulpesXDarkAlternativeColor">#FF3E3E40</Color>
+    <Color x:Key="VulpesXLightColor">#FFEEEEF2</Color>
+    <Color x:Key="VulpesXLightAlternativeColor">#FFF5F5F5</Color>
+
+
+    <Color x:Key="VulpesXGreenColor">#2ecc71</Color>
+    <Color x:Key="VulpesXBlueColor">#007ACC</Color>
+    <Color x:Key="VulpesXYellowColor">#f1c40f</Color>
+    <Color x:Key="VulpesXOrangeColor">#e67e22</Color>
+    <Color x:Key="VulpesXRedColor">#e74c3c</Color>
+    <Color x:Key="VulpesXTurquoiseColor">#29c4aa</Color>
+    <Color x:Key="VulpesXDarkWindowsBackgroundColor">#212F3C</Color>
+    <Color x:Key="VulpesXFluentBlueColor">#FF0087A4</Color>
+
+
+    <SolidColorBrush x:Key="VulpesXDataBrush" Color="DeepSkyBlue" />
+    <SolidColorBrush x:Key="VulpesXDarkWindowsBackgroundBrush" Color="{StaticResource VulpesXDarkWindowsBackgroundColor}" />
+    <SolidColorBrush x:Key="VulpesXDarkBrush" Color="{StaticResource VulpesXDarkColor}" />
+    <SolidColorBrush x:Key="VulpesXDarkAlternativeBrush" Color="{StaticResource VulpesXDarkAlternativeColor}" />
+    <SolidColorBrush x:Key="VulpesXLightBrush" Color="{StaticResource VulpesXLightColor}" />
+    <SolidColorBrush x:Key="VulpesXLightAlternativeBrush" Color="{StaticResource VulpesXLightAlternativeColor}" />
+    <SolidColorBrush x:Key="VulpesXGreenBrush" Color="{StaticResource VulpesXGreenColor}" />
+    <SolidColorBrush x:Key="VulpesXBlueBrush" Color="{StaticResource VulpesXBlueColor}" />
+    <SolidColorBrush x:Key="VulpesXYellowBrush" Color="{StaticResource VulpesXYellowColor}" />
+    <SolidColorBrush x:Key="VulpesXVioletBrush" Color="MediumVioletRed" />
+    <SolidColorBrush x:Key="VulpesXOrangeBrush" Color="{StaticResource VulpesXOrangeColor}" />
+    <SolidColorBrush x:Key="VulpesXRedBrush" Color="{StaticResource VulpesXRedColor}" />
+    <SolidColorBrush x:Key="VulpesXTurquoiseBrush" Color="{StaticResource VulpesXTurquoiseColor}" />
+    <SolidColorBrush x:Key="VulpesXFluentBlueBrush" Color="{StaticResource VulpesXFluentBlueColor}" />
+</ResourceDictionary>

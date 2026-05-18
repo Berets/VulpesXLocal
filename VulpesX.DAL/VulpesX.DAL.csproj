@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.72" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.13" />
+    <PackageReference Include="MimeKit" Version="4.16.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.13" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VulpesX.Models\VulpesX.Models.csproj" />
+    <ProjectReference Include="..\VulpesX.Shared\VulpesX.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Dapper" />
+    <Using Include="System.Collections.ObjectModel" />
+    <Using Include="VulpesX.DAL._ConnectionFactory" />
+    <Using Include="VulpesX.Models.Default" />
+    <Using Include="VulpesX.Shared" />
+    <Using Include="VulpesX.Shared.Utilities" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ServiceModel.Http" Version="8.1.2" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.1.2" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.1.2" />
+  </ItemGroup>
+</Project>

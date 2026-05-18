@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="VulpesX.Shared.Controls.CustomWindows.FluentDefaultTitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VulpesX.Shared.Controls.CustomWindows"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             Height="48"
+             mc:Ignorable="d">
+
+    <Grid Background="{DynamicResource VulpesXBrush}" WindowChrome.IsHitTestVisibleInChrome="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="12,0">
+            <TextBlock VerticalAlignment="Center"
+                       FontSize="16"
+                       Foreground="{DynamicResource VulpesXLightBrush}"
+                       Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}}" />
+        </Grid>
+
+        <ContentPresenter Grid.Column="1" HorizontalAlignment="Center" />
+
+        <StackPanel Grid.Column="2" Orientation="Horizontal">
+            <Button x:Name="btnMinimize"
+                    Click="btnMinimize_Click"
+                    Style="{StaticResource FluentWindowButton}"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                <Button.Content>
+                    <telerik:RadGlyph FontSize="18" Glyph="&#xe139;" />
+                </Button.Content>
+            </Button>
+
+            <Button x:Name="btnMaximize"
+                    Click="btnMaximize_Click"
+                    Style="{StaticResource FluentWindowButton}"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                <Button.Content>
+                    <telerik:RadGlyph FontSize="18" Glyph="&#xe138;" />
+                </Button.Content>
+            </Button>
+
+            <Button x:Name="btnClose"
+                    Click="btnClose_Click"
+                    Style="{StaticResource FluentCloseButton}"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                <Button.Content>
+                    <telerik:RadGlyph FontSize="18" Glyph="&#xe11b;" />
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

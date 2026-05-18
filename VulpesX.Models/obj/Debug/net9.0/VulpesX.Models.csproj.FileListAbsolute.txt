@@ -1,0 +1,17 @@
+D:\VSPersonal\VulpesX\VulpesX.Models\bin\Debug\net9.0\Genexus\GxClasses.dll
+D:\VSPersonal\VulpesX\VulpesX.Models\bin\Debug\net9.0\VulpesX.Models.deps.json
+D:\VSPersonal\VulpesX\VulpesX.Models\bin\Debug\net9.0\VulpesX.Models.dll
+D:\VSPersonal\VulpesX\VulpesX.Models\bin\Debug\net9.0\VulpesX.Models.pdb
+D:\VSPersonal\VulpesX\VulpesX.Models\bin\Debug\net9.0\VulpesX.Shared.dll
+D:\VSPersonal\VulpesX\VulpesX.Models\bin\Debug\net9.0\GxClasses.dll
+D:\VSPersonal\VulpesX\VulpesX.Models\bin\Debug\net9.0\VulpesX.Shared.pdb
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX.Models.csproj.AssemblyReference.cache
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX.Models.AssemblyInfoInputs.cache
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX.Models.AssemblyInfo.cs
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX.Models.csproj.CoreCompileInputs.cache
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX..235A5320.Up2Date
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX.Models.dll
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\refint\VulpesX.Models.dll
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\VulpesX.Models.pdb
+D:\VSPersonal\VulpesX\VulpesX.Models\obj\Debug\net9.0\ref\VulpesX.Models.dll

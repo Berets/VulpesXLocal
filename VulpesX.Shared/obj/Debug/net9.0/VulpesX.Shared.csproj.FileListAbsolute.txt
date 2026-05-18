@@ -1,0 +1,15 @@
+D:\VSPersonal\VulpesX\VulpesX.Shared\bin\Debug\net9.0\Genexus\GxClasses.dll
+D:\VSPersonal\VulpesX\VulpesX.Shared\bin\Debug\net9.0\VulpesX.Shared.deps.json
+D:\VSPersonal\VulpesX\VulpesX.Shared\bin\Debug\net9.0\VulpesX.Shared.dll
+D:\VSPersonal\VulpesX\VulpesX.Shared\bin\Debug\net9.0\VulpesX.Shared.pdb
+D:\VSPersonal\VulpesX\VulpesX.Shared\bin\Debug\net9.0\GxClasses.dll
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX.Shared.csproj.AssemblyReference.cache
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX.Shared.AssemblyInfoInputs.cache
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX.Shared.AssemblyInfo.cs
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX.Shared.csproj.CoreCompileInputs.cache
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX..AD55E643.Up2Date
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX.Shared.dll
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\refint\VulpesX.Shared.dll
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\VulpesX.Shared.pdb
+D:\VSPersonal\VulpesX\VulpesX.Shared\obj\Debug\net9.0\ref\VulpesX.Shared.dll

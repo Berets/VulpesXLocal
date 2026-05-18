@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages;C:\Program Files (x86)\Progress\ToolboxNuGetPackages</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.14.3</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\MatteoBeretta\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Progress\ToolboxNuGetPackages\" />
+  </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.8\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.8\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgTelerik_Windows_Controls_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_for_Wpf>
+    <PkgTelerik_Windows_Controls_Navigation_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Navigation_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.navigation.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Navigation_for_Wpf>
+    <PkgTelerik_Windows_Controls_Input_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Input_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.input.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Input_for_Wpf>
+    <PkgTelerik_Windows_Controls_RibbonView_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_RibbonView_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.ribbonview.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_RibbonView_for_Wpf>
+    <PkgTelerik_Windows_Controls_ImageEditor_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_ImageEditor_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.imageeditor.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_ImageEditor_for_Wpf>
+    <PkgTelerik_Windows_Controls_RichTextBox_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_RichTextBox_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.richtextbox.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_RichTextBox_for_Wpf>
+    <PkgTelerik_Windows_Controls_GridView_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_GridView_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.gridview.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_GridView_for_Wpf>
+    <PkgTelerik_Windows_Controls_VirtualGrid_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_VirtualGrid_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.virtualgrid.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_VirtualGrid_for_Wpf>
+    <PkgTelerik_Windows_Controls_SyntaxEditor_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_SyntaxEditor_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.syntaxeditor.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_SyntaxEditor_for_Wpf>
+    <PkgTelerik_Windows_Controls_Chart_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Chart_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.chart.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Chart_for_Wpf>
+    <PkgTelerik_Windows_Controls_Spreadsheet_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Spreadsheet_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.spreadsheet.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Spreadsheet_for_Wpf>
+    <PkgTelerik_Windows_Controls_SpreadsheetUI_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_SpreadsheetUI_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.spreadsheetui.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_SpreadsheetUI_for_Wpf>
+    <PkgTelerik_Windows_Controls_ScheduleView_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_ScheduleView_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.scheduleview.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_ScheduleView_for_Wpf>
+    <PkgTelerik_Windows_Controls_Pivot_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Pivot_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.pivot.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Pivot_for_Wpf>
+    <PkgTelerik_Windows_Controls_PivotFieldList_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_PivotFieldList_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.pivotfieldlist.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_PivotFieldList_for_Wpf>
+    <PkgTelerik_Windows_Controls_Media_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Media_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.media.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Media_for_Wpf>
+    <PkgTelerik_Windows_Controls_GanttView_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_GanttView_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.ganttview.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_GanttView_for_Wpf>
+    <PkgTelerik_Windows_Controls_FixedDocumentViewers_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_FixedDocumentViewers_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.fixeddocumentviewers.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_FixedDocumentViewers_for_Wpf>
+    <PkgTelerik_Windows_Controls_FixedDocumentViewersUI_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_FixedDocumentViewersUI_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.fixeddocumentviewersui.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_FixedDocumentViewersUI_for_Wpf>
+    <PkgTelerik_Windows_Controls_FileDialogs_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_FileDialogs_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.filedialogs.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_FileDialogs_for_Wpf>
+    <PkgTelerik_Windows_Controls_Expressions_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Expressions_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.expressions.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Expressions_for_Wpf>
+    <PkgTelerik_Windows_Controls_EntityFrameworkCore_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_EntityFrameworkCore_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.entityframeworkcore.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_EntityFrameworkCore_for_Wpf>
+    <PkgTelerik_Windows_Controls_Docking_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Docking_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.docking.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Docking_for_Wpf>
+    <PkgTelerik_Windows_Controls_Diagrams_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Diagrams_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.diagrams.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Diagrams_for_Wpf>
+    <PkgTelerik_Windows_Controls_Diagrams_Extensions_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Diagrams_Extensions_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.diagrams.extensions.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Diagrams_Extensions_for_Wpf>
+    <PkgTelerik_Windows_Controls_Diagrams_Ribbon_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Diagrams_Ribbon_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.diagrams.ribbon.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Diagrams_Ribbon_for_Wpf>
+    <PkgTelerik_Windows_Controls_DataVisualization_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_DataVisualization_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.datavisualization.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_DataVisualization_for_Wpf>
+    <PkgTelerik_Windows_Controls_DataServices_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_DataServices_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.dataservices.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_DataServices_for_Wpf>
+    <PkgTelerik_Windows_Controls_Data_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_Data_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.data.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_Data_for_Wpf>
+    <PkgTelerik_Windows_Controls_ConversationalUI_for_Wpf Condition=" '$(PkgTelerik_Windows_Controls_ConversationalUI_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.controls.conversationalui.for.wpf\2025.4.1111</PkgTelerik_Windows_Controls_ConversationalUI_for_Wpf>
+    <PkgTelerik_Windows_Cloud_Controls_for_Wpf Condition=" '$(PkgTelerik_Windows_Cloud_Controls_for_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\telerik.windows.cloud.controls.for.wpf\2025.4.1111</PkgTelerik_Windows_Cloud_Controls_for_Wpf>
+    <PkgMicrosoft_Xaml_Behaviors_Wpf Condition=" '$(PkgMicrosoft_Xaml_Behaviors_Wpf)' == '' ">C:\Users\MatteoBeretta\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.142</PkgMicrosoft_Xaml_Behaviors_Wpf>
+  </PropertyGroup>
+</Project>

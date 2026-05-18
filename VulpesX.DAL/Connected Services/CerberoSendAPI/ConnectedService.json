@@ -1,0 +1,17 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "https://cerberoapi.gxitalia.com/SendInvoices.svc?wsdl"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "messageContract": true,
+    "namespaceMappings": [
+      "*, CerberoSendAPI"
+    ],
+    "targetFramework": "net9.0",
+    "typeReuseMode": "Specified"
+  }
+}

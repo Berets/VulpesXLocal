@@ -1,0 +1,140 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Reports\Accounting\AccountingRecord.trdp" />
+    <None Remove="Reports\Accounting\BalanceSimulation.trdp" />
+    <None Remove="Reports\Accounting\EC.trdp" />
+    <None Remove="Reports\Accounting\ECCF.trdp" />
+    <None Remove="Reports\Accounting\Expires.trdp" />
+    <None Remove="Reports\Accounting\ExpiresDate.trdp" />
+    <None Remove="Reports\Accounting\ExpiresPayment.trdp" />
+    <None Remove="Reports\Accounting\IVABook.trdp" />
+    <None Remove="Reports\Accounting\IVADetails.trdp" />
+    <None Remove="Reports\Accounting\IVARecap.trdp" />
+    <None Remove="Reports\Accounting\IVARecapDetails.trdp" />
+    <None Remove="Reports\Accounting\IVARecapYearly.trdp" />
+    <None Remove="Reports\Accounting\Mastrini.trdp" />
+    <None Remove="Reports\Accounting\SubBalanceSimulation.trdp" />
+    <None Remove="Reports\Accounting\SubIVARecapDetails.trdp" />
+    <None Remove="Reports\CRM\Invoice.gxitalia.com.999.trdp" />
+    <None Remove="Reports\CRM\Invoice.trdp" />
+    <None Remove="Reports\CRM\Offer.trdp" />
+    <None Remove="Reports\CRM\OfferCover.trdp" />
+    <None Remove="Reports\CRM\Order.trdp" />
+    <None Remove="Reports\Production\BadgeOperatore.trdp" />
+    <None Remove="Reports\Production\BOX.baruffaldisrl.it.trdp" />
+    <None Remove="Reports\Production\BOX.trdp" />
+    <None Remove="Reports\Production\FinalLotLabel.trdp" />
+    <None Remove="Reports\Production\ODP.baruffaldisrl.it.trdp" />
+    <None Remove="Reports\Production\ODP.trdp" />
+    <None Remove="Reports\Shipping\DDT.trdp" />
+    <None Remove="Reports\SRM\LotLabel.trdp" />
+    <None Remove="Reports\SRM\ProductLabel.trdp" />
+    <None Remove="Reports\SRM\PurchaseOrder.trdp" />
+    <None Remove="Reports\Store\StocksList.trdp" />
+    <None Remove="Reports\StyleSheets\Asso.xsl" />
+    <None Remove="Reports\StyleSheets\PA.xsl" />
+    <None Remove="Reports\StyleSheets\PR.xsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.13" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.142" />
+    <PackageReference Include="MimeKit" Version="4.16.0" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.13" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.1.2" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.1.2" />
+    <PackageReference Include="Telerik.Reporting" Version="19.3.25.1119" />
+    <PackageReference Include="Telerik.UI.for.Wpf.AllControls.NoXaml" Version="2025.4.1111" />
+    <PackageReference Include="Telerik.Windows.Documents.Flow" Version="2025.4.1104" />
+    <PackageReference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf" Version="2025.4.1104" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VulpesX.Models\VulpesX.Models.csproj" />
+    <ProjectReference Include="..\VulpesX.Shared\VulpesX.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Reports\Accounting\AccountingRecord.trdp" />
+    <Resource Include="Reports\Accounting\BalanceSimulation.trdp" />
+    <Resource Include="Reports\Accounting\EC.trdp" />
+    <Resource Include="Reports\Accounting\ECCF.trdp" />
+    <Resource Include="Reports\Accounting\Expires.trdp" />
+    <Resource Include="Reports\Accounting\ExpiresDate.trdp" />
+    <Resource Include="Reports\Accounting\ExpiresPayment.trdp" />
+    <Resource Include="Reports\Accounting\IVABook.trdp" />
+    <Resource Include="Reports\Accounting\IVADetails.trdp" />
+    <Resource Include="Reports\Accounting\IVARecap.trdp" />
+    <Resource Include="Reports\Accounting\IVARecapDetails.trdp" />
+    <Resource Include="Reports\Accounting\IVARecapYearly.trdp" />
+    <Resource Include="Reports\Accounting\Mastrini.trdp" />
+    <Resource Include="Reports\Accounting\SubBalanceSimulation.trdp" />
+    <Resource Include="Reports\Accounting\SubIVARecapDetails.trdp" />
+    <Resource Include="Reports\CRM\Invoice.gxitalia.com.999.trdp" />
+    <Resource Include="Reports\CRM\Invoice.trdp" />
+    <Resource Include="Reports\CRM\Offer.trdp" />
+    <Resource Include="Reports\CRM\OfferCover.trdp" />
+    <Resource Include="Reports\CRM\Order.trdp" />
+    <Resource Include="Reports\Production\BadgeOperatore.trdp" />
+    <Resource Include="Reports\Production\BOX.baruffaldisrl.it.trdp" />
+    <Resource Include="Reports\Production\BOX.trdp" />
+    <Resource Include="Reports\Production\FinalLotLabel.trdp" />
+    <Resource Include="Reports\Production\ODP.baruffaldisrl.it.trdp" />
+    <Resource Include="Reports\Production\ODP.trdp" />
+    <Resource Include="Reports\Shipping\DDT.trdp" />
+    <Resource Include="Reports\SRM\LotLabel.trdp" />
+    <Resource Include="Reports\SRM\ProductLabel.trdp" />
+    <Resource Include="Reports\SRM\PurchaseOrder.trdp" />
+    <Resource Include="Reports\Store\StocksList.trdp" />
+    <Resource Include="Reports\StyleSheets\Asso.xsl">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Reports\StyleSheets\PA.xsl" />
+    <Resource Include="Reports\StyleSheets\PR.xsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Themes\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Themes\ThemeDark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Themes\ThemeLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+</Project>

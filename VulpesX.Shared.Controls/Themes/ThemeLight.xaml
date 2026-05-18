@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="GXFirstColor">#bdc3c7</Color>
+    <Color x:Key="VulpesXFirstAlternativeColor">#bdc3c7</Color>
+    <Color x:Key="VulpesXSecondAlternativeColor">#2C2D33</Color>
+
+    <SolidColorBrush x:Key="VulpesXBrush" Color="#FF005FB8" />
+    <SolidColorBrush x:Key="VulpesXFirstBrush" Color="{StaticResource GXFirstColor}" />
+    <SolidColorBrush x:Key="VulpesXFirstAlternativeBrush" Color="{StaticResource VulpesXFirstAlternativeColor}" />
+    <SolidColorBrush x:Key="VulpesXSecondBrush" Color="Black" />
+    <SolidColorBrush x:Key="VulpesXSecondAlternativeBrush" Color="{StaticResource VulpesXSecondAlternativeColor}" />
+</ResourceDictionary>
