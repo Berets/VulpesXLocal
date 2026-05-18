@@ -1,0 +1,379 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.Accounting.MastrinoWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.Accounting"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:selectors="clr-namespace:VulpesX.Shared.Controls.Selectors;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Interrogazione mastrino"
+                        Width="1250"
+                        Height="750"
+                        Background="{DynamicResource VulpesXFirstBrush}"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="105" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Margin="15,0,0,0"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Foreground="{DynamicResource VulpesXBrush}"
+                       Text="INTERROGAZIONE MASTRINO" />
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0" Margin="15,0,15,0">
+                    <TextBlock VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource VulpesXSecondBrush}"
+                               Text="Mastrino" />
+                    <TextBlock Margin="15,0,0,0"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               FontSize="14"
+                               Foreground="DeepSkyBlue"
+                               Text="{Binding MastrinoFullDescription}" />
+                    <telerik:RadDateTimePicker x:Name="rdtLimitDate"
+                                               Width="150"
+                                               Margin="5,0,0,0"
+                                               VerticalAlignment="Center"
+                                               DateSelectionMode="Day"
+                                               DateTimeWatermarkContent="Scegliere la data limite"
+                                               DisplayFormat="Short"
+                                               DockPanel.Dock="Right"
+                                               InputMode="DatePicker"
+                                               ParseExact="False"
+                                               SelectedValue="{Binding LimitDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               SelectionChanged="rdtLimitDate_SelectionChanged" />
+                    <TextBlock VerticalAlignment="Center"
+                               DockPanel.Dock="Right"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource VulpesXSecondBrush}"
+                               Text="Dati fino al"
+                               TextAlignment="Right" />
+                </DockPanel>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="3" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="5" />
+                    </Grid.ColumnDefinitions>
+
+                    <DockPanel Grid.Row="0" Grid.Column="1">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Saldo esercizio precedente" />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding TotalePreviousYearText, StringFormat={} {0} €}" />
+                    </DockPanel>
+                    <DockPanel Grid.Row="1" Grid.Column="1">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Movimenti provv. esercizio prec." />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding TotalePreviousYearTempText, StringFormat={} {0} €}" />
+                    </DockPanel>
+                    <Rectangle Grid.Row="2"
+                               Grid.Column="1"
+                               Margin="0,1,0,1"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Fill="{DynamicResource VulpesXBrush}" />
+                    <DockPanel Grid.Row="3" Grid.Column="1">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Totale esercizio precedente" />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding TotalePreviousYearBalanceText, StringFormat={} {0} €}" />
+                    </DockPanel>
+
+                    <DockPanel Grid.Row="0" Grid.Column="3">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Saldo esercizio corrente" />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding TotaleDataText, StringFormat={} {0} €}" />
+                    </DockPanel>
+                    <DockPanel Grid.Row="1" Grid.Column="3">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Movimenti provv. esercizio corr." />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding TotaleDataTempText, StringFormat={} {0} €}" />
+                    </DockPanel>
+                    <Rectangle Grid.Row="2"
+                               Grid.Column="3"
+                               Margin="0,1,0,1"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Fill="{DynamicResource VulpesXBrush}" />
+                    <DockPanel Grid.Row="3" Grid.Column="3">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Totale esercizio corrente" />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding TotaleDataBalanceText, StringFormat={} {0} €}" />
+                    </DockPanel>
+
+                    <DockPanel Grid.Row="0" Grid.Column="5">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Saldo alla data" />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding PartialBalanceText, StringFormat={} {0} €}" />
+                    </DockPanel>
+                    <Rectangle Grid.Row="1"
+                               Grid.Column="5"
+                               Height="1"
+                               Margin="0,1,0,1"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Top"
+                               Fill="{DynamicResource VulpesXBrush}" />
+                    <Rectangle Grid.Row="2"
+                               Grid.Column="5"
+                               Margin="0,1,0,1"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Fill="{DynamicResource VulpesXBrush}" />
+                    <DockPanel Grid.Row="3" Grid.Column="5">
+                        <TextBlock Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Saldo totale alla data" />
+                        <TextBlock Margin="0,0,5,0"
+                                   HorizontalAlignment="Right"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXBrush}"
+                                   Text="{Binding GlobalBalanceText}" />
+                    </DockPanel>
+                </Grid>
+            </Grid>
+
+            <telerik:RadBusyIndicator x:Name="bsyGrid"
+                                      Grid.Row="4"
+                                      BusyContent="Caricamento dati in corso..."
+                                      Foreground="{DynamicResource VulpesXBrush}"
+                                      IsBusy="{Binding IsBusy}"
+                                      OverlayStyle="{StaticResource WaitOverlayStyle}">
+                <Grid>
+                    <Grid.Resources>
+                        <selectors:PrimaNotaRowListSelector x:Key="PrimaNotaRowListSelector">
+                            <selectors:PrimaNotaRowListSelector.DefaultRowStyle>
+                                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Style>
+                            </selectors:PrimaNotaRowListSelector.DefaultRowStyle>
+                            <selectors:PrimaNotaRowListSelector.TemporaryRowStyle>
+                                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                                    <Setter Property="Background" Value="DarkRed" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="ToolTip" Value="Registrazione temporanea" />
+                                </Style>
+                            </selectors:PrimaNotaRowListSelector.TemporaryRowStyle>
+                        </selectors:PrimaNotaRowListSelector>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <telerik:RadGridView x:Name="GridView"
+                                         Grid.Row="0"
+                                         AutoGenerateColumns="False"
+                                         CanUserFreezeColumns="False"
+                                         CanUserResizeColumns="False"
+                                         GroupRenderMode="Flat"
+                                         IsReadOnly="True"
+                                         ItemsSource="{Binding PagedSource, ElementName=rdpGrid}"
+                                         RowIndicatorVisibility="Collapsed"
+                                         RowStyleSelector="{StaticResource PrimaNotaRowListSelector}"
+                                         ShowColumnFooters="True"
+                                         ShowGroupFooters="True"
+                                         ShowGroupPanel="False">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Width="60"
+                                                        DataMemberBinding="{Binding N1CHIU}"
+                                                        Header="A/C"
+                                                        HeaderTextAlignment="Center"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="90" DataMemberBinding="{Binding N1REGI}" Header="Nr. reg.">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="cmdEditReg"
+                                                Margin="3"
+                                                HorizontalContentAlignment="Right"
+                                                BorderBrush="{DynamicResource VulpesXBrush}"
+                                                Click="cmdEditReg_Click"
+                                                Content="{Binding Path=N1REGI}"
+                                                Cursor="Hand"
+                                                Foreground="{DynamicResource VulpesXBrush}" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Width="100"
+                                                        DataFormatString="dd/MM/yyyy"
+                                                        DataMemberBinding="{Binding Testata.N1DARE}"
+                                                        Header="Data reg."
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="80"
+                                                        DataMemberBinding="{Binding N1DOCU}"
+                                                        Header="Doc. n."
+                                                        HeaderTextAlignment="Right"
+                                                        TextAlignment="Right" />
+                            <telerik:GridViewDataColumn Width="100"
+                                                        DataFormatString="dd/MM/yyyy"
+                                                        DataMemberBinding="{Binding N1DADO}"
+                                                        Header="Data doc."
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="80"
+                                                        DataMemberBinding="{Binding N1RIFE}"
+                                                        Header="Rif. n."
+                                                        HeaderTextAlignment="Right"
+                                                        TextAlignment="Right" />
+                            <telerik:GridViewDataColumn Width="100"
+                                                        DataFormatString="dd/MM/yyyy"
+                                                        DataMemberBinding="{Binding N1DARI}"
+                                                        Header="Data rif."
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="120"
+                                                        DataFormatString="N2"
+                                                        DataMemberBinding="{Binding N1IMEU}"
+                                                        Header="Importo"
+                                                        HeaderTextAlignment="Right"
+                                                        TextAlignment="Right" />
+                            <telerik:GridViewDataColumn Width="50"
+                                                        DataMemberBinding="{Binding N1SEGN}"
+                                                        Header=""
+                                                        HeaderTextAlignment="Center"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="120"
+                                                        DataFormatString="N2"
+                                                        DataMemberBinding="{Binding SaldoMastrino}"
+                                                        Header="Saldo"
+                                                        HeaderTextAlignment="Right"
+                                                        TextAlignment="Right" />
+                            <telerik:GridViewDataColumn Width="50"
+                                                        DataMemberBinding="{Binding SegnoSaldoMastrino}"
+                                                        Header=""
+                                                        HeaderTextAlignment="Center"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="180" DataMemberBinding="{Binding Testata.AccountingCausal.FullDescriptionSearchable}" Header="Causale" />
+                            <telerik:GridViewDataColumn Width="250" DataMemberBinding="{Binding N1DESC}" Header="Descrizione operazione">
+                                <telerik:GridViewColumn.ToolTipTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="{DynamicResource VulpesXBrush}" Text="{Binding N1DESC}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.ToolTipTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding CostCenterDescription}" Header="Centro di costo" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <telerik:RadDataPager x:Name="rdpGrid"
+                                          Grid.Row="1"
+                                          Margin="0,-1,0,0"
+                                          DisplayMode="FirstLastPreviousNextNumeric, Text"
+                                          FontSize="12"
+                                          IsTotalItemCountFixed="True"
+                                          PageSize="20"
+                                          Source="{Binding Items}" />
+                </Grid>
+            </telerik:RadBusyIndicator>
+
+            <StackPanel Grid.Row="5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+                <Button Name="cmdSave"
+                        Click="cmdSave_Click"
+                        Content="STAMPA"
+                        Style="{StaticResource VulpesXConfirmButton}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</sc:FluentDefaultWindow>

@@ -1,0 +1,140 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using VulpesX.Models;
+using VulpesX.Shared;
+using VulpesX.Shared.Utilities;
+using VulpesX.ViewModels.Modules.Default.Tables.Accounting;
+
+namespace VulpesX.Modules.Ufp.Tables.Accounting
+{
+    /// <summary>
+    /// Interaction logic for AGENTIView.xaml
+    /// </summary>
+    public partial class AGENTIView : UserControl
+    {
+        private AGENTIViewModel _dataContext;
+        private int _selectedPage = 0;
+        public AGENTIView()
+        {
+            _dataContext = VulpesServiceProvider.Provider.GetRequiredService<AGENTIViewModel>();
+
+            InitializeComponent();
+
+            this.DataContext = _dataContext;
+            this.PreviewKeyDown += (s, e) =>
+            {
+                if (e.Key == Key.F5)
+                {
+                    LoadData();
+                }
+            };
+
+            GridView.DataLoaded += (s, e) =>
+            {
+                rdpGrid.MoveToPage(_selectedPage);
+                txtSearch_TextChanged(txtSearch, null);
+
+                Telerik.Windows.Controls.GridViewColumn countryColumn = this.GridView.Columns["colAtt"];
+                Telerik.Windows.Controls.GridView.IColumnFilterDescriptor countryFilter = countryColumn.ColumnFilterDescriptor;
+
+                countryFilter.SuspendNotifications();
+                countryFilter.DistinctFilter.AddDistinctValue(true);
+                countryFilter.ResumeNotifications();
+            };
+            rdpGrid.PageIndexChanged += (s, e) =>
+            {
+                _selectedPage = e.NewPageIndex;
+            };
+
+            LoadData();
+        }
+
+        private async void LoadData()
+        {
+            await _dataContext.Load();
+        }
+
+        #region Buttons
+        private void cmdEdit_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var item = (sender as Button)!.DataContext as AGENTI;
+
+            if (item != null)
+            {
+                var agentiWindowViewModel = VulpesServiceProvider.Provider.GetRequiredService<AGENTIWindowViewModel>();
+                agentiWindowViewModel.Data = item;
+                agentiWindowViewModel.IsInsert = false;
+
+                var wAGENTI = new AGENTIWindow(agentiWindowViewModel);
+                if (wAGENTI.ShowDialog() == true)
+                    LoadData();
+            }
+        }
+
+        private void cmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as Button)!.DataContext as AGENTI;
+
+            if (item != null)
+            {
+                if (ConfirmHandler.Confirm($"Vuoi disattivare l'agente {item.agedes.TrimEnd()} ?"))
+                {
+                    item.LogCanceled = DateTime.Now;
+                    item.LogCanceledUserID = UserContext.Instance.UserName;
+
+                    _dataContext.Update(item);
+                    LoadData();
+                }
+            }
+        }
+
+        private void cmbReactivate_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as Button)!.DataContext as AGENTI;
+
+            if (item != null)
+            {
+                if (ConfirmHandler.Confirm($"Vuoi riattivare l'agente {item.agedes.TrimEnd()} ?"))
+                {
+                    item.LogCanceled = null;
+                    item.LogCanceledUserID = UserContext.Instance.UserName;
+
+                    _dataContext.Update(item);
+                    LoadData();
+                }
+            }
+        }
+
+        private void cmdInsert_Click(object sender, RoutedEventArgs e)
+        {
+            var agentiWindowViewModel = VulpesServiceProvider.Provider.GetRequiredService<AGENTIWindowViewModel>();
+            agentiWindowViewModel.Data = new AGENTI { agecod = string.Empty, agedes = string.Empty, ageflag = string.Empty };
+            agentiWindowViewModel.IsInsert = true;
+
+            var wAGENTI = new AGENTIWindow(agentiWindowViewModel);
+            wAGENTI.ShowDialog();
+            LoadData();
+        }
+        #endregion
+
+        #region UC standard functions
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs? e)
+        {
+            (RadGridViewCommands.SearchByText as RoutedUICommand)!.Execute(txtSearch.Text, GridView);
+        }
+        #endregion
+    }
+}

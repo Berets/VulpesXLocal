@@ -1,0 +1,509 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.Production.ProductionOrderLookWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:functions="clr-namespace:VulpesX.Shared.Controls.Functions;assembly=VulpesX.Shared.Controls"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.Production"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:selectors="clr-namespace:VulpesX.Shared.Controls.Selectors;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Visualizza ordine di produzione"
+                        Width="950"
+                        Height="650"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+
+    <sc:FluentDefaultWindow.Resources>
+        <converters:LongToTimeSpanConverter x:Key="longToTimeSpanConverter" />
+        <converters:BoolToColorConverter x:Key="booleanColorConverter" FalseColor="{StaticResource VulpesXSecondBrush}" TrueColor="{StaticResource VulpesXYellowBrush}" />
+        <converters:BoolToIconConverter x:Key="booleanIconConverter" FalseIcon="{StaticResource TotalTimePath}" TrueIcon="{StaticResource PieceTimePath}" />
+        <converters:TempoIDDescrizioneConverter x:Key="tempoIDDescrizioneConverter" />
+        <converters:TempoIDColoreConverter x:Key="tempoIDColoreConverter"
+                                           EndColor="{StaticResource VulpesXRedBrush}"
+                                           NeutralColor="{StaticResource VulpesXSecondBrush}"
+                                           StartColor="{StaticResource VulpesXGreenBrush}"
+                                           StopColor="{StaticResource VulpesXYellowBrush}" />
+        <converters:TempoIDColoreDefaultConverter x:Key="tempoIDColoreDefaultConverter"
+                                                  BlueColor="{StaticResource VulpesXBlueBrush}"
+                                                  DefaultColor="{StaticResource VulpesXFirstBrush}"
+                                                  GreenColor="{StaticResource VulpesXGreenBrush}"
+                                                  OrangeColor="{StaticResource VulpesXOrangeBrush}"
+                                                  RedColor="{StaticResource VulpesXRedBrush}"
+                                                  YellowColor="{StaticResource VulpesXYellowBrush}" />
+
+        <HierarchicalDataTemplate x:Key="SummaryTemplateRead" ItemsSource="{Binding Children}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource SummaryPath}"
+                      Fill="{Binding UltimoTempoTipoID, Converter={StaticResource tempoIDColoreConverter}}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="12" Text="{Binding DescrizioneMS}" />
+                    <TextBlock Width="100" FontSize="10" Text="{Binding Note}" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="MilestoneTemplateRead" ItemsSource="{Binding Children}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource MilestonePath}"
+                      Fill="{Binding UltimoTempoTipoID, Converter={StaticResource tempoIDColoreConverter}}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="12" Text="{Binding DescrizioneMS}" />
+                    <TextBlock Width="100" FontSize="10" Text="{Binding Note}" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="StageTemplateRead" ItemsSource="{Binding Children}">
+            <Border BorderBrush="{DynamicResource GXOrangeBrush}" BorderThickness="0,0,0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="14" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Path Grid.Column="0"
+                          Height="14"
+                          Data="{DynamicResource StagePath}"
+                          Fill="{Binding UltimoTempoTipoID, Converter={StaticResource tempoIDColoreConverter}}"
+                          Stretch="Uniform" />
+
+                    <StackPanel Grid.Column="1"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="{Binding DescrizioneMS}" />
+                        <DockPanel>
+                            <TextBlock FontSize="10" FontWeight="Bold" Text="{Binding RepartoID}" />
+                            <Path Height="10"
+                                  Margin="5,0,0,0"
+                                  HorizontalAlignment="Right"
+                                  Data="{Binding ETempoAlPezzo, Converter={StaticResource booleanIconConverter}}"
+                                  Fill="{DynamicResource VulpesXSecondBrush}"
+                                  Stretch="Uniform" />
+                        </DockPanel>
+                        <TextBlock Width="100" FontSize="10" Text="{Binding Note}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Vertical">
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Piazzamento:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="100"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding Piazzamento, Converter={StaticResource longToTimeSpanConverter}}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Tempo:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="100"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding Tempo, Converter={StaticResource longToTimeSpanConverter}}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Risorsa:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="100"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding RisorsaDescrizione}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentTemplateRead" ItemsSource="{Binding Children}">
+            <Border BorderBrush="{DynamicResource GXBlueBrush}" BorderThickness="0,0,0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="14" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Path Grid.Column="0"
+                          Height="14"
+                          Data="{DynamicResource ComponentPath}"
+                          Fill="{Binding UltimoTempoTipoID, Converter={StaticResource tempoIDColoreConverter}}"
+                          Stretch="Uniform" />
+
+                    <StackPanel Grid.Column="1"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="{Binding DescrizioneMS}" />
+                        <TextBlock FontSize="10" FontWeight="SemiBold" Text="{Binding ComponenteArticoloID}" />
+                        <TextBlock Width="100" FontSize="10" Text="{Binding Note}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Vertical">
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Quantita:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="70"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding Quantita}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Unita:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="70"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding UnitaDescrizione}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentRootTemplateRead" ItemsSource="{Binding Children}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource ComponentPath}"
+                      Fill="{Binding UltimoTempoTipoID, Converter={StaticResource tempoIDColoreConverter}}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="12" Text="{Binding DescrizioneMS}" />
+                    <TextBlock FontSize="10" FontWeight="SemiBold" Text="{Binding ArticoloID}" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <selectors:CompositionTemplateSelector x:Key="compositionTemplateSelectorRead"
+                                               ComponentRootTemplate="{StaticResource ComponentRootTemplateRead}"
+                                               ComponentTemplate="{StaticResource ComponentTemplateRead}"
+                                               MilestoneTemplate="{StaticResource MilestoneTemplateRead}"
+                                               StageTemplate="{StaticResource StageTemplateRead}"
+                                               SummaryTemplate="{StaticResource SummaryTemplateRead}" />
+
+        <selectors:BoxTemplateSelector x:Key="boxTemplateSelector">
+            <selectors:BoxTemplateSelector.Box>
+                <DataTemplate>
+                    <Button x:Name="cmbBox"
+                            Margin="3"
+                            HorizontalContentAlignment="Left"
+                            BorderBrush="{DynamicResource VulpesXOrangeBrush}"
+                            Click="cmbBox_Click"
+                            Content="{Binding Path=Box}"
+                            Cursor="Hand"
+                            Foreground="{DynamicResource VulpesXOrangeBrush}" />
+                </DataTemplate>
+            </selectors:BoxTemplateSelector.Box>
+            <selectors:BoxTemplateSelector.NoBox>
+                <DataTemplate />
+            </selectors:BoxTemplateSelector.NoBox>
+        </selectors:BoxTemplateSelector>
+    </sc:FluentDefaultWindow.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Margin="5"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource VulpesXSecondBrush}"
+                               Text="DATI ORDINE" />
+
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Codice: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.ID}" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Cliente: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} - {1}">
+                                    <Binding Path="Data.ClienteID" />
+                                    <Binding Path="Data.ClienteDescrizione" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Articolo: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} - {1}">
+                                    <Binding Path="Data.ArticoloID" />
+                                    <Binding Path="Data.ArticoloDescrizione" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Quantità: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.Quantita}" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Data ordine: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.DataOrdine, StringFormat=dd/MM/yyyy}" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Data consegna: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.DataConsegna, StringFormat=dd/MM/yyyy}" />
+                    </DockPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="5"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource VulpesXSecondBrush}"
+                               Text="TEMPI ORDINE" />
+
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Tempo previsto: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.DurataPrevistaSpan}" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Tempo attrezzaggio: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.DurataPiazzamentoSpan}" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Tempo produzione: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.DurataProduzioneSpan}" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="Tempo sospensione: " />
+                        <TextBlock Style="{StaticResource VulpesXLabel}" Text="{Binding Data.DurataSospensioneSpan}" />
+                    </DockPanel>
+                </StackPanel>
+            </Grid>
+
+            <telerik:RadDocking x:Name="Docking" Grid.Row="1" BorderThickness="0">
+                <telerik:RadDocking.DocumentHost>
+                    <telerik:RadSplitContainer>
+                        <telerik:RadPaneGroup x:Name="DocumentGroup">
+                            <telerik:RadPane x:Name="LayoutXml"
+                                             telerik:RadDocking.FloatingSize="450, 400"
+                                             telerik:RadDocking.SerializationTag="LayoutXml"
+                                             CanUserClose="False"
+                                             Header="Rilevazione tempi">
+                                <Grid>
+                                    <telerik:RadGridView x:Name="rgvTimes"
+                                                         Grid.Row="1"
+                                                         AutoGenerateColumns="False"
+                                                         FontSize="11"
+                                                         IsReadOnly="True"
+                                                         ItemsSource="{Binding Times}"
+                                                         RowIndicatorVisibility="Collapsed"
+                                                         SelectionMode="Extended"
+                                                         ShowColumnFooters="True"
+                                                         ShowGroupFooters="True"
+                                                         ShowSearchPanel="True"
+                                                         Tag="{Binding User}"
+                                                         UseLayoutRounding="False">
+                                        <telerik:RadGridView.Columns>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding TipoID}" Header="Tipo">
+                                                <telerik:GridViewDataColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Border Padding="2"
+                                                                BorderBrush="{Binding Path=TipoID, Converter={StaticResource tempoIDColoreDefaultConverter}}"
+                                                                BorderThickness="2"
+                                                                CornerRadius="3">
+                                                            <TextBlock>
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="Text" Value="{Binding TipoID, Converter={StaticResource tempoIDDescrizioneConverter}}" />
+                                                                        <Setter Property="TextAlignment" Value="Center" />
+                                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                                        <Setter Property="Foreground" Value="{Binding Path=TipoID, Converter={StaticResource tempoIDColoreDefaultConverter}}" />
+                                                                    </Style>
+                                                                </TextBlock.Style>
+                                                            </TextBlock>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </telerik:GridViewDataColumn.CellTemplate>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding Data, StringFormat=dd/MM/yyyy HH:mm:ss}" Header="Data" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding DurataSpan, StringFormat=d\\.hh\\:mm\\:ss}" Header="Durata">
+                                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                                    <functions:TimeSpanSum Caption="Durata: " SourceField="DurataSpan" />
+                                                </telerik:GridViewDataColumn.AggregateFunctions>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding DurataSospensioneSpan, StringFormat=d\\.hh\\:mm\\:ss}" Header="Sospensione">
+                                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                                    <functions:TimeSpanSum Caption="Sospensione: " SourceField="DurataSospensioneSpan" />
+                                                </telerik:GridViewDataColumn.AggregateFunctions>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding RisorsaID}" Header="Risorsa ID" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding RisorsaDescrizione}" Header="Risorsa" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding OperatoreID}" Header="Operatore ID" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding OperatoreDescrizione}" Header="Operatore" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding CausaleID}" Header="Causale ID" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding CausaleDescrizione}" Header="Causale" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaSparata, StringFormat='{}{0:#,##0.0000}'}" Header="Qta. Sparata" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaVersata, StringFormat='{}{0:#,##0.0000}'}" Header="Qta. Versata">
+                                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                                    <telerik:SumFunction Caption="Versata: " SourceField="QuantitaVersata" />
+                                                </telerik:GridViewDataColumn.AggregateFunctions>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaScartata, StringFormat='{}{0:#,##0.0000}'}" Header="Qta. Scartata">
+                                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                                    <telerik:SumFunction Caption="Scartata: " SourceField="QuantitaScartata" />
+                                                </telerik:GridViewDataColumn.AggregateFunctions>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaConfezione, StringFormat='{}{0:#,##0.0000}'}" Header="Qta. Confezione">
+                                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                                    <telerik:SumFunction Caption="Scartata: " SourceField="QuantitaScartata" />
+                                                </telerik:GridViewDataColumn.AggregateFunctions>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaUnitaria, StringFormat='{}{0:#,##0.0000}'}" Header="Qta. Unitaria">
+                                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                                    <telerik:SumFunction Caption="Scartata: " SourceField="QuantitaScartata" />
+                                                </telerik:GridViewDataColumn.AggregateFunctions>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding Confezioni, StringFormat='{}{0:#,##0.0000}'}" Header="Confezioni">
+                                                <telerik:GridViewDataColumn.AggregateFunctions>
+                                                    <telerik:SumFunction Caption="Scartata: " SourceField="QuantitaScartata" />
+                                                </telerik:GridViewDataColumn.AggregateFunctions>
+                                            </telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding Note}" Header="Note" />
+                                            <telerik:GridViewDataColumn DataMemberBinding="{Binding Lotto}" Header="Lotto" />
+                                            <telerik:GridViewDataColumn CellTemplateSelector="{StaticResource boxTemplateSelector}" DataMemberBinding="{Binding Box}" Header="Box" />
+                                        </telerik:RadGridView.Columns>
+                                    </telerik:RadGridView>
+                                    <telerik:RadBusyIndicator Name="bsyTempi" BusyContent="Caricamento" />
+
+
+                                </Grid>
+                            </telerik:RadPane>
+                        </telerik:RadPaneGroup>
+                    </telerik:RadSplitContainer>
+                </telerik:RadDocking.DocumentHost>
+
+                <telerik:RadSplitContainer Width="400" InitialPosition="DockedLeft">
+                    <telerik:RadPaneGroup>
+                        <telerik:RadPane telerik:RadDocking.SerializationTag="PaneComposizione"
+                                         CanUserClose="False"
+                                         Header="Composizione"
+                                         IsPinned="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="130" />
+                                </Grid.RowDefinitions>
+                                <telerik:RadTreeView x:Name="rtvDistinct"
+                                                     ItemTemplateSelector="{StaticResource compositionTemplateSelectorRead}"
+                                                     ItemsSource="{Binding Items}"
+                                                     SelectedItem="{Binding SelectedDistinta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     SelectionChanged="rtvDistinct_SelectionChanged"
+                                                     SelectionMode="Extended"
+                                                     Tag="{Binding User}">
+                                    <telerik:RadTreeView.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource RadTreeViewItemStyle}" TargetType="{x:Type telerik:RadTreeViewItem}">
+                                            <Setter Property="IsExpanded" Value="{Binding EEspanso, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Setter Property="telerik:DragDropManager.AllowCapturedDrag" Value="{Binding Path=EComponente}" />
+                                            <Setter Property="telerik:TouchManager.DragStartTrigger" Value="TapHoldAndMove" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        </Style>
+                                    </telerik:RadTreeView.ItemContainerStyle>
+                                    <telerik:RadTreeView.Resources>
+                                        <converters:DropIndicationDetailsConverter x:Key="dropIndicationDetailsConverter" />
+                                        <DataTemplate x:Key="ProductDragTemplate">
+                                            <StackPanel Margin="5">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Sposta" />
+                                                    <TextBlock Margin="2,0,0,0" FontWeight="Bold" Text="{Binding CurrentDraggedItem.Descrizione}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock FontWeight="Bold" Text="{Binding CurrentDropPosition, Converter={StaticResource dropIndicationDetailsConverter}}" />
+                                                    <TextBlock Foreground="Gray" Text=", (" />
+                                                    <TextBlock Text="{Binding CurrentDraggedOverItem.Descrizione}" />
+                                                    <TextBlock Foreground="Gray" Text=")" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </telerik:RadTreeView.Resources>
+                                </telerik:RadTreeView>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" Background="{DynamicResource VulpesXBlueBrush}">
+                                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" Text="NOTE" />
+                                    </Grid>
+                                    <TextBox Grid.Row="1"
+                                             VerticalContentAlignment="Top"
+                                             AcceptsReturn="True"
+                                             AcceptsTab="True"
+                                             Text="{Binding SelectedDistinta.Note, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                </Grid>
+                                <telerik:RadBusyIndicator Name="bsyDistinct" Grid.RowSpan="2" BusyContent="Caricamento" />
+                            </Grid>
+                        </telerik:RadPane>
+                    </telerik:RadPaneGroup>
+                </telerik:RadSplitContainer>
+            </telerik:RadDocking>
+        </Grid>
+    </Grid>
+</sc:FluentDefaultWindow>

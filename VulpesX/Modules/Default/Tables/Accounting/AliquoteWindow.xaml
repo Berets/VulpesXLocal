@@ -1,0 +1,314 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.Tables.Accounting.AliquoteWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.Tables.Accounting"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Dettagli aliquota"
+                        Width="700"
+                        Height="650"
+                        Background="{DynamicResource VulpesXFirstBrush}"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        WindowStyle="ToolWindow"
+                        mc:Ignorable="d">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="0,15,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="7*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Margin="0,0,15,0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                           Text="Codice" />
+                <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Width="30"
+                         Margin="5,0,15,0"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         IsEnabled="{Binding IsInsert}"
+                         MaxLength="1"
+                         Text="{Binding Data.asscod}" />
+
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0,0,15,0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                           Text="Aliquota IVA %" />
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Width="50"
+                         Margin="5,0,15,0"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         IsEnabled="{Binding IsInsert}"
+                         MaxLength="2"
+                         Text="{Binding Data.assali}" />
+
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="0,0,15,0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                           Text="Descrizione" />
+                <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Margin="5,0,15,0"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Center"
+                         MaxLength="255"
+                         Text="{Binding Data.assdes}" />
+
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Uso clienti" />
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                    <telerik:RadToggleSwitchButton Margin="5,0,0,0"
+                                                   CheckedContent="Sì"
+                                                   Content="{Binding Data.asscli}"
+                                                   IsChecked="{Binding Data.asscliBool}"
+                                                   UncheckedContent="No" />
+                    <TextBlock MinWidth="150"
+                               Margin="15,0,5,0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Uso fornitori"
+                               TextAlignment="Right" />
+                    <telerik:RadToggleSwitchButton CheckedContent="Sì"
+                                                   Content="{Binding Data.assfor}"
+                                                   IsChecked="{Binding Data.assforBool}"
+                                                   UncheckedContent="No" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="4"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Plafond" />
+                <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                    <telerik:RadToggleSwitchButton Margin="5,0,0,0"
+                                                   CheckedContent="Sì"
+                                                   Content="{Binding Data.asspla}"
+                                                   IsChecked="{Binding Data.assplaBool}"
+                                                   UncheckedContent="No" />
+                    <TextBlock MinWidth="150"
+                               Margin="15,0,5,0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Omaggio"
+                               TextAlignment="Right" />
+                    <telerik:RadToggleSwitchButton CheckedContent="Sì"
+                                                   Content="{Binding Data.assoma}"
+                                                   IsChecked="{Binding Data.assomaBool}"
+                                                   UncheckedContent="No" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="5"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Indetraibilità %" />
+                <telerik:RadNumericUpDown Grid.Row="5"
+                                          Grid.Column="1"
+                                          Width="100"
+                                          Margin="5,2,2,2"
+                                          HorizontalAlignment="Left"
+                                          Maximum="100"
+                                          Minimum="0"
+                                          NumberDecimalDigits="0"
+                                          Value="{Binding Data.asspin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Grid.Row="7"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Style="{StaticResource VulpesXSubtitle}"
+                           Text="COMUNICAZIONE DATI IVA" />
+
+                <TextBlock Grid.Row="8"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="IVA clienti" />
+                <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal">
+                    <telerik:RadToggleSwitchButton Margin="5,0,0,0"
+                                                   CheckedContent="Sì"
+                                                   Content="{Binding Data.asselc}"
+                                                   IsChecked="{Binding Data.asselcBool}"
+                                                   UncheckedContent="No" />
+                    <TextBlock MinWidth="120"
+                               Margin="15,0,5,0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Classificazione"
+                               TextAlignment="Right" />
+                    <telerik:RadComboBox Width="200"
+                                         Margin="5,2,15,2"
+                                         HorizontalAlignment="Left"
+                                         HorizontalContentAlignment="Left"
+                                         DisplayMemberPath="Description"
+                                         IsEditable="True"
+                                         IsReadOnly="True"
+                                         ItemsSource="{Binding Classifications}"
+                                         SelectedValue="{Binding Data.asstic}"
+                                         SelectedValuePath="ID" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="9"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="IVA fornitori" />
+                <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
+                    <telerik:RadToggleSwitchButton Margin="5,0,0,0"
+                                                   CheckedContent="Sì"
+                                                   Content="{Binding Data.asself}"
+                                                   IsChecked="{Binding Data.asselfBool}"
+                                                   UncheckedContent="No" />
+                    <TextBlock MinWidth="120"
+                               Margin="15,0,5,0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Classificazione"
+                               TextAlignment="Right" />
+                    <telerik:RadComboBox Width="200"
+                                         Margin="5,2,15,2"
+                                         HorizontalAlignment="Left"
+                                         HorizontalContentAlignment="Left"
+                                         DisplayMemberPath="Description"
+                                         IsEditable="True"
+                                         IsReadOnly="True"
+                                         ItemsSource="{Binding Classifications}"
+                                         SelectedValue="{Binding Data.asstif}"
+                                         SelectedValuePath="ID" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="10"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Comunicare annualmente" />
+                <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal">
+                    <telerik:RadToggleSwitchButton Margin="5,0,0,0"
+                                                   CheckedContent="Sì"
+                                                   Content="{Binding Data.asscomiva}"
+                                                   IsChecked="{Binding Data.asscomivaBool}"
+                                                   UncheckedContent="No" />
+                    <TextBlock MinWidth="120"
+                               Margin="15,0,5,0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Split payment"
+                               TextAlignment="Right" />
+                    <telerik:RadToggleSwitchButton Margin="5,0,0,0"
+                                                   CheckedContent="Sì"
+                                                   Content="{Binding Data.asssplpay}"
+                                                   IsChecked="{Binding Data.asssplpayBool}"
+                                                   UncheckedContent="No" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="12"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Aliquota per omaggi" />
+                <telerik:RadAutoCompleteBox Grid.Row="12"
+                                            Grid.Column="1"
+                                            Margin="5,2,15,2"
+                                            HorizontalAlignment="Stretch"
+                                            DisplayMemberPath="FullDescriptionSearchable"
+                                            GotFocus="ac_GotFocus"
+                                            ItemsSource="{Binding Data.RatesList}"
+                                            LostFocus="ac_LostFocus"
+                                            NoResultsContent="Nessuna aliquota trovata"
+                                            SelectedItem="{Binding Data.SelectedRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectionMode="Single"
+                                            TextSearchMode="Contains"
+                                            TextSearchPath="FullDescriptionSearchable" />
+
+                <TextBlock Grid.Row="13"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Aliquota IVA ventilata" />
+                <telerik:RadAutoCompleteBox Grid.Row="13"
+                                            Grid.Column="1"
+                                            Margin="5,2,15,2"
+                                            HorizontalAlignment="Stretch"
+                                            DisplayMemberPath="FullDescriptionSearchable"
+                                            GotFocus="ac_GotFocus"
+                                            ItemsSource="{Binding Data.RatesList}"
+                                            LostFocus="ac_LostFocus"
+                                            NoResultsContent="Nessuna aliquota trovata"
+                                            SelectedItem="{Binding Data.SelectedVentilatedRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectionMode="Single"
+                                            TextSearchMode="Contains"
+                                            TextSearchPath="FullDescriptionSearchable" />
+
+                <TextBlock Grid.Row="14"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Natura fatt. elettronica" />
+                <telerik:RadAutoCompleteBox x:Name="acIVANature"
+                                            Grid.Row="14"
+                                            Grid.Column="1"
+                                            Margin="5,2,15,2"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            DisplayMemberPath="FullDescriptionSearchable"
+                                            GotFocus="ac_GotFocus"
+                                            ItemsSource="{Binding IVANatures}"
+                                            LostFocus="ac_LostFocus"
+                                            NoResultsContent="Nessuna natura IVA trovata"
+                                            SelectedItem="{Binding SelectedIVANature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectionChanged="acIVANature_SelectionChanged"
+                                            SelectionMode="Single"
+                                            TextSearchMode="Contains"
+                                            TextSearchPath="FullDescriptionSearchable"
+                                            WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+
+            </Grid>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+            <Button Name="cmdSave"
+                    Click="cmdSave_Click"
+                    Content="SALVA"
+                    Style="{StaticResource VulpesXConfirmButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

@@ -1,0 +1,172 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.CRM.FATTAL00FWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.CRM"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Allegati alla fattura"
+                        Width="900"
+                        Height="500"
+                        Background="{DynamicResource VulpesXDarkWindowsBackgroundBrush}"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid Margin="0,15,15,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="35" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource VulpesXLabel}" Text="Fattura" />
+                <TextBlock Style="{StaticResource VulpesXData}" Text="{Binding Head.FTANNO}" />
+                <TextBlock Style="{StaticResource VulpesXData}" Text="/" />
+                <TextBlock Style="{StaticResource VulpesXData}" Text="{Binding Head.FTNUOR}" />
+            </StackPanel>
+
+            <telerik:RadBusyIndicator x:Name="bsyGrid"
+                                      Grid.Row="2"
+                                      BusyContent="Caricamento dati in corso..."
+                                      FontSize="40"
+                                      Foreground="{DynamicResource VulpesXBrush}"
+                                      IsBusy="False"
+                                      OverlayStyle="{StaticResource WaitOverlayStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <DataTemplate x:Key="DownloadIcon">
+                            <Border x:Name="boDownload"
+                                    BorderBrush="{DynamicResource VulpesXBrush}"
+                                    Cursor="Hand"
+                                    MouseDown="boDownload_MouseDown"
+                                    Visibility="{Binding DownloadsVisibility}">
+                                <Label x:Name="label" ToolTip="Download dell'allegato">
+                                    <telerik:RadGlyph FontSize="14" Foreground="{DynamicResource VulpesXBrush}" Glyph="&#xe132;" />
+                                </Label>
+                            </Border>
+                        </DataTemplate>
+                        <DataTemplate x:Key="OpenIcon">
+                            <Border x:Name="boOpen"
+                                    BorderBrush="{DynamicResource VulpesXBrush}"
+                                    Cursor="Hand"
+                                    MouseDown="boOpen_MouseDown"
+                                    Visibility="{Binding DownloadsVisibility}">
+                                <Label x:Name="label" ToolTip="Apri l'allegato (il dispositivo deve avere il software necessario all'apertura del tipo di file selezionato)">
+                                    <telerik:RadGlyph FontSize="14" Foreground="{DynamicResource VulpesXBrush}" Glyph="&#xe134;" />
+                                </Label>
+                            </Border>
+                        </DataTemplate>
+                    </Grid.Resources>
+                    <telerik:RadGridView x:Name="GridView"
+                                         Grid.Row="0"
+                                         AddingNewDataItem="GridView_AddingNewDataItem"
+                                         AutoGenerateColumns="False"
+                                         CanUserFreezeColumns="False"
+                                         CanUserInsertRows="True"
+                                         CanUserResizeColumns="False"
+                                         GroupRenderMode="Flat"
+                                         ItemsSource="{Binding PagedSource, ElementName=rdpGrid}"
+                                         NewRowPosition="Top"
+                                         RowEditEnded="GridView_RowEditEnded"
+                                         RowIndicatorVisibility="Visible"
+                                         RowValidating="GridView_RowValidating"
+                                         ShowGroupPanel="False">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewColumn Width="110">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton x:Name="cmdSelect"
+                                                           telerik:TouchManager.TouchMode="HitTestHidden"
+                                                           BorderBrush="DeepSkyBlue"
+                                                           BorderThickness="5,0,0,0"
+                                                           Click="cmdSelect_Click"
+                                                           Content="Seleziona file" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewDataColumn Width="350"
+                                                        DataMemberBinding="{Binding FTANAME}"
+                                                        Header="Nome file"
+                                                        IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Width="120"
+                                                        DataMemberBinding="{Binding FTASIZEText}"
+                                                        Header="Dimensione"
+                                                        HeaderTextAlignment="Right"
+                                                        IsReadOnly="True"
+                                                        TextAlignment="Right" />
+                            <telerik:GridViewDataColumn Width="40"
+                                                        CellTemplate="{StaticResource DownloadIcon}"
+                                                        Header="{x:Null}"
+                                                        IsFilterable="False"
+                                                        IsReadOnly="True"
+                                                        IsSearchable="False"
+                                                        IsSortable="False"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="40"
+                                                        CellTemplate="{StaticResource OpenIcon}"
+                                                        Header="{x:Null}"
+                                                        IsFilterable="False"
+                                                        IsReadOnly="True"
+                                                        IsSearchable="False"
+                                                        IsSortable="False"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="140"
+                                                        DataFormatString="dd/MM/yyyy HH:mm:ss"
+                                                        DataMemberBinding="{Binding added}"
+                                                        Header="Aggiunto il"
+                                                        HeaderTextAlignment="Center"
+                                                        IsReadOnly="True"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="250"
+                                                        DataMemberBinding="{Binding add_user}"
+                                                        Header="da"
+                                                        IsReadOnly="True" />
+
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <telerik:RadDataPager x:Name="rdpGrid"
+                                          Grid.Row="1"
+                                          Margin="0,-1,0,0"
+                                          DisplayMode="FirstLastPreviousNextNumeric, Text"
+                                          FontSize="12"
+                                          IsTotalItemCountFixed="True"
+                                          PageSize="20"
+                                          Source="{Binding Head.Attachments}" />
+                </Grid>
+            </telerik:RadBusyIndicator>
+
+            <StackPanel Grid.Row="8"
+                        Margin="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal">
+                <Button Name="cmdCancel"
+                        Width="200"
+                        Margin="2"
+                        BorderBrush="Gold"
+                        BorderThickness="5,0,0,0"
+                        Click="cmdCancel_Click"
+                        Content="USCIRE"
+                        FontSize="10"
+                        IsCancel="True" />
+                <Button Name="cmdSave"
+                        Width="200"
+                        Margin="2"
+                        BorderBrush="ForestGreen"
+                        BorderThickness="5,0,0,0"
+                        Click="cmdSave_Click"
+                        Content="SALVA"
+                        FontSize="10"
+                        IsDefault="True" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</sc:FluentDefaultWindow>

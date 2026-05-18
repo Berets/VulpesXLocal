@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="VulpesX.Modules.Ufp.CRM.AF.ANAFAT_ROW_MaterialView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VulpesX.Modules.Ufp.CRM.AF"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="ArticleCellTemplate">
+            <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=telerik:GridViewCell}, Path=Value}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding artdise}" />
+                <Path Name="patDownloadDraw"
+                      Grid.Column="1"
+                      Width="14"
+                      Height="14"
+                      telerik:RadToolTipService.Placement="RelativePoint"
+                      telerik:RadToolTipService.PlacementRectangle="50 60 0 0"
+                      telerik:RadToolTipService.ShowDuration="20000"
+                      telerik:RadToolTipService.ToolTipContent="{Binding}"
+                      telerik:RadToolTipService.ToolTipContentTemplate="{DynamicResource articleUfpTooltipTemplate}"
+                      Data="{DynamicResource InfoPath}"
+                      Fill="{DynamicResource VulpesXSecondBrush}"
+                      Stretch="Fill" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SupplierCellTemplate">
+            <StackPanel VerticalAlignment="Center" DataContext="{Binding RelativeSource={RelativeSource AncestorType=telerik:GridViewCell}, Path=Value}">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource VulpesXOrangeBrush}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+
+                <CheckBox HorizontalAlignment="Center"
+                          Checked="CheckBox_Checked"
+                          IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          PreviewMouseLeftButtonDown="CheckBox_PreviewMouseLeftButtonDown"
+                          Visibility="{Binding Converter={StaticResource NullToVisibilityConverter}}" />
+                <TextBlock HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           Foreground="{Binding Color, Converter={StaticResource stringToColorConverter}}"
+                           Text="{Binding Price, StringFormat={}{0:N2}}" />
+                <TextBlock HorizontalAlignment="Center" FontWeight="Light" Text="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid Background="{DynamicResource VulpesXFirstBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="grdArtSelect" />
+
+        <telerik:RadGridView x:Name="GridView"
+                             Grid.Row="1"
+                             AutoGenerateColumns="False"
+                             EnableColumnVirtualization="True"
+                             EnableRowVirtualization="True"
+                             GroupRenderMode="Flat"
+                             IsReadOnly="True"
+                             ItemsSource="{Binding PriceLists}"
+                             ShowGroupPanel="False" />
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1" Margin="5" Background="{DynamicResource VulpesXVioletBrush}">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="COSTO MATERIA PRIMA" />
+            </Grid>
+            <telerik:RadNumericUpDown Name="numTotal"
+                                      Grid.Column="2"
+                                      Margin="5"
+                                      FontSize="22"
+                                      ShowButtons="False"
+                                      ValueChanged="numTotal_ValueChanged"
+                                      Value="{Binding Item.afmatpre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Column="3"
+                       VerticalAlignment="Center"
+                       FontSize="22"
+                       Text="€" />
+        </Grid>
+    </Grid>
+</UserControl>

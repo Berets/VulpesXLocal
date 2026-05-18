@@ -1,0 +1,155 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.Tables.Accounting.TAB_ACC_TIPINCWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.Tables.Accounting"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Dettagli tipo incasso"
+                        Width="750"
+                        Height="500"
+                        Background="{DynamicResource VulpesXFirstBrush}"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        WindowStyle="ToolWindow"
+                        mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="0,15,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="6*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Codice" />
+                <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Width="100"
+                         Margin="5,0,15,0"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         IsEnabled="{Binding IsInsert}"
+                         MaxLength="1"
+                         Text="{Binding Data.icscod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Descrizione" />
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="5,0,15,0"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Center"
+                         MaxLength="50"
+                         Text="{Binding Data.icsdes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" />
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Supporto" />
+                <telerik:RadComboBox Grid.Row="3"
+                                     Grid.Column="1"
+                                     Width="200"
+                                     Margin="5,2,15,2"
+                                     HorizontalAlignment="Left"
+                                     HorizontalContentAlignment="Left"
+                                     DisplayMemberPath="Description"
+                                     IsEditable="True"
+                                     IsReadOnly="True"
+                                     ItemsSource="{Binding Data.SupportTypes}"
+                                     SelectedValue="{Binding Data.icssup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     SelectedValuePath="ID" />
+                <TextBlock Grid.Row="4"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Tipo" />
+                <telerik:RadComboBox Grid.Row="4"
+                                     Grid.Column="1"
+                                     Width="200"
+                                     Margin="5,2,15,2"
+                                     HorizontalAlignment="Left"
+                                     HorizontalContentAlignment="Left"
+                                     DisplayMemberPath="Description"
+                                     IsEditable="True"
+                                     IsReadOnly="True"
+                                     ItemsSource="{Binding Data.ElementTypes}"
+                                     SelectedValue="{Binding Data.icsics, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     SelectedValuePath="ID" />
+                <TextBlock Grid.Row="6"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Causale contabile" />
+                <telerik:RadAutoCompleteBox x:Name="acCausal"
+                                            Grid.Row="6"
+                                            Grid.Column="1"
+                                            Margin="5,2,15,2"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            DisplayMemberPath="FullDescriptionSearchable"
+                                            ItemsSource="{Binding Causals}"
+                                            LostFocus="ac_LostFocus"
+                                            NoResultsContent="Nessun codice trovato"
+                                            SelectedItem="{Binding SelectedCausal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectionChanged="acCausal_SelectionChanged"
+                                            SelectionMode="Single"
+                                            TextSearchMode="Contains"
+                                            TextSearchPath="FullDescriptionSearchable"
+                                            WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+                <TextBlock Grid.Row="7"
+                           Grid.Column="0"
+                           Style="{StaticResource VulpesXLabel}"
+                           Text="Modalita' pagamento (fatt. elettronica)" />
+                <telerik:RadAutoCompleteBox x:Name="acFE"
+                                            Grid.Row="7"
+                                            Grid.Column="1"
+                                            Margin="5,2,15,2"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            DisplayMemberPath="FullDescriptionSearchable"
+                                            ItemsSource="{Binding FEs}"
+                                            LostFocus="ac_LostFocus"
+                                            NoResultsContent="Nessun codice trovato"
+                                            SelectedItem="{Binding SelectedFE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectionChanged="acFE_SelectionChanged"
+                                            SelectionMode="Single"
+                                            TextSearchMode="Contains"
+                                            TextSearchPath="FullDescriptionSearchable"
+                                            WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+
+
+
+            </Grid>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+            <Button Name="cmdSave"
+                    Click="cmdSave_Click"
+                    Content="SALVA"
+                    Style="{StaticResource VulpesXConfirmButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

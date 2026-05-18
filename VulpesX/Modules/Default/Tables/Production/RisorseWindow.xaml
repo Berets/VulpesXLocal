@@ -1,0 +1,284 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.Tables.Production.RisorseWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.Tables.Production"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Dettagli risorsa"
+                        Width="750"
+                        Height="600"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+
+    <sc:FluentDefaultWindow.Resources>
+        <converters:LongToTimeSpanConverter x:Key="longToTimeSpanConverter" />
+    </sc:FluentDefaultWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <telerik:RadTabControl Grid.Row="0"
+                               VerticalAlignment="Stretch"
+                               BorderThickness="0"
+                               DisplayMemberPath="Content"
+                               DropDownDisplayMode="Visible"
+                               ScrollMode="Viewport">
+            <telerik:RadTabItem DropDownContent="DATI PRINCIPALI" Header="DATI PRINCIPALI">
+                <telerik:RadTabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="0,10,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Codice" />
+                            <TextBox Grid.Row="0"
+                                     Grid.Column="1"
+                                     Margin="5,0,15,0"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Center"
+                                     IsEnabled="{Binding IsInsert}"
+                                     MaxLength="25"
+                                     Text="{Binding Data.ID}" />
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Descrizione" />
+                            <TextBox Grid.Row="1"
+                                     Grid.Column="1"
+                                     Margin="5,0,15,0"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Center"
+                                     MaxLength="255"
+                                     Text="{Binding Data.Descrizione}" />
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Piazzamento default" />
+                            <telerik:RadTimeSpanPicker Grid.Row="2"
+                                                       Grid.Column="1"
+                                                       Width="200"
+                                                       Margin="5,0,15,0"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center"
+                                                       GenerateDefaultComponents="True"
+                                                       Value="{Binding Data.PiazzamentoDefault, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource longToTimeSpanConverter}}" />
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Infinita" />
+                            <telerik:RadToggleSwitchButton Grid.Row="3"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.EInfinita}" />
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Piazzamento" />
+                            <telerik:RadToggleSwitchButton Grid.Row="4"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.EPiazzamento}" />
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Completa" />
+                            <telerik:RadToggleSwitchButton Grid.Row="5"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.ECompleta}" />
+                            <TextBlock Grid.Row="6"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Versamento" />
+                            <telerik:RadToggleSwitchButton Grid.Row="6"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.EVersamento}" />
+                            <TextBlock Grid.Row="7"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Tempo al pezzo" />
+                            <telerik:RadToggleSwitchButton Grid.Row="7"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.ETempoAlPezzo}" />
+                            <TextBlock Grid.Row="8"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Multi operatore" />
+                            <telerik:RadToggleSwitchButton Grid.Row="8"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.EPiuOperatori}" />
+                            <TextBlock Grid.Row="9"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Multi pezzi" />
+                            <telerik:RadToggleSwitchButton Grid.Row="9"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.EPiuPezzi}" />
+                            <TextBlock Grid.Row="10"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Automatica" />
+                            <telerik:RadToggleSwitchButton Grid.Row="10"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.EAutomatica}" />
+                            <TextBlock Grid.Row="11"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Fornitore" />
+                            <telerik:RadToggleSwitchButton Grid.Row="11"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           IsChecked="{Binding Data.EFornitore}" />
+                        </Grid>
+                    </ScrollViewer>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem DropDownContent="SORGENTI" Header="SORGENTI">
+                <telerik:RadTabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="10,10,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+
+                            <telerik:RadGridView Name="rgvSources"
+                                                 Grid.Row="0"
+                                                 Margin="0"
+                                                 AddingNewDataItem="rgvSources_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserFreezeColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 IsSearchingDeferred="True"
+                                                 ItemsSource="{Binding Sources}"
+                                                 NewRowPosition="Top"
+                                                 RowDetailsVisibilityMode="VisibleWhenSelected"
+                                                 RowEditEnded="rgvSources_RowEditEnded"
+                                                 RowIndicatorVisibility="Collapsed"
+                                                 RowValidating="rgvSources_RowValidating"
+                                                 SearchMode="MatchAnyTerm"
+                                                 ShowGroupPanel="False"
+                                                 ShowSearchPanel="False"
+                                                 ValidatesOnDataErrors="InEditMode">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="150" DataMemberBinding="{Binding ID}" Header="Codice">
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <TextBox MaxLength="5" Text="{Binding ID}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="250" DataMemberBinding="{Binding Descrizione}" Header="Descrizione">
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <TextBox MaxLength="50" Text="{Binding Descrizione}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewCheckBoxColumn Width="200" DataMemberBinding="{Binding Singolo}" Header="Uso singolo" />
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+                        </Grid>
+                    </ScrollViewer>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem DropDownContent="COSTI" Header="COSTI">
+                <telerik:RadTabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="10,10,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+
+                            <telerik:RadGridView Name="rgvCosts"
+                                                 Grid.Row="0"
+                                                 Margin="0"
+                                                 AddingNewDataItem="rgvCosts_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserFreezeColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 IsSearchingDeferred="True"
+                                                 ItemsSource="{Binding Costs}"
+                                                 NewRowPosition="Top"
+                                                 RowDetailsVisibilityMode="VisibleWhenSelected"
+                                                 RowEditEnded="rgvCosts_RowEditEnded"
+                                                 RowIndicatorVisibility="Collapsed"
+                                                 RowValidating="rgvCosts_RowValidating"
+                                                 SearchMode="MatchAnyTerm"
+                                                 ShowGroupPanel="False"
+                                                 ShowSearchPanel="False"
+                                                 ValidatesOnDataErrors="InEditMode">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="150"
+                                                                DataFormatString="dd/MM/yyyy"
+                                                                DataMemberBinding="{Binding Periodo}"
+                                                                Header="Periodo">
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadDatePicker SelectedValue="{Binding Periodo}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="250" DataMemberBinding="{Binding CostoOrario}" Header="Costo">
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadNumericUpDown Value="{Binding CostoOrario}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+                        </Grid>
+                    </ScrollViewer>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+
+        </telerik:RadTabControl>
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel"
+                    Click="cmdCancel_Click"
+                    Content="USCIRE"
+                    Style="{StaticResource VulpesXCancelButton}" />
+            <Button Name="cmdSave"
+                    Click="cmdSave_Click"
+                    Content="SALVA"
+                    Style="{StaticResource VulpesXConfirmButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

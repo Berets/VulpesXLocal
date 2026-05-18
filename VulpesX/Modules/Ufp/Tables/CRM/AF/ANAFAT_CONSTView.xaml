@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="VulpesX.Modules.Ufp.Tables.CRM.AF.ANAFAT_CONSTView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VulpesX.Modules.Ufp.Tables.CRM.AF"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Style="{StaticResource VulpesXTitle}" Text="TABELLA PARAMETRI ANALISI FATTIBILITA'" />
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Name="cmdInsert"
+                        Margin="5"
+                        Click="cmdInsert_Click"
+                        Content="INSERISCI"
+                        Style="{StaticResource VulpesXInsertButton}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch">
+            <telerik:RadWatermarkTextBox Name="txtSearch"
+                                         Margin="5"
+                                         TextChanged="txtSearch_TextChanged"
+                                         WatermarkContent="Cerca..." />
+        </Grid>
+
+        <telerik:RadBusyIndicator x:Name="bsyGrid"
+                                  Grid.Row="2"
+                                  BusyContent="Caricamento dati in corso..."
+                                  Foreground="{DynamicResource VulpesXBrush}"
+                                  IsBusy="{Binding IsBusy}"
+                                  OverlayStyle="{StaticResource WaitOverlayStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
+                <telerik:RadGridView x:Name="GridView"
+                                     Grid.Row="0"
+                                     AutoGenerateColumns="False"
+                                     CanUserFreezeColumns="False"
+                                     CanUserResizeColumns="False"
+                                     GroupRenderMode="Flat"
+                                     IsReadOnly="True"
+                                     ItemsSource="{Binding PagedSource, ElementName=rdpGrid}"
+                                     RowIndicatorVisibility="Hidden"
+                                     RowIsExpandedChanging="GridView_RowIsExpandedChanging"
+                                     ShowGroupPanel="True">
+                    <telerik:RadGridView.ChildTableDefinitions>
+                        <telerik:GridViewTableDefinition />
+                    </telerik:RadGridView.ChildTableDefinitions>
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding IsActive}" Header="Att" UniqueName="colAtt" />
+
+                        <telerik:GridViewDataColumn Width="350" DataMemberBinding="{Binding afdata}" Header="Periodo">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="cmdEdit"
+                                            Margin="3"
+                                            HorizontalContentAlignment="Left"
+                                            BorderBrush="{DynamicResource VulpesXBrush}"
+                                            Click="cmdEdit_Click"
+                                            Content="{Binding Path=afdata}"
+                                            Cursor="Hand"
+                                            Foreground="{DynamicResource VulpesXBrush}" />
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding afver}" Header="Ver." />
+
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding RowsCount}" Header="*" />
+
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afproductionpre}"
+                                                    Header="€ prod. presidiata" />
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afproductionaut}"
+                                                    Header="€ prod. non presidiata" />
+
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afcomplexitysta}"
+                                                    Header="% comp. standard" />
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afcomplexitymed}"
+                                                    Header="% comp. media" />
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afcomplexitycom}"
+                                                    Header="% comp. complessa" />
+
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afcliico}"
+                                                    Header="% cliente ICO" />
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afclidir}"
+                                                    Header="% cliente diretto" />
+
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afproico}"
+                                                    Header="% provvigione ICO" />
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding afprodir}"
+                                                    Header="% provvigione diretto" />
+                    </telerik:RadGridView.Columns>
+                    <telerik:RadGridView.HierarchyChildTemplate>
+                        <DataTemplate>
+                            <telerik:RadGridView x:Name="GridViewPieces"
+                                                 AutoGenerateColumns="False"
+                                                 BorderThickness="0,1,0,1"
+                                                 CanUserFreezeColumns="False"
+                                                 GridLinesVisibility="None"
+                                                 GroupRenderMode="Flat"
+                                                 IsReadOnly="True"
+                                                 ItemsSource="{Binding Pieces}"
+                                                 ShowGroupPanel="False">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="120"
+                                                                DataFormatString="N0"
+                                                                DataMemberBinding="{Binding afppiecesfrom}"
+                                                                Header="Da pezzi" />
+
+                                    <telerik:GridViewDataColumn Width="120"
+                                                                DataFormatString="N0"
+                                                                DataMemberBinding="{Binding afppiecesto}"
+                                                                Header="A pezzi" />
+
+                                    <telerik:GridViewDataColumn Width="120"
+                                                                DataFormatString="N2"
+                                                                DataMemberBinding="{Binding afppercentage}"
+                                                                Header="%" />
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+                        </DataTemplate>
+                    </telerik:RadGridView.HierarchyChildTemplate>
+
+                </telerik:RadGridView>
+                <telerik:RadDataPager x:Name="rdpGrid"
+                                      Grid.Row="1"
+                                      Margin="0,-1,0,0"
+                                      DisplayMode="FirstLastPreviousNextNumeric, Text"
+                                      FontSize="12"
+                                      IsTotalItemCountFixed="True"
+                                      PageSize="20"
+                                      Source="{Binding Items}" />
+            </Grid>
+        </telerik:RadBusyIndicator>
+    </Grid>
+</UserControl>

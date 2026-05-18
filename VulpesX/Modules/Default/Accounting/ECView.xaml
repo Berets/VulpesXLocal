@@ -1,0 +1,495 @@
+﻿<UserControl x:Class="VulpesX.Modules.Default.Accounting.ECView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:aggregators="clr-namespace:VulpesX.Shared.Controls.Aggregators;assembly=VulpesX.Shared.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:drdr="clr-namespace:VulpesX.Shared.Controls.DragDrop;assembly=VulpesX.Shared.Controls"
+             xmlns:local="clr-namespace:VulpesX.Modules.Default.Accounting"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:selectors="clr-namespace:VulpesX.Shared.Controls.Selectors;assembly=VulpesX.Shared.Controls"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <selectors:ECFListSelector x:Key="ECFListSelector">
+            <selectors:ECFListSelector.DefaultRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="telerik:DragDropManager.AllowDrag" Value="True" />
+                </Style>
+            </selectors:ECFListSelector.DefaultRowStyle>
+            <selectors:ECFListSelector.LockedRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="OrangeRed" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="ToolTip" Value="{Binding LockedInfoText}" />
+                    <Setter Property="telerik:DragDropManager.AllowDrag" Value="True" />
+                </Style>
+            </selectors:ECFListSelector.LockedRowStyle>
+        </selectors:ECFListSelector>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Style="{StaticResource VulpesXTitle}" Text="INTERROGAZIONE E/C CLIENTI/FORNITORI" />
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Name="cmdAnalysis"
+                        Width="150"
+                        Margin="5"
+                        BorderBrush="{DynamicResource VulpesXTurquoiseBrush}"
+                        Click="cmdAnalysis_Click"
+                        Content="ANALISI CLIENTE"
+                        IsEnabled="False"
+                        Style="{StaticResource VulpesXButton}" />
+
+                <telerik:RadDropDownButton x:Name="rddbExtract"
+                                           Width="150"
+                                           Margin="5"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Stretch"
+                                           HorizontalContentAlignment="Center"
+                                           BorderBrush="{DynamicResource VulpesXBrush}"
+                                           BorderThickness="5,1,1,1"
+                                           Content="ESTRAI">
+                    <telerik:RadDropDownButton.DropDownContent>
+                        <telerik:RadContextMenu>
+                            <telerik:RadMenuItem x:Name="rmiPrint"
+                                                 Width="150"
+                                                 Click="rmiPrint_Click"
+                                                 Cursor="Hand"
+                                                 Foreground="{DynamicResource VulpesXBrush}"
+                                                 Header="Stampa">
+                                <telerik:RadMenuItem.Icon>
+                                    <telerik:RadGlyph Cursor="Hand"
+                                                      FontSize="14"
+                                                      Foreground="{DynamicResource VulpesXRedBrush}"
+                                                      Glyph="&#xe90e;" />
+                                </telerik:RadMenuItem.Icon>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem x:Name="rmiExcel"
+                                                 Width="150"
+                                                 Click="rmiExcel_Click"
+                                                 Cursor="Hand"
+                                                 Foreground="{DynamicResource VulpesXBrush}"
+                                                 Header="Excel">
+                                <telerik:RadMenuItem.Icon>
+                                    <telerik:RadGlyph Cursor="Hand"
+                                                      FontSize="14"
+                                                      Foreground="{DynamicResource VulpesXGreenBrush}"
+                                                      Glyph="&#xe90a;" />
+                                </telerik:RadMenuItem.Icon>
+                            </telerik:RadMenuItem>
+                        </telerik:RadContextMenu>
+                    </telerik:RadDropDownButton.DropDownContent>
+                </telerik:RadDropDownButton>
+
+
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Orientation="Horizontal">
+            <telerik:RadComboBox x:Name="cmbEntityType"
+                                 Width="100"
+                                 Margin="5"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Left"
+                                 DisplayMemberPath="Description"
+                                 IsEditable="True"
+                                 IsReadOnly="True"
+                                 ItemsSource="{Binding CFFlags}"
+                                 SelectedValue="{Binding EntityType}"
+                                 SelectedValuePath="ID"
+                                 SelectionChanged="cmbEntityType_SelectionChanged" />
+            <telerik:RadAutoCompleteBox x:Name="acCode"
+                                        Margin="5"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalContentAlignment="Center"
+                                        DisplayMemberPath="FullDescriptionSearchable"
+                                        ItemsSource="{Binding Codes}"
+                                        LostFocus="acCode_LostFocus"
+                                        NoResultsContent="Nessuna anagrafica trovata"
+                                        SelectedItem="{Binding SelectedEntity, Mode=TwoWay}"
+                                        SelectionMode="Single"
+                                        TextSearchMode="Contains"
+                                        TextSearchPath="FullDescriptionSearchable"
+                                        WatermarkContent="Inizia a digitare il codice o la ragione sociale per cercare un soggetto..." />
+            <TextBlock Margin="20,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource VulpesXSecondBrush}"
+                       Text="Elabora fino al" />
+            <telerik:RadDateTimePicker x:Name="rdtLimitDate"
+                                       Width="120"
+                                       Margin="5"
+                                       DateSelectionMode="Day"
+                                       DateTimeWatermarkContent="Scegliere la data limite"
+                                       DisplayFormat="Short"
+                                       InputMode="DatePicker"
+                                       ParseExact="False"
+                                       SelectedValue="{Binding ToDate}"
+                                       SelectionChanged="rdtLimitDate_SelectionChanged" />
+            <CheckBox x:Name="chkDrawn"
+                      Margin="20,0,0,0"
+                      Checked="chkDrawn_Checked"
+                      Content="Partite pareggiate"
+                      FontWeight="Bold"
+                      IsChecked="{Binding HasDrawn}"
+                      Unchecked="chkDrawn_Unchecked" />
+            <StackPanel x:Name="spDrawnDate" Orientation="Horizontal" Visibility="{Binding HasDrawn, Converter={StaticResource boolToVisibilityConverter}}">
+                <TextBlock Margin="15,0,0,0"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                           Text="Partite pareggiate dal" />
+                <telerik:RadDateTimePicker x:Name="rdtDrawnLimitDate"
+                                           Width="120"
+                                           Margin="5,0,0,0"
+                                           VerticalAlignment="Center"
+                                           DateSelectionMode="Day"
+                                           DateTimeWatermarkContent="Scegliere la data"
+                                           DisplayFormat="Short"
+                                           InputMode="DatePicker"
+                                           ParseExact="False"
+                                           SelectedValue="{Binding SinceDrawnDate}"
+                                           SelectionChanged="rdtDrawnLimitDate_SelectionChanged" />
+            </StackPanel>
+        </StackPanel>
+
+        <Border Grid.Row="2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="{DynamicResource VulpesXBrush}"
+                BorderThickness="1">
+            <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Margin="0,0,15,0"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                           Text="SALDO ALLA DATA" />
+                <TextBlock Margin="0,0,15,0"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="DeepSkyBlue"
+                           Text="{Binding TotalSign}" />
+                <TextBlock Margin="0,0,25,0"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="DeepSkyBlue"
+                           Text="{Binding TotalAmount, StringFormat=N2}" />
+            </StackPanel>
+        </Border>
+
+        <telerik:RadBusyIndicator x:Name="bsyGrid"
+                                  Grid.Row="3"
+                                  BusyContent="Caricamento dati in corso..."
+                                  Foreground="{DynamicResource VulpesXBrush}"
+                                  IsBusy="{Binding IsBusy}"
+                                  OverlayStyle="{StaticResource WaitOverlayStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <telerik:RadGridView x:Name="GridView"
+                                     Grid.Row="0"
+                                     drdr:ECCFGridViewDragDropBehavior.IsEnabled="True"
+                                     AllowDrop="True"
+                                     AutoGenerateColumns="False"
+                                     CanUserFreezeColumns="False"
+                                     CanUserResizeColumns="False"
+                                     EnableLostFocusSelectedState="False"
+                                     GroupRenderMode="Flat"
+                                     IsReadOnly="True"
+                                     ItemsSource="{Binding Items}"
+                                     RowIndicatorVisibility="Collapsed"
+                                     RowStyleSelector="{StaticResource ECFListSelector}"
+                                     SelectionMode="Single"
+                                     SelectionUnit="FullRow"
+                                     ShowColumnFooters="False"
+                                     ShowGroupFooters="False"
+                                     ShowGroupPanel="True">
+                    <telerik:RadGridView.ChildTableDefinitions>
+                        <telerik:GridViewTableDefinition>
+                            <telerik:GridViewTableDefinition.Relation>
+                                <telerik:PropertyRelation />
+                            </telerik:GridViewTableDefinition.Relation>
+                        </telerik:GridViewTableDefinition>
+                    </telerik:RadGridView.ChildTableDefinitions>
+                    <telerik:RadGridView.HierarchyChildTemplate>
+                        <DataTemplate>
+                            <telerik:RadGridView AutoGenerateColumns="False" ItemsSource="{Binding Reminders}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="150"
+                                                                DataFormatString="dd/MM/yyyy"
+                                                                DataMemberBinding="{Binding solldat}"
+                                                                Header="Data sollecito"
+                                                                HeaderTextAlignment="Center"
+                                                                TextAlignment="Center" />
+                                    <telerik:GridViewDataColumn Width="200" DataMemberBinding="{Binding ReminderType.soldes}" Header="Tipo" />
+                                    <telerik:GridViewDataColumn Width="140"
+                                                                DataFormatString="dd/MM/yyyy"
+                                                                DataMemberBinding="{Binding DocumentDate}"
+                                                                Header="Data documento"
+                                                                HeaderTextAlignment="Center"
+                                                                TextAlignment="Center" />
+                                    <telerik:GridViewDataColumn Width="100" DataMemberBinding="{Binding DocumentID}" Header="Documento" />
+                                    <telerik:GridViewDataColumn Width="120"
+                                                                DataFormatString="dd/MM/yyyy"
+                                                                DataMemberBinding="{Binding sollscad}"
+                                                                Header="Scadenza"
+                                                                HeaderTextAlignment="Center"
+                                                                TextAlignment="Center" />
+                                    <telerik:GridViewDataColumn Width="60"
+                                                                DataMemberBinding="{Binding sollsegn}"
+                                                                Header="D/A"
+                                                                HeaderTextAlignment="Center"
+                                                                TextAlignment="Center" />
+                                    <telerik:GridViewDataColumn Width="100"
+                                                                DataFormatString="N2"
+                                                                DataMemberBinding="{Binding sollimpo}"
+                                                                FooterTextAlignment="Right"
+                                                                Header="Importo"
+                                                                HeaderTextAlignment="Right"
+                                                                TextAlignment="Right" />
+                                    <telerik:GridViewDataColumn Width="200" DataMemberBinding="{Binding sollcaude}" Header="Causale" />
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+                        </DataTemplate>
+                    </telerik:RadGridView.HierarchyChildTemplate>
+                    <telerik:RadContextMenu.ContextMenu>
+                        <telerik:RadContextMenu x:Name="cmGrid" Opening="cmGrid_Opening">
+                            <telerik:RadMenuItem x:Name="rmiChangeRef"
+                                                 Click="rmiChangeRef_Click"
+                                                 Header="Modifica riferimenti"
+                                                 Typography.Capitals="AllSmallCaps">
+                                <telerik:RadMenuItem.Icon>
+                                    <Image Width="16"
+                                           Height="16"
+                                           Source="{telerik:RadGlyph Glyph={StaticResource GlyphChangeManually}}"
+                                           Stretch="Uniform" />
+                                </telerik:RadMenuItem.Icon>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem x:Name="rmiLock"
+                                                 Click="rmiLock_Click"
+                                                 Header="Blocca il pagamento"
+                                                 Typography.Capitals="AllSmallCaps">
+                                <telerik:RadMenuItem.Icon>
+                                    <Image Width="16"
+                                           Height="16"
+                                           Source="{telerik:RadGlyph Glyph={StaticResource GlyphLock}}"
+                                           Stretch="Uniform" />
+                                </telerik:RadMenuItem.Icon>
+                            </telerik:RadMenuItem>
+                        </telerik:RadContextMenu>
+                    </telerik:RadContextMenu.ContextMenu>
+                    <telerik:RadGridView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <CheckBox x:Name="chkGroup" Checked="chkGroup_Checked" Unchecked="chkGroup_Unchecked" />
+                        </DataTemplate>
+                    </telerik:RadGridView.GroupHeaderTemplate>
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewColumn Width="30">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <telerik:RadGlyph x:Name="rgPrint"
+                                                      Cursor="Hand"
+                                                      FontSize="18"
+                                                      Foreground="{DynamicResource VulpesXGreenBrush}"
+                                                      Glyph="&#xe90e;"
+                                                      MouseDown="rgPrint_MouseDown"
+                                                      ToolTip="Apri il PDF della fattura"
+                                                      Visibility="{Binding InvoiceFile, Converter={StaticResource stringNullabilityToVisibilityConverter}}" />
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                        <telerik:GridViewDataColumn Width="90"
+                                                    DataMemberBinding="{Binding Number}"
+                                                    Header="Reg. n."
+                                                    HeaderTextAlignment="Right"
+                                                    TextAlignment="Right">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="cmdEdit"
+                                            Margin="3"
+                                            HorizontalContentAlignment="Right"
+                                            BorderBrush="{DynamicResource VulpesXBrush}"
+                                            Click="cmdEditRegRows_Click"
+                                            Content="{Binding Path=Number}"
+                                            Cursor="Hand"
+                                            Foreground="{DynamicResource VulpesXBrush}"
+                                            ToolTip="Apri il dettaglio della registrazione" />
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="dd/MM/yyyy"
+                                                    DataMemberBinding="{Binding RegistrationDate}"
+                                                    Header="Data reg."
+                                                    HeaderTextAlignment="Center"
+                                                    TextAlignment="Center">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="cmdEdit"
+                                            Margin="3"
+                                            HorizontalContentAlignment="Center"
+                                            BorderBrush="{DynamicResource VulpesXBrush}"
+                                            Click="cmdEditRegHead_Click"
+                                            Content="{Binding Path=RegistrationDate, StringFormat=dd/MM/yyyy}"
+                                            Cursor="Hand"
+                                            Foreground="{DynamicResource VulpesXBrush}"
+                                            ToolTip="Apri la testata della registrazione" />
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Width="100" DataMemberBinding="{Binding DocumentID}" Header="Documento" />
+                        <telerik:GridViewDataColumn Width="110"
+                                                    DataFormatString="dd/MM/yyyy"
+                                                    DataMemberBinding="{Binding DocumentDate}"
+                                                    Header="Data doc."
+                                                    HeaderTextAlignment="Center"
+                                                    TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Width="110"
+                                                    DataFormatString="dd/MM/yyyy"
+                                                    DataMemberBinding="{Binding ExpireDate}"
+                                                    Header="Scadenza"
+                                                    HeaderTextAlignment="Center"
+                                                    TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Width="270" DataMemberBinding="{Binding CausalFullDescription}" Header="Causale">
+                            <telerik:GridViewColumn.AggregateFunctions>
+                                <aggregators:ECCFRecap />
+                            </telerik:GridViewColumn.AggregateFunctions>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Width="50"
+                                                    DataMemberBinding="{Binding CurrencyID}"
+                                                    Header="Val."
+                                                    HeaderTextAlignment="Center"
+                                                    TextAlignment="Center" />
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding Dare}"
+                                                    FooterTextAlignment="Right"
+                                                    Header="Dare"
+                                                    HeaderTextAlignment="Right"
+                                                    TextAlignment="Right">
+                            <telerik:GridViewColumn.AggregateFunctions>
+                                <aggregators:ECCFDareSum ResultFormatString="{}{0:N2} D" />
+                            </telerik:GridViewColumn.AggregateFunctions>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Width="120"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding Avere}"
+                                                    FooterTextAlignment="Right"
+                                                    Header="Avere"
+                                                    HeaderTextAlignment="Right"
+                                                    TextAlignment="Right">
+                            <telerik:GridViewColumn.AggregateFunctions>
+                                <aggregators:ECCFAvereSum ResultFormatString="{}{0:N2} A" />
+                            </telerik:GridViewColumn.AggregateFunctions>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Width="150"
+                                                    ColumnGroupName="Partita"
+                                                    DataMemberBinding="{Binding Partita}"
+                                                    Header="Partita" />
+                        <telerik:GridViewDataColumn Width="150"
+                                                    DataFormatString="dd/MM/yyyy"
+                                                    DataMemberBinding="{Binding Scadenza2}"
+                                                    Header="Scadenza2" />
+                        <telerik:GridViewDataColumn DataFormatString="N2" DataMemberBinding="{Binding SaldoRiga}" Header="Saldo" />
+                        <telerik:GridViewDataColumn Width="50"
+                                                    DataMemberBinding="{Binding Valuta}"
+                                                    Header="Val."
+                                                    UniqueName="colValValuta" />
+                        <telerik:GridViewDataColumn Width="150"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding Cambio}"
+                                                    Header="Cambio"
+                                                    UniqueName="colValCambio" />
+                        <telerik:GridViewDataColumn Width="150"
+                                                    DataFormatString="N2"
+                                                    DataMemberBinding="{Binding ValoreValuta}"
+                                                    Header="Imp. Valuta"
+                                                    UniqueName="colValValoreValuta" />
+
+                    </telerik:RadGridView.Columns>
+                    <telerik:RadGridView.Resources>
+                        <DataTemplate x:Key="DraggedItemTemplate">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource VulpesXBrush}" Text="Assegnare alla registrazione " />
+                                    <TextBlock Margin="2,0,0,0"
+                                               FontWeight="Bold"
+                                               Foreground="{DynamicResource VulpesXDataBrush}"
+                                               Text="{Binding CurrentDraggedItem.Number}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="{DynamicResource VulpesXBrush}" Text=" la partita " />
+                                    <TextBlock Foreground="{DynamicResource VulpesXDataBrush}" Text="{Binding CurrentDraggedOverItem.DocumentID}" />
+                                    <TextBlock Foreground="{DynamicResource VulpesXBrush}" Text="-" />
+                                    <TextBlock Foreground="{DynamicResource VulpesXDataBrush}" Text="{Binding CurrentDraggedOverItem.DocumentDate, StringFormat=d}" />
+                                    <TextBlock Foreground="{DynamicResource VulpesXBrush}" Text=" con scadenza " />
+                                    <TextBlock Foreground="{DynamicResource VulpesXDataBrush}" Text="{Binding CurrentDraggedOverItem.ExpireDate, StringFormat=d}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:RadGridView.Resources>
+                </telerik:RadGridView>
+            </Grid>
+        </telerik:RadBusyIndicator>
+
+        <Border Grid.Row="4"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="{DynamicResource VulpesXBrush}"
+                BorderThickness="1">
+            <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Margin="0,0,15,0"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                           Text="SALDO SELEZIONATO" />
+                <TextBlock Margin="0,0,15,0"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXBrush}"
+                           Text="{Binding SelectedSign}" />
+                <TextBlock Margin="0,0,25,0"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXBrush}"
+                           Text="{Binding SelectedAmount, StringFormat=N2}" />
+                <telerik:RadButton x:Name="cmdAccountingRegistration"
+                                   Width="220"
+                                   Margin="5"
+                                   Click="cmdAccountingRegistration_Click"
+                                   Content="REGISTRA INCASSI/PAGAMENTI"
+                                   Style="{StaticResource VulpesXButton}"
+                                   Visibility="{Binding IsAccountingRegistrationVisible, Converter={StaticResource boolToVisibilityConverter}}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</UserControl>

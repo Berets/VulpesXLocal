@@ -1,0 +1,673 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.CRM.FATTD00FWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.CRM"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Dettagli della fattura"
+                        Width="1000"
+                        Height="750"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+    <Grid Margin="0,10,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="130" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <TextBlock Style="{StaticResource VulpesXLabel}" Text="Anno" />
+            <TextBlock MinWidth="50"
+                       Margin="10,2,2,2"
+                       Style="{StaticResource VulpesXData}"
+                       Text="{Binding Head.FTANNO, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       TextAlignment="Left" />
+            <TextBlock Margin="10,0,0,0" Style="{StaticResource VulpesXLabel}" Text="Numero provvisorio" />
+            <TextBlock MinWidth="50"
+                       Margin="10,2,2,2"
+                       Style="{StaticResource VulpesXData}"
+                       Text="{Binding Head.FTNUOR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       TextAlignment="Right" />
+            <TextBlock Margin="10,0,0,0" Style="{StaticResource VulpesXLabel}" Text="Numero definitivo" />
+            <TextBlock MinWidth="50"
+                       Margin="10,2,2,2"
+                       Style="{StaticResource VulpesXData}"
+                       Text="{Binding Head.DefinitiveID}"
+                       TextAlignment="Right" />
+            <TextBlock Margin="5,0,0,0" Style="{StaticResource VulpesXLabel}" Text="del" />
+            <TextBlock MinWidth="50"
+                       Margin="10,2,2,2"
+                       Style="{StaticResource VulpesXData}"
+                       Text="{Binding Head.FTDAOR, StringFormat=d, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       TextAlignment="Right" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <TextBlock Style="{StaticResource VulpesXLabel}" Text="Cliente" />
+            <TextBlock MinWidth="50"
+                       Margin="10,2,2,2"
+                       Style="{StaticResource VulpesXData}"
+                       Text="{Binding Head.Customer.FullDescriptionSearchable}"
+                       TextAlignment="Left" />
+        </StackPanel>
+
+
+        <Grid Grid.Row="3"
+              Grid.Column="0"
+              Margin="5,0,5,5"
+              VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="{DynamicResource VulpesXBrush}" BorderThickness="1">
+                <TextBlock Padding="0"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           Background="{DynamicResource VulpesXFirstAlternativeBrush}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXBrush}"
+                           Opacity=".8"
+                           Text="RIGHE"
+                           TextAlignment="Center"
+                           Typography.Capitals="AllSmallCaps">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="270" />
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Border>
+
+            <telerik:RadGridView Name="rgvRows"
+                                 Grid.Column="1"
+                                 Margin="0"
+                                 AddingNewDataItem="rgvRows_AddingNewDataItem"
+                                 AreRowDetailsFrozen="True"
+                                 AutoGenerateColumns="False"
+                                 CanUserFreezeColumns="False"
+                                 CanUserInsertRows="True"
+                                 Deleted="rgvRows_Deleted"
+                                 IsReadOnly="{Binding IsReadonly}"
+                                 IsSearchingDeferred="True"
+                                 ItemsSource="{Binding Rows}"
+                                 LeftFrozenColumnCount="4"
+                                 NewRowPosition="Top"
+                                 RowEditEnded="rgvRows_RowEditEnded"
+                                 RowIndicatorVisibility="Collapsed"
+                                 RowValidating="rgvRows_RowValidating"
+                                 SearchMode="MatchAnyTerm"
+                                 ShowGroupPanel="False"
+                                 ShowSearchPanel="False"
+                                 ValidatesOnDataErrors="InEditMode">
+                <telerik:RadGridView.SortDescriptors>
+                    <telerik:SortDescriptor Member="FDRIGA" SortDirection="Ascending" />
+                </telerik:RadGridView.SortDescriptors>
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewToggleRowDetailsColumn ToolTip="Mostra i dettagli della riga" />
+                    <telerik:GridViewColumn Width="30">
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <telerik:RadGlyph x:Name="rgMagnifier"
+                                                  Cursor="Hand"
+                                                  FontSize="18"
+                                                  Foreground="{DynamicResource VulpesXBrush}"
+                                                  Glyph="&#xe137;"
+                                                  MouseDown="rgMagnifier_MouseDown"
+                                                  ToolTip="Visualizza la riga in formato esteso" />
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                    <telerik:GridViewDataColumn Width="60"
+                                                DataMemberBinding="{Binding FDRIGA}"
+                                                Header="Riga"
+                                                HeaderTextAlignment="Right"
+                                                IsReadOnly="True"
+                                                IsVisible="False"
+                                                TextAlignment="Right" />
+                    <telerik:GridViewDataColumn Width="300" DataMemberBinding="{Binding SelectedProduct.FullDescriptionSearchable}" Header="Articolo">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadAutoCompleteBox DisplayMemberPath="FullDescriptionSearchable"
+                                                            ItemsSource="{Binding Products}"
+                                                            NoResultsContent="Nessun articolo trovato"
+                                                            SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                                                            SelectionMode="Single"
+                                                            TextSearchMode="Contains"
+                                                            TextSearchPath="FullDescriptionSearchable" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Width="100"
+                                                DataMemberBinding="{Binding QuantityValue, StringFormat=N6, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Header="Quantita'"
+                                                HeaderTextAlignment="Right"
+                                                TextAlignment="Right">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadNumericUpDown Minimum="0"
+                                                          NumberDecimalDigits="6"
+                                                          ShowButtons="False"
+                                                          Value="{Binding QuantityValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewComboBoxColumn Width="100"
+                                                    DataMemberBinding="{Binding FDUNIM}"
+                                                    DisplayMemberPath="Description"
+                                                    Header="U.M."
+                                                    IsLightweightModeEnabled="True"
+                                                    ItemsSourceBinding="{Binding UMs}"
+                                                    SelectedValueMemberPath="ID" />
+                    <telerik:GridViewComboBoxColumn Width="110"
+                                                    DataMemberBinding="{Binding FDTQTA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    DisplayMemberPath="Description"
+                                                    Header="Tipo quantita'"
+                                                    IsLightweightModeEnabled="True"
+                                                    ItemsSourceBinding="{Binding QuantityTypes}"
+                                                    SelectedValueMemberPath="ID" />
+                    <telerik:GridViewDataColumn Width="100"
+                                                DataMemberBinding="{Binding FDPREZ, StringFormat=N6}"
+                                                Header="Prezzo"
+                                                HeaderTextAlignment="Right"
+                                                TextAlignment="Right">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadNumericUpDown Minimum="0"
+                                                          NumberDecimalDigits="6"
+                                                          ShowButtons="False"
+                                                          Value="{Binding FDPREZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewComboBoxColumn Width="100"
+                                                    DataMemberBinding="{Binding FDTPRE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    DisplayMemberPath="Description"
+                                                    Header="Tipo prezzo"
+                                                    IsLightweightModeEnabled="True"
+                                                    ItemsSourceBinding="{Binding PriceTypes}"
+                                                    SelectedValueMemberPath="ID" />
+                    <telerik:GridViewDataColumn Width="90"
+                                                DataMemberBinding="{Binding AmountDisplay, StringFormat=N2}"
+                                                Header="Importo"
+                                                HeaderTextAlignment="Right"
+                                                IsReadOnly="True"
+                                                TextAlignment="Right" />
+                    <telerik:GridViewDataColumn Width="90"
+                                                DataMemberBinding="{Binding FDSCO1, StringFormat=N2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Header="Sconto 1"
+                                                HeaderTextAlignment="Right"
+                                                TextAlignment="Right">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadNumericUpDown Minimum="0"
+                                                          NumberDecimalDigits="2"
+                                                          ShowButtons="False"
+                                                          Value="{Binding FDSCO1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewComboBoxColumn Width="90"
+                                                    DataMemberBinding="{Binding FDTSC1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    DisplayMemberPath="Description"
+                                                    Header="Tipo sc. 1"
+                                                    IsLightweightModeEnabled="True"
+                                                    ItemsSourceBinding="{Binding DiscountTypes}"
+                                                    SelectedValueMemberPath="ID" />
+                    <telerik:GridViewDataColumn Width="90"
+                                                DataMemberBinding="{Binding FDSCO2, StringFormat=N2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Header="Sconto 2"
+                                                HeaderTextAlignment="Right"
+                                                TextAlignment="Right">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadNumericUpDown Minimum="0"
+                                                          NumberDecimalDigits="2"
+                                                          ShowButtons="False"
+                                                          Value="{Binding FDSCO2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewComboBoxColumn Width="90"
+                                                    DataMemberBinding="{Binding FDTSC2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    DisplayMemberPath="Description"
+                                                    Header="Tipo sc. 2"
+                                                    IsLightweightModeEnabled="True"
+                                                    ItemsSourceBinding="{Binding DiscountTypes}"
+                                                    SelectedValueMemberPath="ID" />
+                    <telerik:GridViewDataColumn Width="90"
+                                                DataMemberBinding="{Binding FDSCO3, StringFormat=N2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Header="Sconto 3"
+                                                HeaderTextAlignment="Right"
+                                                TextAlignment="Right">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadNumericUpDown Minimum="0"
+                                                          NumberDecimalDigits="2"
+                                                          ShowButtons="False"
+                                                          Value="{Binding FDSCO3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewComboBoxColumn Width="90"
+                                                    DataMemberBinding="{Binding FDTSC3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    DisplayMemberPath="Description"
+                                                    Header="Tipo sc. 3"
+                                                    IsLightweightModeEnabled="True"
+                                                    ItemsSourceBinding="{Binding DiscountTypes}"
+                                                    SelectedValueMemberPath="ID" />
+                    <telerik:GridViewDataColumn Width="100"
+                                                DataMemberBinding="{Binding Discount, StringFormat=N6}"
+                                                Header="Sconto tot."
+                                                HeaderTextAlignment="Right"
+                                                IsReadOnly="True"
+                                                TextAlignment="Right" />
+                    <telerik:GridViewDataColumn Width="90"
+                                                DataMemberBinding="{Binding FDMAGG, StringFormat=N2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                Header="Maggiorazione"
+                                                HeaderTextAlignment="Right"
+                                                TextAlignment="Right">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadNumericUpDown Minimum="0"
+                                                          NumberDecimalDigits="2"
+                                                          ShowButtons="False"
+                                                          Value="{Binding FDMAGG, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewComboBoxColumn Width="100"
+                                                    DataMemberBinding="{Binding FDTMAG, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    DisplayMemberPath="Description"
+                                                    Header="Tipo magg."
+                                                    IsLightweightModeEnabled="True"
+                                                    ItemsSourceBinding="{Binding DiscountTypes}"
+                                                    SelectedValueMemberPath="ID" />
+                    <telerik:GridViewDataColumn Width="100"
+                                                DataMemberBinding="{Binding Surcharge, StringFormat=N6}"
+                                                Header="Maggiorazione"
+                                                HeaderTextAlignment="Right"
+                                                IsReadOnly="True"
+                                                TextAlignment="Right" />
+                    <telerik:GridViewDataColumn Width="250" DataMemberBinding="{Binding SelectedRate.FullDescriptionSearchable}" Header="Aliquota">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadAutoCompleteBox DisplayMemberPath="FullDescriptionSearchable"
+                                                            ItemsSource="{Binding RatesList}"
+                                                            NoResultsContent="Nessuna aliquota trovata"
+                                                            SelectedItem="{Binding SelectedRate, Mode=TwoWay}"
+                                                            SelectionMode="Single"
+                                                            TextSearchMode="Contains"
+                                                            TextSearchPath="FullDescriptionSearchable" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Width="150"
+                                                DataFormatString="dd/MM/yyyy"
+                                                DataMemberBinding="{Binding FDDACO}"
+                                                Header="Data consegna" />
+                    <telerik:GridViewDataColumn Width="250" DataMemberBinding="{Binding SelectedNatura.FullDescriptionSearchable}" Header="Natura">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadAutoCompleteBox DisplayMemberPath="FullDescriptionSearchable"
+                                                            ItemsSource="{Binding NaturaList}"
+                                                            NoResultsContent="Nessuna natura trovata"
+                                                            SelectedItem="{Binding SelectedNatura, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SelectionMode="Single"
+                                                            TextSearchMode="Contains"
+                                                            TextSearchPath="FullDescriptionSearchable" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Width="120" DataMemberBinding="{Binding SelectedGroup.FullDescriptionSearchable}" Header="Gruppo">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadAutoCompleteBox DisplayMemberPath="FullDescriptionSearchable"
+                                                            GotFocus="ac_GotFocus"
+                                                            ItemsSource="{Binding GroupsList}"
+                                                            LostFocus="ac_LostFocus"
+                                                            NoResultsContent="Nessun gruppo trovato"
+                                                            SelectedItem="{Binding SelectedGroup, Mode=TwoWay}"
+                                                            SelectionMode="Single"
+                                                            TextSearchMode="Contains"
+                                                            TextSearchPath="FullDescriptionSearchable" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Width="200" DataMemberBinding="{Binding SelectedAccount.FullDescriptionSearchable}" Header="Conto">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadAutoCompleteBox DisplayMemberPath="FullDescriptionSearchable"
+                                                            GotFocus="ac_GotFocus"
+                                                            ItemsSource="{Binding AccountsList}"
+                                                            LostFocus="ac_LostFocus"
+                                                            NoResultsContent="Nessun conto trovato"
+                                                            SelectedItem="{Binding SelectedAccount, Mode=TwoWay}"
+                                                            SelectionMode="Single"
+                                                            TextSearchMode="Contains"
+                                                            TextSearchPath="FullDescriptionSearchable" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Width="250" DataMemberBinding="{Binding SelectedSubaccount.FullDescriptionSearchable}" Header="Sottoconto">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadAutoCompleteBox DisplayMemberPath="FullDescriptionSearchable"
+                                                            ItemsSource="{Binding SubaccountsList}"
+                                                            NoResultsContent="Nessun sottoconto trovato"
+                                                            SelectedItem="{Binding SelectedSubaccount, Mode=TwoWay}"
+                                                            SelectionMode="Single"
+                                                            TextSearchMode="Contains"
+                                                            TextSearchPath="FullDescriptionSearchable" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Width="250" DataMemberBinding="{Binding SelectedCostCenter.FullDescriptionSearchable}" Header="Centro di costo">
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadAutoCompleteBox DisplayMemberPath="FullDescriptionSearchable"
+                                                            ItemsSource="{Binding CostCentersList}"
+                                                            NoResultsContent="Nessun centro di costo trovato"
+                                                            SelectedItem="{Binding SelectedCostCenter, Mode=TwoWay}"
+                                                            SelectionMode="Single"
+                                                            TextSearchMode="Contains"
+                                                            TextSearchPath="FullDescriptionSearchable" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                </telerik:RadGridView.Columns>
+                <telerik:RadGridView.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Grid x:Name="grdDetails" Margin="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="835" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Row="8"
+                                        Grid.Column="1"
+                                        Margin="0"
+                                        HorizontalAlignment="Right"
+                                        Orientation="Horizontal">
+                                <TextBlock Margin="0,0,3,0"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Text="Totale riga"
+                                           TextAlignment="Right" />
+                                <TextBlock Margin="10,0,10,0"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Style="{DynamicResource VulpesXData}"
+                                           Text="{Binding AmountDisplay, StringFormat=N2}"
+                                           TextAlignment="Right" />
+                                <TextBlock Margin="0,0,3,0"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Text="Totale sconti riga"
+                                           TextAlignment="Right" />
+                                <TextBlock Margin="10,0,10,0"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Style="{DynamicResource VulpesXData}"
+                                           Text="{Binding Discount, StringFormat=N2}"
+                                           TextAlignment="Right" />
+                                <TextBlock Margin="0,0,3,0"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Text="Totale maggiorazione riga"
+                                           TextAlignment="Right" />
+                                <TextBlock Margin="10,0,10,0"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Style="{DynamicResource VulpesXData}"
+                                           Text="{Binding Surcharge, StringFormat=N2}"
+                                           TextAlignment="Right" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </telerik:RadGridView.RowDetailsTemplate>
+            </telerik:RadGridView>
+        </Grid>
+
+        <Grid Grid.Row="4"
+              Grid.Column="0"
+              Margin="5,0,5,5"
+              VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="{DynamicResource VulpesXDataBrush}" BorderThickness="1">
+                <TextBlock Padding="0"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           Background="{DynamicResource VulpesXFirstAlternativeBrush}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource VulpesXDataBrush}"
+                           Opacity=".8"
+                           Text="RIEPILOGO"
+                           TextAlignment="Center"
+                           Typography.Capitals="AllSmallCaps">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="270" />
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Padding="2"
+                    BorderBrush="{DynamicResource VulpesXDataBrush}"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="0,0,5,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="DeepSkyBlue"
+                               Text="Totale"
+                               TextAlignment="Right" />
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="1"
+                               Margin="10,0,10,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Text="€"
+                               Typography.Capitals="AllSmallCaps" />
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="1"
+                               Margin="10,0,30,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="{DynamicResource VulpesXDataBrush}"
+                               Text="{Binding Total, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"
+                               Typography.Capitals="AllSmallCaps" />
+
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Margin="0,0,5,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="DeepSkyBlue"
+                               Text="Totale omaggi"
+                               TextAlignment="Right" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="10,0,10,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Text="€"
+                               Typography.Capitals="AllSmallCaps" />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="1"
+                               Margin="10,0,30,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="{DynamicResource VulpesXDataBrush}"
+                               Text="{Binding Omaggi, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"
+                               Typography.Capitals="AllSmallCaps" />
+
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Margin="0,0,5,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="DeepSkyBlue"
+                               Text="Totale sconti sugli articoli"
+                               TextAlignment="Right" />
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="1"
+                               Margin="10,0,10,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Text="€"
+                               Typography.Capitals="AllSmallCaps" />
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="1"
+                               Margin="10,0,30,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="{DynamicResource VulpesXDataBrush}"
+                               Text="{Binding Sconti, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"
+                               Typography.Capitals="AllSmallCaps" />
+
+
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="0"
+                               Margin="0,0,5,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="DeepSkyBlue"
+                               Text="{Binding Head.CustomerDiscountsText}"
+                               TextAlignment="Right" />
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="1"
+                               Margin="10,0,10,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Text="€"
+                               Typography.Capitals="AllSmallCaps" />
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="1"
+                               Margin="10,0,30,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="{DynamicResource VulpesXDataBrush}"
+                               Text="{Binding ScontiCliente, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"
+                               Typography.Capitals="AllSmallCaps" />
+
+
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="0"
+                               Margin="0,0,5,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="DeepSkyBlue"
+                               Text="Totale maggiorazioni"
+                               TextAlignment="Right" />
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="1"
+                               Margin="10,0,10,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Text="€"
+                               Typography.Capitals="AllSmallCaps" />
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="1"
+                               Margin="10,0,30,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="{DynamicResource VulpesXDataBrush}"
+                               Text="{Binding Maggiorazioni, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"
+                               Typography.Capitals="AllSmallCaps" />
+
+
+
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="0"
+                               Margin="0,0,5,0"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="DeepSkyBlue"
+                               Text="IMPONIBILE"
+                               TextAlignment="Right" />
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="1"
+                               Margin="10,0,10,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Text="€"
+                               Typography.Capitals="AllSmallCaps" />
+                    <TextBlock Grid.Row="5"
+                               Grid.Column="1"
+                               Margin="10,0,30,0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource VulpesXDataBrush}"
+                               Text="{Binding Imponibile, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"
+                               Typography.Capitals="AllSmallCaps" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="5"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+            <Button Name="cmdSave"
+                    Click="cmdSave_Click"
+                    Content="SALVA"
+                    Style="{StaticResource VulpesXConfirmButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

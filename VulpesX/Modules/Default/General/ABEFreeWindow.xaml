@@ -1,0 +1,24 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.General.ABEFreeWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.General"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        Title="Seleziona un nuovo codice anagrafico libero"
+                        Width="720"
+                        Height="500"
+                        Background="{DynamicResource VulpesXFirstBrush}"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        WindowStyle="ToolWindow"
+                        mc:Ignorable="d">
+    <Grid>
+        <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled">
+            <WrapPanel x:Name="spIDs"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       Orientation="Horizontal" />
+        </ScrollViewer>
+    </Grid>
+</sc:FluentDefaultWindow>

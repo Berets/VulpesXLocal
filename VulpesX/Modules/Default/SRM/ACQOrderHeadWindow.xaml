@@ -1,0 +1,449 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.SRM.ACQOrderHeadWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.SRM"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Dettagli ordine di acquisto"
+                        Width="1024"
+                        Height="768"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+    <Grid IsEnabled="{Binding Data.IsEnabled}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    HorizontalAlignment="Left"
+                    Orientation="Horizontal"
+                    Visibility="{Binding Data.ClosedVisibility, Converter={StaticResource boolToVisibilityConverter}}">
+            <TextBlock Margin="10,0,0,0" Style="{StaticResource VulpesXLabel}" Text="Chiuso il" />
+            <TextBlock Margin="5,2,1,2"
+                       HorizontalAlignment="Left"
+                       Style="{StaticResource VulpesXData}"
+                       Text="{Binding Data.closed, StringFormat={}{0:dd/MM/yyyy HH:mm:ss}}" />
+        </StackPanel>
+        <StackPanel x:Name="spInsertInfo"
+                    Grid.Row="0"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <TextBlock Style="{StaticResource VulpesXLabel}" Text="Nuovo ordine" />
+            <TextBlock Margin="5,2,2,2" Style="{StaticResource VulpesXLabel}" Text="del" />
+            <telerik:RadDateTimePicker Width="120"
+                                       Margin="5,0,15,0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       DateSelectionMode="Day"
+                                       DateTimeWatermarkContent="Scegliere la data"
+                                       DisplayFormat="Short"
+                                       InputMode="DatePicker"
+                                       IsEnabled="{Binding IsReadonly}"
+                                       SelectedValue="{Binding Data.order_date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <StackPanel x:Name="spEditInfo"
+                    Grid.Row="0"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <TextBlock Style="{StaticResource VulpesXLabel}" Text="Ordine n." />
+            <TextBlock Margin="5,2,1,2"
+                       HorizontalAlignment="Left"
+                       Style="{StaticResource VulpesXData}"
+                       Text="{Binding Data.id}" />
+            <TextBlock Margin="5,2,2,2" Style="{StaticResource VulpesXLabel}" Text="del" />
+            <telerik:RadDateTimePicker Width="120"
+                                       Margin="5,0,15,0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       DateSelectionMode="Day"
+                                       DateTimeWatermarkContent="Scegliere la data"
+                                       DisplayFormat="Short"
+                                       InputMode="DatePicker"
+                                       IsEnabled="{Binding IsReadonly}"
+                                       SelectedValue="{Binding Data.order_date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <telerik:RadTabControl Grid.Row="1"
+                               VerticalAlignment="Stretch"
+                               BorderThickness="0"
+                               DisplayMemberPath="Content"
+                               DropDownDisplayMode="Visible"
+                               ScrollMode="Viewport">
+            <telerik:RadTabItem DropDownContent="GENERALI" Header="GENERALI">
+                <telerik:RadTabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="0,15,15,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Fornitore" />
+                            <telerik:RadAutoCompleteBox x:Name="acSupplier"
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Margin="5,2,15,2"
+                                                        HorizontalAlignment="Stretch"
+                                                        VerticalAlignment="Center"
+                                                        DisplayMemberPath="FullDescriptionSearchable"
+                                                        GotFocus="ac_GotFocus"
+                                                        IsEnabled="{Binding IsReadonly}"
+                                                        ItemsSource="{Binding Data.Suppliers}"
+                                                        LostFocus="ac_LostFocus"
+                                                        NoResultsContent="Nessun codice trovato"
+                                                        SelectedItem="{Binding Data.Supplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                        SelectionMode="Single"
+                                                        TextSearchMode="Contains"
+                                                        TextSearchPath="FullDescriptionSearchable"
+                                                        WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Pagamento" />
+                            <telerik:RadAutoCompleteBox x:Name="acPayment"
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        Margin="5,2,15,2"
+                                                        HorizontalAlignment="Stretch"
+                                                        VerticalAlignment="Center"
+                                                        DisplayMemberPath="FullDescriptionSearchable"
+                                                        GotFocus="ac_GotFocus"
+                                                        IsEnabled="{Binding IsReadonly}"
+                                                        ItemsSource="{Binding Data.Payments}"
+                                                        LostFocus="ac_LostFocus"
+                                                        NoResultsContent="Nessun codice trovato"
+                                                        SelectedItem="{Binding Data.Payment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                        SelectionMode="Single"
+                                                        TextSearchMode="Contains"
+                                                        TextSearchPath="FullDescriptionSearchable"
+                                                        WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Banca" />
+                            <telerik:RadAutoCompleteBox x:Name="acBank"
+                                                        Grid.Row="2"
+                                                        Grid.Column="1"
+                                                        Margin="5,2,15,2"
+                                                        HorizontalAlignment="Stretch"
+                                                        VerticalAlignment="Center"
+                                                        DisplayMemberPath="FullDescriptionSearchable"
+                                                        GotFocus="ac_GotFocus"
+                                                        IsEnabled="{Binding IsReadonly}"
+                                                        ItemsSource="{Binding Data.Banks}"
+                                                        LostFocus="ac_LostFocus"
+                                                        NoResultsContent="Nessun codice trovato"
+                                                        SelectedItem="{Binding Data.Bank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                        SelectionMode="Single"
+                                                        TextSearchMode="Contains"
+                                                        TextSearchPath="FullDescriptionSearchable"
+                                                        WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Conto corrente" />
+                            <TextBox Grid.Row="3"
+                                     Grid.Column="1"
+                                     Width="200"
+                                     Margin="5,2,2,2"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="15"
+                                     Text="{Binding Data.bank_account, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Stampa solo i codici articolo del fornitore" />
+                            <telerik:RadToggleSwitchButton Grid.Row="4"
+                                                           Grid.Column="1"
+                                                           Margin="5,0,0,0"
+                                                           CheckedContent="Sì"
+                                                           Content="{Binding Data.use_supplier_codes}"
+                                                           IsChecked="{Binding Data.use_supplier_codes}"
+                                                           UncheckedContent="No" />
+                        </Grid>
+                    </ScrollViewer>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem DropDownContent="TRASPORTO" Header="TRASPORTO">
+                <telerik:RadTabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="0,10,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Spedizione" />
+                            <telerik:RadAutoCompleteBox x:Name="acShipment"
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        Margin="5,2,15,2"
+                                                        HorizontalAlignment="Stretch"
+                                                        VerticalAlignment="Center"
+                                                        DisplayMemberPath="FullDescriptionSearchable"
+                                                        GotFocus="ac_GotFocus"
+                                                        IsEnabled="{Binding IsReadonly}"
+                                                        ItemsSource="{Binding Data.Shipments}"
+                                                        LostFocus="ac_LostFocus"
+                                                        NoResultsContent="Nessun codice trovato"
+                                                        SelectedItem="{Binding Data.Shipment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                        SelectionMode="Single"
+                                                        TextSearchMode="Contains"
+                                                        TextSearchPath="FullDescriptionSearchable"
+                                                        WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Consegna" />
+                            <telerik:RadAutoCompleteBox x:Name="acDelivery"
+                                                        Grid.Row="2"
+                                                        Grid.Column="1"
+                                                        Margin="5,2,15,2"
+                                                        HorizontalAlignment="Stretch"
+                                                        VerticalAlignment="Center"
+                                                        DisplayMemberPath="FullDescriptionSearchable"
+                                                        GotFocus="ac_GotFocus"
+                                                        IsEnabled="{Binding IsReadonly}"
+                                                        ItemsSource="{Binding Data.Deliveries}"
+                                                        LostFocus="ac_LostFocus"
+                                                        NoResultsContent="Nessun codice trovato"
+                                                        SelectedItem="{Binding Data.Delivery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                        SelectionMode="Single"
+                                                        TextSearchMode="Contains"
+                                                        TextSearchPath="FullDescriptionSearchable"
+                                                        WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+                        </Grid>
+                    </ScrollViewer>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem DropDownContent="NOTE" Header="NOTE">
+                <telerik:RadTabItem.Content>
+                    <Grid Margin="0,10,10,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="55" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="7*" />
+                            <ColumnDefinition Width="1.5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Margin="0,0,5,0"
+                                   VerticalAlignment="Top"
+                                   Style="{StaticResource VulpesXLabel}"
+                                   Text="Importa un testo"
+                                   TextAlignment="Right"
+                                   TextWrapping="Wrap" />
+                        <telerik:RadAutoCompleteBox x:Name="acText"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Margin="5,2,15,2"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Top"
+                                                    DisplayMemberPath="FullDescriptionSearchable"
+                                                    GotFocus="ac_GotFocus"
+                                                    IsEnabled="{Binding IsReadonly}"
+                                                    ItemsSource="{Binding Texts}"
+                                                    LostFocus="ac_LostFocus"
+                                                    NoResultsContent="Nessun codice trovato"
+                                                    SelectedItem="{Binding SelectedHeadText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    SelectionChanged="acText_SelectionChanged"
+                                                    SelectionMode="Single"
+                                                    TextSearchMode="Contains"
+                                                    TextSearchPath="FullDescriptionSearchable"
+                                                    WatermarkContent="Inizia a digitare il codice o la descrizione per cercare..." />
+
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="0,0,5,0"
+                                   VerticalAlignment="Top"
+                                   Style="{StaticResource VulpesXLabel}"
+                                   Text="Note"
+                                   TextAlignment="Right"
+                                   TextWrapping="Wrap" />
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="1"
+                                 Margin="5,0,15,10"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 HorizontalContentAlignment="Stretch"
+                                 VerticalContentAlignment="Top"
+                                 AcceptsReturn="True"
+                                 HorizontalScrollBarVisibility="Auto"
+                                 IsEnabled="{Binding IsReadonly}"
+                                 Text="{Binding Data.note, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
+                    </Grid>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem DropDownContent="INVIO" Header="INVIO">
+                <telerik:RadTabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="0,10,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Inviato il" />
+                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.sent}" />
+                                <TextBlock Margin="10,0,10,0" Style="{StaticResource VulpesXLabel}" Text="da" />
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.SendUserText}" />
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem DropDownContent="INFORMAZIONI" Header="INFORMAZIONI">
+                <telerik:RadTabItem.Content>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="0,10,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Inserito il" />
+                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.AddedText}" />
+                                <TextBlock Margin="10,0,10,0" Style="{StaticResource VulpesXLabel}" Text="da" />
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.AddedUserText}" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Ultimo aggiornamento il" />
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.UpdatedText}" />
+                                <TextBlock Margin="10,0,10,0" Style="{StaticResource VulpesXLabel}" Text="da" />
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.UpdatedUserText}" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Annullato il" />
+                            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.CanceledText}" />
+                                <TextBlock Margin="10,0,10,0" Style="{StaticResource VulpesXLabel}" Text="da" />
+                                <TextBlock Margin="5,2,2,2"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource VulpesXData}"
+                                           Text="{Binding Data.CanceledUserText}" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="0"
+                                       Style="{StaticResource VulpesXLabel}"
+                                       Text="Motivo annullamento" />
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="1"
+                                       Margin="5,2,2,2"
+                                       Style="{StaticResource VulpesXData}"
+                                       Text="{Binding Data.canceledNote}" />
+                        </Grid>
+                    </ScrollViewer>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+            <Button Name="cmdSave"
+                    Click="cmdSave_Click"
+                    Content="SALVA"
+                    Style="{StaticResource VulpesXConfirmButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

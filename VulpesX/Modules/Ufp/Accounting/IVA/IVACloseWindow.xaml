@@ -1,0 +1,191 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Ufp.Accounting.IVA.IVACloseWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Ufp.Accounting.IVA"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Lancia liquidazione IVA"
+                        Width="600"
+                        Height="360"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <telerik:RadTabControl Grid.Row="0"
+                               VerticalAlignment="Stretch"
+                               BorderThickness="0"
+                               DisplayMemberPath="Content"
+                               DropDownDisplayMode="Visible"
+                               ScrollMode="Viewport">
+            <telerik:RadTabItem x:Name="rtiMonthly" DropDownContent="MENSILE" Header="MENSILE">
+                <telerik:RadTabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Stampa dal" />
+                        <telerik:RadDateTimePicker Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Width="150"
+                                                   Margin="5,0,15,0"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   DateSelectionMode="Day"
+                                                   DateTimeWatermarkContent="Scegliere la data dalla quale stampare"
+                                                   DisplayFormat="Short"
+                                                   InputMode="DatePicker"
+                                                   SelectedValue="{Binding PrintSince}" />
+
+                        <TextBlock Grid.Row="2"
+                                   Grid.Column="0"
+                                   Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Stampa fino al" />
+                        <telerik:RadDateTimePicker Grid.Row="2"
+                                                   Grid.Column="1"
+                                                   Width="150"
+                                                   Margin="5,0,15,0"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   DateSelectionMode="Day"
+                                                   DateTimeWatermarkContent="Scegliere la data fino a cui stampare"
+                                                   DisplayFormat="Short"
+                                                   InputMode="DatePicker"
+                                                   SelectedValue="{Binding PrintUntil}" />
+
+                        <TextBlock Grid.Row="3"
+                                   Grid.Column="0"
+                                   Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Tipo" />
+                        <telerik:RadToggleSwitchButton Grid.Row="3"
+                                                       Grid.Column="1"
+                                                       Margin="5,0,0,0"
+                                                       CheckedContent="Definitiva"
+                                                       Content="{Binding IsDefinitive}"
+                                                       IsChecked="{Binding IsDefinitive}"
+                                                       UncheckedContent="Simulazione" />
+
+                        <TextBlock Grid.Row="4"
+                                   Grid.Column="0"
+                                   Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Acconto versato" />
+                        <telerik:RadNumericUpDown Grid.Row="4"
+                                                  Grid.Column="1"
+                                                  Margin="5,0,25,3"
+                                                  VerticalAlignment="Bottom"
+                                                  IsEnabled="{Binding IsInsert}"
+                                                  Minimum="0"
+                                                  NumberDecimalDigits="2"
+                                                  Value="{Binding PreviousAmount, Mode=TwoWay}" />
+
+                        <TextBlock Grid.Row="5"
+                                   Grid.Column="0"
+                                   Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Importo compensazione" />
+                        <telerik:RadNumericUpDown Grid.Row="5"
+                                                  Grid.Column="1"
+                                                  Margin="5,0,25,3"
+                                                  VerticalAlignment="Bottom"
+                                                  IsEnabled="{Binding IsInsert}"
+                                                  Minimum="0"
+                                                  NumberDecimalDigits="2"
+                                                  Value="{Binding CompensationAmount, Mode=TwoWay}" />
+                    </Grid>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem x:Name="rtiYearly" DropDownContent="ANNUALE" Header="ANNUALE">
+                <telerik:RadTabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="0,0,15,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource VulpesXSecondBrush}"
+                                   Text="Esercizio" />
+                        <telerik:RadComboBox x:Name="cmbAccountingYear"
+                                             Grid.Row="1"
+                                             Grid.Column="1"
+                                             Width="150"
+                                             Margin="5,5,15,5"
+                                             HorizontalAlignment="Left"
+                                             HorizontalContentAlignment="Right"
+                                             DisplayMemberPath="eseann"
+                                             SelectionChanged="cmbAccountingYear_SelectionChanged" />
+                    </Grid>
+                </telerik:RadTabItem.Content>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+            <Button Name="cmdSave"
+                    Click="cmdSave_Click"
+                    Content="CONFERMA"
+                    Style="{StaticResource VulpesXConfirmButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

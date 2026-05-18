@@ -1,0 +1,135 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.Accounting.Invoicing.AttachmentsWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.Accounting.Invoicing"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Allegati alla fattura"
+                        Width="900"
+                        Height="500"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="35" />
+            </Grid.RowDefinitions>
+
+            <telerik:RadBusyIndicator x:Name="bsyGrid"
+                                      Grid.Row="0"
+                                      BusyContent="Caricamento dati in corso..."
+                                      Foreground="{DynamicResource VulpesXBrush}"
+                                      IsBusy="{Binding IsBusy}"
+                                      OverlayStyle="{StaticResource WaitOverlayStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.Resources>
+                        <DataTemplate x:Key="DownloadIcon">
+                            <Border x:Name="boDownload"
+                                    BorderBrush="{DynamicResource VulpesXBrush}"
+                                    Cursor="Hand"
+                                    MouseDown="boDownload_MouseDown"
+                                    Visibility="{Binding DownloadsVisibility}">
+                                <Label x:Name="label" ToolTip="Download dell'allegato">
+                                    <telerik:RadGlyph FontSize="14" Foreground="{DynamicResource VulpesXBrush}" Glyph="&#xe132;" />
+                                </Label>
+                            </Border>
+                        </DataTemplate>
+                        <DataTemplate x:Key="OpenIcon">
+                            <Border x:Name="boOpen"
+                                    BorderBrush="{DynamicResource VulpesXBrush}"
+                                    Cursor="Hand"
+                                    MouseDown="boOpen_MouseDown"
+                                    Visibility="{Binding DownloadsVisibility}">
+                                <Label x:Name="label" ToolTip="Apri l'allegato (il dispositivo deve avere il software necessario all'apertura del tipo di file selezionato)">
+                                    <telerik:RadGlyph FontSize="14" Foreground="{DynamicResource VulpesXBrush}" Glyph="&#xe134;" />
+                                </Label>
+                            </Border>
+                        </DataTemplate>
+                    </Grid.Resources>
+
+                    <telerik:RadGridView x:Name="GridView"
+                                         Grid.Row="0"
+                                         AutoGenerateColumns="False"
+                                         CanUserFreezeColumns="False"
+                                         CanUserInsertRows="False"
+                                         CanUserResizeColumns="False"
+                                         GroupRenderMode="Flat"
+                                         IsReadOnly="True"
+                                         ItemsSource="{Binding PagedSource, ElementName=rdpGrid}"
+                                         RowIndicatorVisibility="Collapsed"
+                                         ShowGroupPanel="False">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Width="40"
+                                                        CellTemplate="{StaticResource DownloadIcon}"
+                                                        Header="{x:Null}"
+                                                        IsFilterable="False"
+                                                        IsReadOnly="True"
+                                                        IsSearchable="False"
+                                                        IsSortable="False"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="40"
+                                                        CellTemplate="{StaticResource OpenIcon}"
+                                                        Header="{x:Null}"
+                                                        IsFilterable="False"
+                                                        IsReadOnly="True"
+                                                        IsSearchable="False"
+                                                        IsSortable="False"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="300"
+                                                        DataMemberBinding="{Binding Name}"
+                                                        Header="Nome file"
+                                                        IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Width="400"
+                                                        DataMemberBinding="{Binding Description}"
+                                                        Header="Descrizione"
+                                                        IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Width="200"
+                                                        DataMemberBinding="{Binding Compression}"
+                                                        Header="Compressione"
+                                                        IsReadOnly="True" />
+                            <telerik:GridViewDataColumn Width="120"
+                                                        DataMemberBinding="{Binding SizeText}"
+                                                        Header="Dimensione"
+                                                        HeaderTextAlignment="Right"
+                                                        IsReadOnly="True"
+                                                        TextAlignment="Right" />
+                            <telerik:GridViewDataColumn Width="400"
+                                                        DataMemberBinding="{Binding Description}"
+                                                        Header="Descrizione"
+                                                        IsReadOnly="True" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <telerik:RadDataPager x:Name="rdpGrid"
+                                          Grid.Row="1"
+                                          Margin="0,-1,0,0"
+                                          DisplayMode="FirstLastPreviousNextNumeric, Text"
+                                          FontSize="12"
+                                          IsTotalItemCountFixed="True"
+                                          PageSize="20"
+                                          Source="{Binding Attachments}" />
+                </Grid>
+            </telerik:RadBusyIndicator>
+
+            <StackPanel Grid.Row="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <Button Name="cmdCancel"
+                        Width="200"
+                        Margin="5"
+                        Content="CHIUDI"
+                        Style="{StaticResource VulpesXCancelButton}" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</sc:FluentDefaultWindow>

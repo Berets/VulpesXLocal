@@ -1,0 +1,233 @@
+﻿<UserControl x:Class="VulpesX.Modules.Ufp.CRM.AF.ANAFAT_ROW_CycleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VulpesX.Modules.Ufp.CRM.AF"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:AFCycleTimeCountToColorConverter x:Key="afCycleTimeCountToColorConverter"
+                                                     DefaultColor="{StaticResource VulpesXBlueBrush}"
+                                                     ManyColor="{StaticResource VulpesXGreenBrush}"
+                                                     OneColor="{StaticResource VulpesXYellowBrush}"
+                                                     ZeroColor="{StaticResource VulpesXRedBrush}" />
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource VulpesXFirstBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="grdArtSelect" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="70*" />
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="btnUpdateTimes"
+                        Grid.Row="0"
+                        Margin="5"
+                        Click="btnUpdateTimes_Click"
+                        Content="AGGIORNA TEMPI &gt;&gt;&gt;" />
+
+                <telerik:RadGridView x:Name="grdArticles"
+                                     Grid.Row="1"
+                                     Margin="5"
+                                     AutoGenerateColumns="False"
+                                     CanUserFreezeColumns="False"
+                                     CanUserResizeColumns="False"
+                                     ColumnAggregatesAlignment="NextToGroupKey"
+                                     GroupRenderMode="Flat"
+                                     IsReadOnly="True"
+                                     ItemsSource="{Binding ArticlesCycle}"
+                                     RowIndicatorVisibility="Collapsed"
+                                     SelectionMode="Single"
+                                     ShowColumnFooters="False"
+                                     ShowGroupFooters="False"
+                                     ShowGroupPanel="False">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Width="60"
+                                                    DataMemberBinding="{Binding IsSelected}"
+                                                    Header=" "
+                                                    HeaderTextWrapping="Wrap"
+                                                    IsFilterable="False">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <telerik:RadToggleSwitchButton telerik:AnimationManager.IsAnimationEnabled="False" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyboardNavigation.AcceptsReturn="False" />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding artdise}" Header="Disegno">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <Grid VerticalAlignment="Center">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="20" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" FontWeight="SemiBold" Text="{Binding artdise, StringFormat=N3}" />
+                                            <Path Name="patDownloadDraw"
+                                                  Grid.Column="1"
+                                                  Width="14"
+                                                  Height="14"
+                                                  telerik:RadToolTipService.Placement="RelativePoint"
+                                                  telerik:RadToolTipService.PlacementRectangle="50 60 0 0"
+                                                  telerik:RadToolTipService.ShowDuration="20000"
+                                                  telerik:RadToolTipService.ToolTipContent="{Binding}"
+                                                  telerik:RadToolTipService.ToolTipContentTemplate="{DynamicResource articleUfpTooltipTemplate}"
+                                                  Cursor="Hand"
+                                                  Data="{DynamicResource DownloadPath}"
+                                                  Fill="{DynamicResource VulpesXSecondBrush}"
+                                                  PreviewMouseLeftButtonDown="patDownloadDraw_PreviewMouseLeftButtonDown"
+                                                  Stretch="Fill" />
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding HaTempiMedi}" Header="*">
+                            <telerik:GridViewDataColumn.CellStyle>
+                                <Style BasedOn="{StaticResource GridViewCellStyle}" TargetType="telerik:GridViewCell">
+                                    <Setter Property="Background" Value="{Binding TempiMediBackground, Converter={StaticResource stringToColorConverter}}" />
+                                </Style>
+                            </telerik:GridViewDataColumn.CellStyle>
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <Grid VerticalAlignment="Center">
+                                            <telerik:RadHyperlinkButton Name="patTempiMedi"
+                                                                        HorizontalContentAlignment="Center"
+                                                                        Click="patTempiMedi_Click"
+                                                                        Content="{Binding HaTempiMedi, StringFormat=N0}"
+                                                                        FontWeight="SemiBold"
+                                                                        Foreground="{DynamicResource VulpesXFirstBrush}" />
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </Grid>
+
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Button x:Name="btnCycleSelectAll"
+                            Margin="5"
+                            Click="btnCycleSelectAll_Click"
+                            Content="SELEZIONA TUTTO" />
+                    <Button x:Name="btnCycleSelectCNC"
+                            Margin="5"
+                            Click="btnCycleSelectCNC_Click"
+                            Content="SELEZIONA CNC" />
+                </StackPanel>
+
+                <telerik:RadGridView x:Name="grdCycle"
+                                     Grid.Row="1"
+                                     Margin="5"
+                                     AutoGenerateColumns="False"
+                                     CanUserFreezeColumns="False"
+                                     CanUserResizeColumns="True"
+                                     ColumnAggregatesAlignment="NextToGroupKey"
+                                     GroupRenderMode="Flat"
+                                     IsReadOnly="True"
+                                     ItemsSource="{Binding Cycles}"
+                                     PreviewMouseLeftButtonDown="grdCycle_PreviewMouseLeftButtonDown"
+                                     RowIndicatorVisibility="Collapsed"
+                                     SelectedItem="{Binding SelectedCycle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     SelectionMode="Single"
+                                     ShowColumnFooters="False"
+                                     ShowGroupFooters="False"
+                                     ShowGroupPanel="False">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Width="60"
+                                                    DataMemberBinding="{Binding IsSelected}"
+                                                    Header=" "
+                                                    HeaderTextWrapping="Wrap"
+                                                    IsFilterable="False">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <telerik:RadToggleSwitchButton Name="grdCycleSelect"
+                                                                   telerik:AnimationManager.IsAnimationEnabled="False"
+                                                                   Checked="grdCycleSelect_Checked"
+                                                                   IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                   KeyboardNavigation.AcceptsReturn="False"
+                                                                   Unchecked="grdCycleSelect_Unchecked" />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Width="26" DataMemberBinding="{Binding Sequenza}" Header="S" />
+
+                        <telerik:GridViewDataColumn Width="160" DataMemberBinding="{Binding FaseFull}" Header="Fase" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding FaseCNCString}" Header="CNC">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontWeight="SemiBold"
+                                               Foreground="{Binding FaseCNCColor, Converter={StaticResource stringToColorConverter}}"
+                                               Text="{Binding FaseCNCString}"
+                                               TextAlignment="Center" />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding TempoProduzione, StringFormat=N2}" Header="Min" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding TempiMediProduzioneCount, StringFormat=N0}" Header="*">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="{Binding TempiMediProduzioneCount, Converter={StaticResource afCycleTimeCountToColorConverter}}" Text="{Binding TempiMediProduzioneCount}" />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                        </telerik:GridViewDataColumn>
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1" Margin="5" Background="{DynamicResource VulpesXVioletBrush}">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TEMPO TOTALE" />
+            </Grid>
+            <telerik:RadNumericUpDown Name="numTotal"
+                                      Grid.Column="2"
+                                      Margin="5"
+                                      FontSize="22"
+                                      ShowButtons="False"
+                                      ValueChanged="numTotal_ValueChanged"
+                                      Value="{Binding Item.afcicmin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Column="3"
+                       VerticalAlignment="Center"
+                       FontSize="22"
+                       Text="min" />
+        </Grid>
+    </Grid>
+</UserControl>

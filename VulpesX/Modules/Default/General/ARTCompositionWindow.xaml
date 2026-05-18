@@ -1,0 +1,1467 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.General.ARTCompositionWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:dragdrop="clr-namespace:VulpesX.Shared.Controls.DragDrop;assembly=VulpesX.Shared.Controls"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.General"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:selectors="clr-namespace:VulpesX.Shared.Controls.Selectors;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Dettagli composizione articolo"
+                        Width="1024"
+                        Height="768"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+
+    <sc:FluentDefaultWindow.Resources>
+        <converters:LongToTimeSpanConverter x:Key="longToTimeSpanConverter" />
+        <converters:BoolToColorConverter x:Key="booleanColorConverter" FalseColor="{StaticResource VulpesXSecondBrush}" TrueColor="{StaticResource VulpesXYellowBrush}" />
+        <converters:BoolToIconConverter x:Key="booleanIconConverter" FalseIcon="{StaticResource TotalTimePath}" TrueIcon="{StaticResource PieceTimePath}" />
+
+        <HierarchicalDataTemplate x:Key="SummaryTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource SummaryPath}"
+                      Fill="{DynamicResource VulpesXSecondBrush}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBox Width="200" FontSize="12" Text="{Binding Descrizione}" />
+                    <TextBlock VerticalAlignment="Center"
+                               FontSize="9"
+                               Text="{Binding Note}"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="MilestoneTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource MilestonePath}"
+                      Fill="{DynamicResource VulpesXSecondBrush}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBox Width="200" FontSize="12" Text="{Binding Descrizione}" />
+                    <TextBlock VerticalAlignment="Center"
+                               FontSize="9"
+                               Text="{Binding Note}"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="StageTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="603" />
+                </Grid.ColumnDefinitions>
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource StagePath}"
+                      Fill="{DynamicResource GXSecondBrush}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock Width="250" FontSize="12" Text="{Binding Descrizione}" />
+                    <TextBlock FontSize="10" FontWeight="Bold" Text="{Binding RepartoID}" />
+                    <TextBlock VerticalAlignment="Center"
+                               FontSize="9"
+                               Text="{Binding Note}"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2"
+                            Margin="22,0,0,0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="10,0,0,0"
+                                   FontSize="11"
+                                   Text="Risorsa"
+                                   TextAlignment="Left" />
+
+                        <telerik:RadComboBox Width="250"
+                                             Margin="10,0,0,0"
+                                             ClearSelectionButtonContent="Nessuno"
+                                             ClearSelectionButtonVisibility="Visible"
+                                             ItemsSource="{Binding Risorse}"
+                                             SelectedValue="{Binding RisorsaID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             SelectedValuePath="ID">
+                            <telerik:RadComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="10" Text="{Binding Descrizione}" />
+                                        <TextBlock FontSize="10" Text=" - " />
+
+                                        <DockPanel>
+                                            <TextBlock FontSize="10" FontWeight="Bold" Text="{Binding ID}" />
+                                            <Path Height="10"
+                                                  HorizontalAlignment="Right"
+                                                  Data="{Binding ETempoAlPezzo, Converter={StaticResource booleanIconConverter}}"
+                                                  Fill="{DynamicResource GXSecondBrush}"
+                                                  Stretch="Uniform" />
+                                        </DockPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerik:RadComboBox.ItemTemplate>
+                        </telerik:RadComboBox>
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="10,0,0,0"
+                                   FontSize="11"
+                                   Text="Piazzamento"
+                                   TextAlignment="Left" />
+                        <telerik:RadTimeSpanPicker Width="150"
+                                                   Margin="10,0,0,0"
+                                                   GenerateDefaultComponents="True"
+                                                   TextAlignment="Right"
+                                                   Validation.ErrorTemplate="{DynamicResource ValidationTooltipTemplate}"
+                                                   Value="{Binding Piazzamento, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource longToTimeSpanConverter}}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="10,0,0,0"
+                                   FontSize="11"
+                                   Text="Tempo"
+                                   TextAlignment="Left" />
+                        <telerik:RadTimeSpanPicker Width="150"
+                                                   Margin="10,0,0,0"
+                                                   GenerateDefaultComponents="True"
+                                                   TextAlignment="Right"
+                                                   Validation.ErrorTemplate="{DynamicResource ValidationTooltipTemplate}"
+                                                   Value="{Binding Tempo, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource longToTimeSpanConverter}}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="250" />
+                </Grid.ColumnDefinitions>
+                <Path Name="patDipendenze"
+                      Grid.Column="0"
+                      Height="14"
+                      telerik:RadToolTipService.IsEnabled="{Binding HaDipendenze}"
+                      telerik:RadToolTipService.Placement="RelativePoint"
+                      telerik:RadToolTipService.PlacementRectangle="20 0 0 0"
+                      telerik:RadToolTipService.ShowDuration="20000"
+                      telerik:RadToolTipService.ToolTipContent="{Binding}"
+                      telerik:RadToolTipService.ToolTipContentTemplate="{DynamicResource dependenciesTooltipTemplate}"
+                      telerik:RadToolTipService.ToolTipOpening="patDipendenze_ToolTipOpening"
+                      Data="{DynamicResource ComponentPath}"
+                      Fill="{Binding HaDipendenze, Converter={StaticResource booleanColorConverter}}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Width="250" FontSize="12" Text="{Binding Descrizione}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="10"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding ComponenteArticoloID}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="9"
+                                   Text="{Binding Note}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <StackPanel Margin="10,0,0,0" Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="Revisione" />
+                        <TextBox Width="250"
+                                 FontSize="12"
+                                 IsEnabled="{Binding HaComposizione, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Text="{Binding ComponenteRevisioneID}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" HorizontalAlignment="Right" Orientation="Vertical">
+                    <TextBlock FontSize="12" Text="Quantita'" />
+                    <telerik:RadNumericUpDown Grid.Column="2"
+                                              Width="150"
+                                              Minimum="0.000001"
+                                              NumberDecimalDigits="6"
+                                              Value="{Binding Quantita, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentRootTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="250" />
+                </Grid.ColumnDefinitions>
+                <Path Name="patDipendenze"
+                      Grid.Column="0"
+                      Height="14"
+                      telerik:RadToolTipService.IsEnabled="{Binding HaDipendenze}"
+                      telerik:RadToolTipService.Placement="RelativePoint"
+                      telerik:RadToolTipService.PlacementRectangle="20 0 0 0"
+                      telerik:RadToolTipService.ShowDuration="20000"
+                      telerik:RadToolTipService.ToolTipContent="{Binding}"
+                      telerik:RadToolTipService.ToolTipContentTemplate="{DynamicResource dependenciesTooltipTemplate}"
+                      telerik:RadToolTipService.ToolTipOpening="patDipendenze_ToolTipOpening"
+                      Data="{DynamicResource ComponentPath}"
+                      Fill="{Binding HaDipendenze, Converter={StaticResource booleanColorConverter}}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Width="250" FontSize="12" Text="{Binding Descrizione}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="10"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding ArticoloID}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2"
+                            Margin="44,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <StackPanel Margin="10,0,0,0" Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="Revisione" />
+                        <TextBox Width="250"
+                                 FontSize="12"
+                                 IsEnabled="{Binding HaComposizione, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Text="{Binding RevisioneID}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+
+        <HierarchicalDataTemplate x:Key="ComponentHeadCostTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="10"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding ComponenteArticoloID}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="Revisione" />
+                        <TextBlock FontSize="10" FontWeight="SemiBold" Text="{Binding ComponenteRevisioneID}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentWardCostTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="10"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding RepartoID}" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Vertical">
+                    <DockPanel>
+                        <TextBlock Width="80"
+                                   FontWeight="Bold"
+                                   Text="Piazzamento:"
+                                   TextAlignment="Right" />
+                        <TextBlock Width="100"
+                                   Margin="10,0,0,0"
+                                   Text="{Binding Piazzamento, Converter={StaticResource longToTimeSpanConverter}}"
+                                   TextAlignment="Right" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Width="80"
+                                   FontWeight="Bold"
+                                   Text="Tempo:"
+                                   TextAlignment="Right" />
+                        <TextBlock Width="100"
+                                   Margin="10,0,0,0"
+                                   Text="{Binding Tempo, Converter={StaticResource longToTimeSpanConverter}}"
+                                   TextAlignment="Right" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Width="80"
+                                   FontWeight="Bold"
+                                   Text="Risorsa:"
+                                   TextAlignment="Right" />
+                        <TextBlock Width="100"
+                                   Margin="10,0,0,0"
+                                   Text="{Binding RisorsaDescrizione}"
+                                   TextAlignment="Right" />
+                    </DockPanel>
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentCostTemplate" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="10"
+                                   FontWeight="SemiBold"
+                                   Text="{Binding ComponenteArticoloID}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="0,0,5,0"
+                            HorizontalAlignment="Right"
+                            Orientation="Vertical">
+                    <TextBlock Width="100"
+                               FontSize="12"
+                               Text="Quantita'"
+                               TextAlignment="Right" />
+                    <TextBlock Width="100" Text="{Binding Quantita, StringFormat=N6}" TextAlignment="Right" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Vertical">
+                    <TextBlock Width="100"
+                               FontSize="12"
+                               Text="Ultimo costo"
+                               TextAlignment="Right" />
+                    <TextBlock Width="100"
+                               Foreground="{Binding LastCostColor}"
+                               Text="{Binding LastCost, StringFormat=N6}"
+                               TextAlignment="Right" />
+                </StackPanel>
+                <StackPanel Grid.Column="3" HorizontalAlignment="Right" Orientation="Vertical">
+                    <TextBlock Width="100"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Foreground="Goldenrod"
+                               Text="Ultimo valore"
+                               TextAlignment="Right" />
+                    <TextBlock Width="100"
+                               FontWeight="Bold"
+                               Foreground="Goldenrod"
+                               Text="{Binding LastValue, StringFormat=N6}"
+                               TextAlignment="Right" />
+                </StackPanel>
+                <StackPanel Grid.Column="4" HorizontalAlignment="Right" Orientation="Vertical">
+                    <TextBlock Width="65"
+                               FontSize="12"
+                               Style="{DynamicResource VulpesXInfoData}"
+                               Text="% ult. costo"
+                               TextAlignment="Right" />
+                    <TextBlock Width="65"
+                               FontSize="12"
+                               Style="{DynamicResource VulpesXInfoData}"
+                               Text="{Binding LastCostPercentage, StringFormat={}{0:N2}%}"
+                               TextAlignment="Right" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="5" HorizontalAlignment="Right" Orientation="Vertical">
+                    <TextBlock Width="100"
+                               FontSize="12"
+                               Text="Costo medio"
+                               TextAlignment="Right" />
+                    <TextBlock Width="100" Text="{Binding AverageCost, StringFormat=N6}" TextAlignment="Right" />
+                </StackPanel>
+                <StackPanel Grid.Column="6" HorizontalAlignment="Right" Orientation="Vertical">
+                    <TextBlock Width="100"
+                               FontSize="12"
+                               Text="Valore medio"
+                               TextAlignment="Right" />
+                    <TextBlock Width="100" Text="{Binding AverageValue, StringFormat=N6}" TextAlignment="Right" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="7" HorizontalAlignment="Right" Orientation="Vertical">
+                    <TextBlock Width="95"
+                               FontSize="12"
+                               Style="{DynamicResource VulpesXInfoData}"
+                               Text="% costo medio"
+                               TextAlignment="Right" />
+                    <TextBlock Width="95"
+                               FontSize="12"
+                               Style="{DynamicResource VulpesXInfoData}"
+                               Text="{Binding AverageCostPercentage, StringFormat={}{0:N2}%}"
+                               TextAlignment="Right" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+
+        <HierarchicalDataTemplate x:Key="SummaryTemplateRead" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource SummaryPath}"
+                      Fill="{DynamicResource GXSecondBrush}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="MilestoneTemplateRead" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource MilestonePath}"
+                      Fill="{DynamicResource GXSecondBrush}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="StageTemplateRead" ItemsSource="{Binding Componenti}">
+            <Border BorderBrush="{DynamicResource GXOrangeBrush}" BorderThickness="0,0,0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="14" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Path Grid.Column="0"
+                          Height="14"
+                          Data="{DynamicResource StagePath}"
+                          Fill="{DynamicResource GXSecondBrush}"
+                          Stretch="Uniform" />
+
+                    <StackPanel Grid.Column="1"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                        <DockPanel>
+                            <TextBlock FontSize="10" FontWeight="Bold" Text="{Binding RepartoID}" />
+                            <Path Height="10"
+                                  Margin="5,0,0,0"
+                                  HorizontalAlignment="Right"
+                                  Data="{Binding ETempoAlPezzo, Converter={StaticResource booleanIconConverter}}"
+                                  Fill="{DynamicResource GXSecondBrush}"
+                                  Stretch="Uniform" />
+                        </DockPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Vertical">
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Piazzamento:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="100"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding Piazzamento, Converter={StaticResource longToTimeSpanConverter}}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Tempo:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="100"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding Tempo, Converter={StaticResource longToTimeSpanConverter}}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Risorsa:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="100"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding RisorsaDescrizione}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentTemplateRead" ItemsSource="{Binding Componenti}">
+            <Border BorderBrush="{DynamicResource GXBlueBrush}" BorderThickness="0,0,0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="14" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Path Grid.Column="0"
+                          Height="14"
+                          Data="{DynamicResource ComponentPath}"
+                          Fill="{DynamicResource GXSecondBrush}"
+                          Stretch="Uniform" />
+
+                    <StackPanel Grid.Column="1"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                Orientation="Vertical">
+                        <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                        <TextBlock FontSize="10" FontWeight="SemiBold" Text="{Binding ComponenteID}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Vertical">
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Quantita:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="70"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding Quantita}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Width="80"
+                                       FontWeight="Bold"
+                                       Text="Unita:"
+                                       TextAlignment="Right" />
+                            <TextBlock Width="70"
+                                       Margin="10,0,0,0"
+                                       Text="{Binding UnitaDescrizione}"
+                                       TextAlignment="Right" />
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ComponentRootTemplateRead" ItemsSource="{Binding Componenti}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Path Grid.Column="0"
+                      Height="14"
+                      Data="{DynamicResource ComponentPath}"
+                      Fill="{DynamicResource GXSecondBrush}"
+                      Stretch="Uniform" />
+
+                <StackPanel Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Vertical">
+                    <TextBlock FontSize="12" Text="{Binding Descrizione}" />
+                    <TextBlock FontSize="10" FontWeight="SemiBold" Text="{Binding ComponenteID}" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <selectors:ArticleCompositionTemplateSelector x:Key="compositionTemplateSelector"
+                                                      ComponentRootTemplate="{StaticResource ComponentRootTemplate}"
+                                                      ComponentTemplate="{StaticResource ComponentTemplate}"
+                                                      MilestoneTemplate="{StaticResource MilestoneTemplate}"
+                                                      StageTemplate="{StaticResource StageTemplate}"
+                                                      SummaryTemplate="{StaticResource SummaryTemplate}" />
+        <selectors:ArticleCompositionTemplateSelector x:Key="compositionTemplateSelectorRead"
+                                                      ComponentRootTemplate="{StaticResource ComponentRootTemplateRead}"
+                                                      ComponentTemplate="{StaticResource ComponentTemplateRead}"
+                                                      MilestoneTemplate="{StaticResource MilestoneTemplateRead}"
+                                                      StageTemplate="{StaticResource StageTemplateRead}"
+                                                      SummaryTemplate="{StaticResource SummaryTemplateRead}" />
+        <selectors:ArticleCompositionCostTemplateSelector x:Key="compositionCostTemplateSelector"
+                                                          ComponentCostTemplate="{StaticResource ComponentCostTemplate}"
+                                                          ComponentHeadCostTemplate="{StaticResource ComponentHeadCostTemplate}"
+                                                          ComponentWardCostTemplate="{StaticResource ComponentWardCostTemplate}" />
+    </sc:FluentDefaultWindow.Resources>
+
+    <telerik:RadDocking x:Name="Docking" BorderThickness="0">
+        <telerik:RadDocking.DocumentHost>
+            <telerik:RadSplitContainer>
+                <telerik:RadPaneGroup x:Name="DocumentGroup">
+                    <telerik:RadPane x:Name="LayoutXml"
+                                     telerik:RadDocking.FloatingSize="450, 400"
+                                     telerik:RadDocking.SerializationTag="LayoutXml"
+                                     CanUserClose="False"
+                                     Header="Composizione">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="5*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0"
+                                        Margin="10,10,1,10"
+                                        BorderBrush="{DynamicResource VulpesXBrush}"
+                                        BorderThickness="0,0,0,1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="18" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0" Background="{DynamicResource VulpesXBrush}">
+                                            <TextBlock Margin="5,0,0,0"
+                                                       FontSize="12"
+                                                       Foreground="{DynamicResource VulpesXFirstBrush}"
+                                                       Text="Ricerca" />
+                                        </Grid>
+                                        <telerik:RadWatermarkTextBox Name="rwtSearch"
+                                                                     Grid.Row="1"
+                                                                     Height="30"
+                                                                     Margin="0,5,0,0"
+                                                                     HorizontalAlignment="Stretch"
+                                                                     VerticalAlignment="Top"
+                                                                     Background="Transparent"
+                                                                     BorderBrush="{DynamicResource VulpesXBrush}"
+                                                                     CaretBrush="White"
+                                                                     TextChanged="rwtSearch_TextChanged"
+                                                                     WatermarkContent="Ricerca" />
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Column="1"
+                                        Margin="10,10,1,10"
+                                        BorderBrush="{DynamicResource VulpesXBrush}"
+                                        BorderThickness="0,0,0,1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="18" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0" Background="{DynamicResource VulpesXBrush}">
+                                            <TextBlock Margin="5,0,0,0"
+                                                       FontSize="12"
+                                                       Foreground="{DynamicResource VulpesXFirstBrush}"
+                                                       Text="Composizione" />
+                                        </Grid>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                            <Border x:Name="grdTrash"
+                                                    Width="40"
+                                                    Height="30"
+                                                    Margin="0,0,5,0"
+                                                    AllowDrop="True"
+                                                    Background="{DynamicResource VulpesXFirstBrush}"
+                                                    BorderBrush="{DynamicResource VulpesXSecondBrush}"
+                                                    BorderThickness="1"
+                                                    DragLeave="grdTrash_DragLeave"
+                                                    DragOver="grdTrash_DragOver"
+                                                    Drop="grdTrash_Drop"
+                                                    IsEnabled="True">
+                                                <Path Height="20"
+                                                      Data="{DynamicResource TrashPath}"
+                                                      Fill="{DynamicResource VulpesXSecondBrush}"
+                                                      Stretch="Uniform" />
+                                            </Border>
+                                            <Border x:Name="brdSummary"
+                                                    Width="70"
+                                                    Height="30"
+                                                    Margin="0,0,5,0"
+                                                    dragdrop:ArticleBorderDragDropBehavior.IsEnabled="True"
+                                                    telerik:DragDropManager.AllowDrag="True"
+                                                    Background="{DynamicResource VulpesXFirstBrush}"
+                                                    BorderBrush="{DynamicResource VulpesXSecondBrush}"
+                                                    BorderThickness="1"
+                                                    IsEnabled="True"
+                                                    Tag="Summary">
+                                                <Border.Resources>
+                                                    <DataTemplate x:Key="BorderDragTemplate">
+                                                        <StackPanel Margin="5">
+                                                            <StackPanel Orientation="Vertical">
+                                                                <TextBlock Text="Aggiungi" />
+                                                                <Path Width="40"
+                                                                      Height="40"
+                                                                      Margin="0,5,0,0"
+                                                                      HorizontalAlignment="Center"
+                                                                      Data="{DynamicResource SummaryPath}"
+                                                                      Fill="{DynamicResource GXSecondBrush}"
+                                                                      Stretch="Uniform" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </Border.Resources>
+                                                <TextBlock VerticalAlignment="Center"
+                                                           FontSize="9"
+                                                           FontWeight="Bold"
+                                                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                                                           Text="SUMMARY"
+                                                           TextAlignment="Center" />
+                                            </Border>
+                                            <Border x:Name="brdMilestone"
+                                                    Width="70"
+                                                    Height="30"
+                                                    Margin="0,0,5,0"
+                                                    dragdrop:ArticleBorderDragDropBehavior.IsEnabled="True"
+                                                    telerik:DragDropManager.AllowDrag="True"
+                                                    Background="{DynamicResource VulpesXFirstBrush}"
+                                                    BorderBrush="{DynamicResource VulpesXSecondBrush}"
+                                                    BorderThickness="1"
+                                                    IsEnabled="TRue"
+                                                    Tag="Milestone">
+                                                <Border.Resources>
+                                                    <DataTemplate x:Key="BorderDragTemplate">
+                                                        <StackPanel Margin="5">
+                                                            <StackPanel Orientation="Vertical">
+                                                                <TextBlock Text="Aggiungi" />
+                                                                <Path Width="40"
+                                                                      Height="40"
+                                                                      Margin="0,5,0,0"
+                                                                      HorizontalAlignment="Center"
+                                                                      Data="{DynamicResource MilestonePath}"
+                                                                      Fill="{DynamicResource VulpesXSecondBrush}"
+                                                                      Stretch="Uniform" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </Border.Resources>
+                                                <TextBlock VerticalAlignment="Center"
+                                                           FontSize="9"
+                                                           FontWeight="Bold"
+                                                           Foreground="{DynamicResource VulpesXSecondBrush}"
+                                                           Text="MILESTONE"
+                                                           TextAlignment="Center" />
+                                            </Border>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Column="2"
+                                        Margin="10,10,1,10"
+                                        BorderBrush="{DynamicResource VulpesXBrush}"
+                                        BorderThickness="0,0,0,1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="18" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0" Background="{DynamicResource VulpesXBrush}">
+                                            <TextBlock Margin="5,0,0,0"
+                                                       FontSize="12"
+                                                       Foreground="{DynamicResource VulpesXFirstBrush}"
+                                                       Text="Dati" />
+                                        </Grid>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                            <telerik:RadButton Name="btnSave"
+                                                               Margin="0,0,5,0"
+                                                               Click="btnSave_Click"
+                                                               Style="{StaticResource VulpesXGridButton}"
+                                                               ToolTip="Salva">
+                                                <telerik:RadButton.Content>
+                                                    <Path Data="{DynamicResource SavePath}" Fill="{DynamicResource VulpesXGreenBrush}" Stretch="Uniform" />
+                                                </telerik:RadButton.Content>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton Name="btnRefresh"
+                                                               Margin="0,0,5,0"
+                                                               Click="btnRefresh_Click"
+                                                               Style="{StaticResource VulpesXGridButton}"
+                                                               ToolTip="Ricarica">
+                                                <telerik:RadButton.Content>
+                                                    <Path Data="{DynamicResource RefreshPath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Uniform" />
+                                                </telerik:RadButton.Content>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton x:Name="btnExpandAll"
+                                                               Margin="0,0,5,0"
+                                                               Click="btnExpandAll_Click"
+                                                               Style="{StaticResource VulpesXGridButton}"
+                                                               ToolTip="Espandi Tutti">
+                                                <telerik:RadButton.Content>
+                                                    <Path Data="{DynamicResource ExpandPath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Uniform" />
+                                                </telerik:RadButton.Content>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton x:Name="btnCollapseAll"
+                                                               Margin="0,0,5,0"
+                                                               Click="btnCollapseAll_Click"
+                                                               Style="{StaticResource VulpesXGridButton}"
+                                                               ToolTip="Collassa Tutti">
+                                                <telerik:RadButton.Content>
+                                                    <Path Data="{DynamicResource CollapsePath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Uniform" />
+                                                </telerik:RadButton.Content>
+                                            </telerik:RadButton>
+
+                                            <telerik:RadButton x:Name="btnImportExcel"
+                                                               Margin="0,0,5,0"
+                                                               Style="{StaticResource VulpesXGridButton}"
+                                                               ToolTip="ImportaExcel">
+                                                <telerik:RadButton.Content>
+                                                    <Path Data="{DynamicResource ImportExcelPath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Uniform" />
+                                                </telerik:RadButton.Content>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton x:Name="btnExportExcel"
+                                                               Margin="0,0,5,0"
+                                                               Click="btnExportExcel_Click"
+                                                               Style="{StaticResource VulpesXGridButton}"
+                                                               ToolTip="EsportaExcel">
+                                                <telerik:RadButton.Content>
+                                                    <Path Data="{DynamicResource ExportExcelPath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Uniform" />
+                                                </telerik:RadButton.Content>
+                                            </telerik:RadButton>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <telerik:RadTreeView x:Name="rtvDistinct"
+                                                     dragdrop:ArticleTreeViewDragDropBehavior.IsEnabled="True"
+                                                     AllowDrop="True"
+                                                     ItemTemplateSelector="{StaticResource compositionTemplateSelector}"
+                                                     SelectedItem="{Binding SelectedDistinta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     SelectionMode="Extended"
+                                                     Tag="{Binding User}">
+                                    <telerik:RadTreeView.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource RadTreeViewItemStyle}" TargetType="{x:Type telerik:RadTreeViewItem}">
+                                            <Setter Property="IsExpanded" Value="{Binding EEspanso, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Setter Property="telerik:DragDropManager.AllowCapturedDrag" Value="{Binding Path=EComponente}" />
+                                            <Setter Property="telerik:TouchManager.DragStartTrigger" Value="TapHoldAndMove" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        </Style>
+                                    </telerik:RadTreeView.ItemContainerStyle>
+                                    <telerik:RadTreeView.Resources>
+                                        <converters:ArticleDropIndicationConverter x:Key="dropIndicationDetailsConverter" />
+                                        <DataTemplate x:Key="ProductDragTemplate">
+                                            <StackPanel Margin="5">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Sposta" />
+                                                    <TextBlock Margin="2,0,0,0" FontWeight="Bold" Text="{Binding CurrentDraggedItem.Descrizione}" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock FontWeight="Bold" Text="{Binding CurrentDropPosition, Converter={StaticResource dropIndicationDetailsConverter}}" />
+                                                    <TextBlock Foreground="Gray" Text=", (" />
+                                                    <TextBlock Text="{Binding CurrentDraggedOverItem.Descrizione}" />
+                                                    <TextBlock Foreground="Gray" Text=")" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </telerik:RadTreeView.Resources>
+                                </telerik:RadTreeView>
+                                <telerik:RadBusyIndicator Name="bsyDistinct" BusyContent="Caricamento" />
+                            </Grid>
+                        </Grid>
+                    </telerik:RadPane>
+                    <telerik:RadPane x:Name="LayoutXmlMonetization"
+                                     telerik:RadDocking.FloatingSize="450, 400"
+                                     telerik:RadDocking.SerializationTag="LayoutXmlMonetization"
+                                     CanUserClose="False"
+                                     Header="Valorizzazione">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0"
+                                        Margin="10,10,1,10"
+                                        Padding="0"
+                                        BorderBrush="{DynamicResource VulpesXBrush}"
+                                        BorderThickness="0,0,0,1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="18" />
+                                            <RowDefinition Height="60" />
+                                            <RowDefinition Height="55" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0" Background="{DynamicResource VulpesXBrush}">
+                                            <TextBlock Margin="5,0,0,0"
+                                                       FontSize="12"
+                                                       FontWeight="Bold"
+                                                       Foreground="{DynamicResource VulpesXFirstBrush}"
+                                                       Text="Riepilogo costi distinta base" />
+                                        </Grid>
+
+                                        <Grid Grid.Row="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="1.6*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="1.6*" />
+                                                <ColumnDefinition Width=".3*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Row="0"
+                                                       Grid.Column="0"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXLabel}"
+                                                       Text="Costo ultimo dell'articolo" />
+                                            <TextBlock Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXInfoData}"
+                                                       Text="{Binding LastProductCost, StringFormat={}{0:N6} €}" />
+                                            <TextBlock Grid.Row="1"
+                                                       Grid.Column="0"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXLabel}"
+                                                       Text="Costo medio dell'articolo" />
+                                            <TextBlock Grid.Row="1"
+                                                       Grid.Column="1"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXInfoData}"
+                                                       Text="{Binding AverageProductCost, StringFormat={}{0:N6} €}" />
+                                            <TextBlock Grid.Row="0"
+                                                       Grid.Column="2"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXLabel}"
+                                                       Text="Costo ultimo per unità" />
+                                            <TextBlock Grid.Row="0"
+                                                       Grid.Column="3"
+                                                       Margin="0,0,5,0"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXInfoData}"
+                                                       Text="{Binding LastUnitCost, StringFormat={}{0:N6} € /}" />
+                                            <TextBlock Grid.Row="0"
+                                                       Grid.Column="4"
+                                                       Margin="0"
+                                                       HorizontalAlignment="Left"
+                                                       Style="{DynamicResource VulpesXInfoData}"
+                                                       Text="{Binding Data.UnitaID}" />
+                                            <TextBlock Grid.Row="1"
+                                                       Grid.Column="2"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXLabel}"
+                                                       Text="Costo medio per unità" />
+                                            <TextBlock Grid.Row="1"
+                                                       Grid.Column="3"
+                                                       Margin="0,0,5,0"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXInfoData}"
+                                                       Text="{Binding AverageUnitCost, StringFormat={}{0:N6} € /}" />
+                                            <TextBlock Grid.Row="1"
+                                                       Grid.Column="4"
+                                                       Margin="0"
+                                                       HorizontalAlignment="Left"
+                                                       Style="{DynamicResource VulpesXInfoData}"
+                                                       Text="{Binding Data.UnitaID}" />
+                                            <TextBlock Grid.Row="0"
+                                                       Grid.Column="5"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXLabel}"
+                                                       Text="Costo ultimo al" />
+                                            <telerik:RadDateTimePicker x:Name="rdtLimitLastDate"
+                                                                       Grid.Row="0"
+                                                                       Grid.Column="6"
+                                                                       HorizontalAlignment="Stretch"
+                                                                       VerticalAlignment="Center"
+                                                                       DateSelectionMode="Month"
+                                                                       DateTimeWatermarkContent="Periodo"
+                                                                       DisplayFormat="Short"
+                                                                       InputMode="DatePicker"
+                                                                       ParseExact="True"
+                                                                       SelectionChanged="rdtLimitLastDate_SelectionChanged" />
+                                            <TextBlock Grid.Row="1"
+                                                       Grid.Column="5"
+                                                       HorizontalAlignment="Right"
+                                                       Style="{DynamicResource VulpesXLabel}"
+                                                       Text="Costo medio dal" />
+                                            <telerik:RadDateTimePicker x:Name="rdtLimitDate"
+                                                                       Grid.Row="1"
+                                                                       Grid.Column="6"
+                                                                       HorizontalAlignment="Stretch"
+                                                                       VerticalAlignment="Center"
+                                                                       DateSelectionMode="Month"
+                                                                       DateTimeWatermarkContent="Scegliere la data limite"
+                                                                       DisplayFormat="Short"
+                                                                       InputMode="DatePicker"
+                                                                       ParseExact="True"
+                                                                       SelectionChanged="rdtLimitDate_SelectionChanged" />
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <telerik:RadBusyIndicator x:Name="bsyMonetization"
+                                                      Grid.Row="1"
+                                                      BusyContent="Caricamento dati in corso..."
+                                                      FontSize="40"
+                                                      Foreground="{DynamicResource VulpesXBrush}"
+                                                      IsBusy="False"
+                                                      OverlayStyle="{StaticResource WaitOverlayStyle}">
+                                <telerik:RadTreeView x:Name="rtvMonetization"
+                                                     AllowDrop="True"
+                                                     ItemTemplateSelector="{StaticResource compositionCostTemplateSelector}"
+                                                     PreviewSelectionChanged="rtvMonetization_PreviewSelectionChanged"
+                                                     SelectionMode="Single">
+                                    <telerik:RadTreeView.ItemContainerStyle>
+                                        <Style BasedOn="{StaticResource RadTreeViewItemStyle}" TargetType="{x:Type telerik:RadTreeViewItem}">
+                                            <Setter Property="IsExpanded" Value="{Binding EEspanso, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Setter Property="telerik:DragDropManager.AllowCapturedDrag" Value="{Binding Path=EComponente}" />
+                                            <Setter Property="telerik:TouchManager.DragStartTrigger" Value="TapHoldAndMove" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        </Style>
+                                    </telerik:RadTreeView.ItemContainerStyle>
+                                </telerik:RadTreeView>
+                            </telerik:RadBusyIndicator>
+                        </Grid>
+                    </telerik:RadPane>
+                </telerik:RadPaneGroup>
+            </telerik:RadSplitContainer>
+        </telerik:RadDocking.DocumentHost>
+
+        <telerik:RadSplitContainer Width="300" InitialPosition="DockedLeft">
+            <telerik:RadPaneGroup>
+                <telerik:RadPane telerik:RadDocking.SerializationTag="PaneRevisioni"
+                                 CanUserClose="False"
+                                 Header="Revisioni"
+                                 IsPinned="True">
+                    <Grid>
+                        <telerik:RadGridView x:Name="rgvRevisions"
+                                             AutoGenerateColumns="False"
+                                             FontSize="11"
+                                             IsReadOnly="True"
+                                             ItemsSource="{Binding Revisioni}"
+                                             RowIndicatorVisibility="Collapsed"
+                                             SelectionChanged="rgvRevisions_SelectionChanged"
+                                             SelectionMode="Single"
+                                             ShowGroupPanel="False"
+                                             ShowSearchPanel="True"
+                                             Tag="{Binding User}">
+                            <telerik:RadGridView.Resources>
+                                <converters:BoolToColorConverter x:Key="booleanColorConverter" FalseColor="{StaticResource VulpesXSecondBrush}" TrueColor="{StaticResource VulpesXGreenBrush}" />
+                                <converters:ArticleDropIndicationConverter x:Key="dropIndicationDetailsConverter" />
+                                <DataTemplate x:Key="DraggedItemTemplate">
+                                    <StackPanel Margin="5">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Sposta" />
+                                            <TextBlock Margin="2,0,0,0" FontWeight="Bold" Text="{Binding CurrentDraggedItem.Descrizione}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding CurrentDropPosition, Converter={StaticResource dropIndicationDetailsConverter}}" />
+                                            <TextBlock Foreground="Gray" Text=", (" />
+                                            <TextBlock FontWeight="Bold" Text="{Binding CurrentDraggedOverItem.Descrizione}" />
+                                            <TextBlock Foreground="Gray" Text=")" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerik:RadGridView.Resources>
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Path Name="patComposizione"
+                                                  Width="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  Height="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  telerik:RadToolTipService.IsEnabled="{Binding HaComposizione}"
+                                                  telerik:RadToolTipService.Placement="RelativePoint"
+                                                  telerik:RadToolTipService.PlacementRectangle="-39 0 0 0"
+                                                  telerik:RadToolTipService.ShowDuration="20000"
+                                                  telerik:RadToolTipService.ToolTipContent="{Binding}"
+                                                  telerik:RadToolTipService.ToolTipContentTemplate="{StaticResource compositionTooltipTemplateRead}"
+                                                  telerik:RadToolTipService.ToolTipOpening="patComposizione_ToolTipOpening"
+                                                  Data="{DynamicResource CompositionPath}"
+                                                  Fill="{Binding HaComposizione, Converter={StaticResource booleanColorConverter}}"
+                                                  Stretch="Fill" />
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Path Name="patDipendenze"
+                                                  Width="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  Height="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  telerik:RadToolTipService.IsEnabled="{Binding HaDipendenze}"
+                                                  telerik:RadToolTipService.Placement="RelativePoint"
+                                                  telerik:RadToolTipService.PlacementRectangle="-39 0 0 0"
+                                                  telerik:RadToolTipService.ShowDuration="20000"
+                                                  telerik:RadToolTipService.ToolTipContent="{Binding}"
+                                                  telerik:RadToolTipService.ToolTipContentTemplate="{StaticResource dependenciesTooltipTemplate}"
+                                                  telerik:RadToolTipService.ToolTipOpening="patDipendenze_ToolTipOpening"
+                                                  Data="{DynamicResource DependenciesPath}"
+                                                  Fill="{Binding HaDipendenze, Converter={StaticResource booleanColorConverter}}"
+                                                  Stretch="Fill" />
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding RevisioneID}" Header="Nome revisione" IsReadOnly="True">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:CountFunction />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+                            </telerik:RadGridView.Columns>
+                            <telerik:RadContextMenu.ContextMenu>
+                                <telerik:RadContextMenu Background="{DynamicResource VulpesXFirstBrush}">
+                                    <telerik:RadMenuItem x:Name="btnDuplicateRevision"
+                                                         Click="btnDuplicateRevision_Click"
+                                                         Foreground="{DynamicResource VulpesXSecondBrush}"
+                                                         Header="Duplica"
+                                                         Typography.Capitals="AllSmallCaps">
+                                        <telerik:RadMenuItem.Icon>
+                                            <Path Width="16"
+                                                  Height="16"
+                                                  Data="{DynamicResource CopyPath}"
+                                                  Fill="{DynamicResource VulpesXSecondBrush}"
+                                                  Stretch="Uniform" />
+                                        </telerik:RadMenuItem.Icon>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem x:Name="btnDeleteRevision"
+                                                         Click="btnDeleteRevision_Click"
+                                                         Foreground="{DynamicResource VulpesXSecondBrush}"
+                                                         Header="Elimina"
+                                                         Typography.Capitals="AllSmallCaps">
+                                        <telerik:RadMenuItem.Icon>
+                                            <Path Width="16"
+                                                  Height="16"
+                                                  Data="{DynamicResource DeletePath}"
+                                                  Fill="{DynamicResource VulpesXSecondBrush}"
+                                                  Stretch="Uniform" />
+                                        </telerik:RadMenuItem.Icon>
+                                    </telerik:RadMenuItem>
+                                </telerik:RadContextMenu>
+                            </telerik:RadContextMenu.ContextMenu>
+
+                        </telerik:RadGridView>
+                        <telerik:RadBusyIndicator Grid.Row="1" BusyContent="Caricamento" IsBusy="{Binding IsBusyComponenti}" />
+                    </Grid>
+                </telerik:RadPane>
+            </telerik:RadPaneGroup>
+        </telerik:RadSplitContainer>
+
+        <telerik:RadSplitContainer Width="400" InitialPosition="DockedRight">
+            <telerik:RadPaneGroup>
+                <telerik:RadPane telerik:RadDocking.SerializationTag="PaneArticoli"
+                                 CanUserClose="False"
+                                 Header="Articoli"
+                                 IsPinned="False">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Button Name="cmdInsertArticle"
+                                Grid.Row="0"
+                                Width="200"
+                                Margin="2"
+                                HorizontalAlignment="Left"
+                                BorderBrush="LightSkyBlue"
+                                BorderThickness="5,0,0,0"
+                                Click="cmdInsertArticle_Click"
+                                Content="INSERISCI"
+                                FontSize="10" />
+
+                        <telerik:RadGridView x:Name="rgvArticles"
+                                             Grid.Row="1"
+                                             dragdrop:ArticleGridViewDragDropBehavior.IsEnabled="True"
+                                             telerik:DragDropManager.AllowDrag="True"
+                                             AutoGenerateColumns="False"
+                                             FontSize="11"
+                                             IsReadOnly="True"
+                                             ItemsSource="{Binding Componenti}"
+                                             RowIndicatorVisibility="Collapsed"
+                                             SelectionMode="Extended"
+                                             ShowGroupPanel="False"
+                                             ShowSearchPanel="True"
+                                             Tag="{Binding User}"
+                                             UseLayoutRounding="False">
+                            <telerik:RadGridView.Resources>
+                                <converters:BoolToColorConverter x:Key="booleanColorConverter" FalseColor="{StaticResource VulpesXSecondBrush}" TrueColor="{StaticResource VulpesXGreenBrush}" />
+                                <converters:ArticleDropIndicationConverter x:Key="dropIndicationDetailsConverter" />
+                                <DataTemplate x:Key="DraggedItemTemplate">
+                                    <StackPanel Margin="5">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Sposta" />
+                                            <TextBlock Margin="2,0,0,0" FontWeight="Bold" Text="{Binding CurrentDraggedItem.Descrizione}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding CurrentDropPosition, Converter={StaticResource dropIndicationDetailsConverter}}" />
+                                            <TextBlock Foreground="Gray" Text=", (" />
+                                            <TextBlock FontWeight="Bold" Text="{Binding CurrentDraggedOverItem.Descrizione}" />
+                                            <TextBlock Foreground="Gray" Text=")" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerik:RadGridView.Resources>
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Path Name="patComposizione"
+                                                  Width="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  Height="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  telerik:RadToolTipService.IsEnabled="{Binding HaComposizione}"
+                                                  telerik:RadToolTipService.Placement="RelativePoint"
+                                                  telerik:RadToolTipService.PlacementRectangle="-39 0 0 0"
+                                                  telerik:RadToolTipService.ShowDuration="20000"
+                                                  telerik:RadToolTipService.ToolTipContent="{Binding}"
+                                                  telerik:RadToolTipService.ToolTipContentTemplate="{StaticResource compositionTooltipTemplateRead}"
+                                                  telerik:RadToolTipService.ToolTipOpening="patComposizione_ToolTipOpening"
+                                                  Data="{DynamicResource CompositionPath}"
+                                                  Fill="{Binding HaComposizione, Converter={StaticResource booleanColorConverter}}"
+                                                  Stretch="Fill" />
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Path Name="patDipendenze"
+                                                  Width="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  Height="{Binding Path=FontSize, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                                  telerik:RadToolTipService.IsEnabled="{Binding HaDipendenze}"
+                                                  telerik:RadToolTipService.Placement="RelativePoint"
+                                                  telerik:RadToolTipService.PlacementRectangle="-39 0 0 0"
+                                                  telerik:RadToolTipService.ShowDuration="20000"
+                                                  telerik:RadToolTipService.ToolTipContent="{Binding}"
+                                                  telerik:RadToolTipService.ToolTipContentTemplate="{StaticResource dependenciesTooltipTemplate}"
+                                                  telerik:RadToolTipService.ToolTipOpening="patDipendenze_ToolTipOpening"
+                                                  Data="{DynamicResource DependenciesPath}"
+                                                  Fill="{Binding HaDipendenze, Converter={StaticResource booleanColorConverter}}"
+                                                  Stretch="Fill" />
+                                        </DataTemplate>
+                                    </telerik:GridViewDataColumn.CellTemplate>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ID}" IsReadOnly="True">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:CountFunction />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding RevisioneID}" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding Descrizione}" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding DescrizioneEstesa}" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding TipoDescrizione}" IsReadOnly="True" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding CategoriaDescrizione}" IsReadOnly="True" />
+                            </telerik:RadGridView.Columns>
+                            <telerik:RadRadialMenu.RadialContextMenu>
+                                <telerik:RadRadialMenu Name="rgvRadialMenuArticoli"
+                                                       HideEventName="LostFocus"
+                                                       InnerRadiusFactor="0.40"
+                                                       PopupPlacement="Relative"
+                                                       ShowToolTip="True"
+                                                       StartAngle="-40"
+                                                       StaysOpenOnShow="True">
+                                    <telerik:RadRadialMenuItem Name="btnEditArticolo" ContentSectorBackground="{DynamicResource VulpesXYellowBrush}" ToolTip="F2">
+                                        <telerik:RadRadialMenuItem.IconContent>
+                                            <Path Data="{DynamicResource EditPath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Fill" />
+                                        </telerik:RadRadialMenuItem.IconContent>
+                                    </telerik:RadRadialMenuItem>
+                                </telerik:RadRadialMenu>
+                            </telerik:RadRadialMenu.RadialContextMenu>
+                        </telerik:RadGridView>
+                        <telerik:RadBusyIndicator Grid.Row="1" BusyContent="Caricamento" IsBusy="{Binding IsBusyComponenti}" />
+                    </Grid>
+                </telerik:RadPane>
+                <telerik:RadPane telerik:RadDocking.SerializationTag="PaneReparti"
+                                 CanUserClose="False"
+                                 Header="Reparti"
+                                 IsPinned="False">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Button Name="cmdInsertWard"
+                                Grid.Row="0"
+                                Width="200"
+                                Margin="2"
+                                HorizontalAlignment="Left"
+                                BorderBrush="LightSkyBlue"
+                                BorderThickness="5,0,0,0"
+                                Click="cmdInsertWard_Click"
+                                Content="INSERISCI"
+                                FontSize="10" />
+
+                        <telerik:RadGridView x:Name="rgvStages"
+                                             Grid.Row="1"
+                                             dragdrop:ArticleGridViewDragDropBehavior.IsEnabled="True"
+                                             telerik:DragDropManager.AllowDrag="True"
+                                             AutoGenerateColumns="False"
+                                             IsReadOnly="True"
+                                             ItemsSource="{Binding Reparti}"
+                                             RowIndicatorVisibility="Collapsed"
+                                             SelectionMode="Extended"
+                                             ShowGroupPanel="False"
+                                             ShowSearchPanel="True"
+                                             UseLayoutRounding="False">
+                            <telerik:RadGridView.ControlPanelItems>
+                                <telerik:ControlPanelItem>
+                                    <telerik:ControlPanelItem.Content>
+                                        <telerik:RadButton IsEnabled="True" Style="{StaticResource VulpesXGridButton}" ToolTip="Aggiungi">
+                                            <telerik:RadButton.Content>
+                                                <Path Data="{DynamicResource AddPath}" Fill="{DynamicResource VulpesXGreenBrush}" Stretch="Uniform" />
+                                            </telerik:RadButton.Content>
+                                        </telerik:RadButton>
+                                    </telerik:ControlPanelItem.Content>
+                                </telerik:ControlPanelItem>
+
+                                <telerik:ControlPanelItem>
+                                    <telerik:ControlPanelItem.Content>
+                                        <telerik:RadButton Style="{StaticResource VulpesXGridButton}" ToolTip="Ricarica">
+                                            <telerik:RadButton.Content>
+                                                <Path Data="{DynamicResource RefreshPath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Uniform" />
+                                            </telerik:RadButton.Content>
+                                        </telerik:RadButton>
+                                    </telerik:ControlPanelItem.Content>
+                                </telerik:ControlPanelItem>
+                            </telerik:RadGridView.ControlPanelItems>
+                            <telerik:RadGridView.Resources>
+                                <converters:LongToTimeSpanConverter x:Key="longToTimeSpanConverter" />
+                                <converters:ArticleDropIndicationConverter x:Key="dropIndicationDetailsConverter" />
+                                <DataTemplate x:Key="DraggedItemTemplate">
+                                    <StackPanel Margin="5">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Sposta" />
+                                            <TextBlock Margin="2,0,0,0" FontWeight="Bold" Text="{Binding CurrentDraggedItem.Descrizione}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontWeight="Bold" Text="{Binding CurrentDropPosition, Converter={StaticResource dropIndicationDetailsConverter}}" />
+                                            <TextBlock Foreground="Gray" Text=", (" />
+                                            <TextBlock Text="{Binding CurrentDraggedOverItem.Descrizione}" />
+                                            <TextBlock Foreground="Gray" Text=")" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </telerik:RadGridView.Resources>
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding ID}">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:CountFunction />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding Descrizione}" />
+                                <telerik:GridViewDataColumn DataMemberBinding="{Binding TempoDefault, Converter={StaticResource longToTimeSpanConverter}}" IsReadOnly="True" />
+                            </telerik:RadGridView.Columns>
+                            <telerik:RadRadialMenu.RadialContextMenu>
+                                <telerik:RadRadialMenu Name="rgvRadialMenuReparti"
+                                                       HideEventName="LostFocus"
+                                                       InnerRadiusFactor="0.40"
+                                                       PopupPlacement="Relative"
+                                                       ShowToolTip="True"
+                                                       StartAngle="-40"
+                                                       StaysOpenOnShow="True">
+                                    <telerik:RadRadialMenuItem Name="btnEditReparto" ContentSectorBackground="{DynamicResource VulpesXYellowBrush}" ToolTip="F2">
+                                        <telerik:RadRadialMenuItem.IconContent>
+                                            <Path Data="{DynamicResource EditPath}" Fill="{DynamicResource VulpesXSecondBrush}" Stretch="Fill" />
+                                        </telerik:RadRadialMenuItem.IconContent>
+                                    </telerik:RadRadialMenuItem>
+                                </telerik:RadRadialMenu>
+                            </telerik:RadRadialMenu.RadialContextMenu>
+                        </telerik:RadGridView>
+                        <telerik:RadBusyIndicator Grid.Row="1" BusyContent="Caricamento" IsBusy="{Binding IsBusyReparti}" />
+                    </Grid>
+                </telerik:RadPane>
+                <telerik:RadPane telerik:RadDocking.SerializationTag="PaneNote"
+                                 CanUserClose="False"
+                                 Header="Note"
+                                 IsPinned="False">
+                    <Grid DataContext="{Binding SelectedDistinta}">
+                        <TextBox Height="300"
+                                 Margin="2"
+                                 VerticalAlignment="Top"
+                                 VerticalContentAlignment="Top"
+                                 AcceptsReturn="True"
+                                 AcceptsTab="True"
+                                 Text="{Binding Note, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 TextWrapping="Wrap" />
+                    </Grid>
+                </telerik:RadPane>
+            </telerik:RadPaneGroup>
+        </telerik:RadSplitContainer>
+
+    </telerik:RadDocking>
+</sc:FluentDefaultWindow>

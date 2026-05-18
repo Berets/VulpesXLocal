@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="VulpesX.Modules.Ufp.Production.JOB_TIMESView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VulpesX.Modules.Ufp.Production"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:TimespanTotalHoursConverter x:Key="timespanTotalHoursConverter" />
+    </UserControl.Resources>
+    <telerik:RadGridView x:Name="GridTimes"
+                         Grid.Column="0"
+                         Margin="5"
+                         AutoGenerateColumns="False"
+                         CanUserFreezeColumns="False"
+                         CanUserResizeColumns="False"
+                         ColumnAggregatesAlignment="NextToGroupKey"
+                         GroupRenderMode="Flat"
+                         IsReadOnly="True"
+                         ItemsSource="{Binding Times}"
+                         RowIndicatorVisibility="Collapsed"
+                         SelectionMode="Single"
+                         ShowColumnFooters="False"
+                         ShowGroupFooters="False"
+                         ShowGroupPanel="False">
+        <telerik:RadGridView.RowStyle>
+            <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsTotal}" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource VulpesXVioletBrush}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </telerik:RadGridView.RowStyle>
+        <telerik:RadGridView.Columns>
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding TipoDescrizione}" Header="Evento">
+                <telerik:GridViewDataColumn.CellStyle>
+                    <Style BasedOn="{StaticResource GridViewCellStyle}" TargetType="telerik:GridViewCell">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding EProcessata}" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource VulpesXRedBrush}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding EProcessata}" Value="False">
+                                <Setter Property="Background" Value="{DynamicResource VulpesXGreenBrush}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsTotal}" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource VulpesXVioletBrush}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </telerik:GridViewDataColumn.CellStyle>
+            </telerik:GridViewDataColumn>
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding RepartoFull}" Header="Reparto" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding FaseFull}" Header="Fase" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Data, StringFormat=dd/MM/yyyy HH:mm:ss}" Header="Data" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Durata, Converter={StaticResource timespanTotalHoursConverter}}" Header="Durata" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding RisorsaFull}" Header="Risorsa" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding OperatoreFull}" Header="Operatore" />
+
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaOrdine}" Header="Qtà fase" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaVersata}" Header="Qtà versata" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding QuantitaScartata}" Header="Qtà scartata" />
+
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding TotalePiazzamento, Converter={StaticResource timespanTotalHoursConverter}}" Header="Totale Piazzamento" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding TotaleProduzione, Converter={StaticResource timespanTotalHoursConverter}}" Header="Totale Produzione" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding TempoProduzionePezzo, Converter={StaticResource timespanTotalHoursConverter}}" Header="Tempo al pezzo" />
+        </telerik:RadGridView.Columns>
+    </telerik:RadGridView>
+</UserControl>

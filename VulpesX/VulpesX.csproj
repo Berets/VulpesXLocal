@@ -1,0 +1,202 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Vulpes.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\GX.png" />
+    <None Remove="Images\Vulpes.png" />
+    <None Remove="Templates\TEMPLATE_PN.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>9</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>00020813-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Vulpes.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.13" />
+    <PackageReference Include="MimeKit" Version="4.16.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.13" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.1.2" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.1.2" />
+    <PackageReference Include="Telerik.UI.for.Wpf.AllControls.NoXaml" Version="2025.4.1111" />
+    <PackageReference Include="TimePeriodLibrary.NET" Version="2.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VulpesX.Shared.Controls\VulpesX.Shared.Controls.csproj" />
+    <ProjectReference Include="..\VulpesX.ViewModels\VulpesX.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include=" System.Windows.Controls" />
+    <Using Include="System.Windows" />
+    <Using Include="System.Windows.Input" />
+    <Using Include="Telerik.Windows.Controls" />
+    <Using Include="Telerik.Windows.Controls.GridView" />
+    <Using Include="VulpesX.Models.Default" />
+    <Using Include="VulpesX.Shared.Generics" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Cerber.png" />
+    <Resource Include="Images\GX.png" />
+    <Resource Include="Images\Vulpes.png" />
+    <EmbeddedResource Include="Templates\TEMPLATE_PN.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Modules\Default\CRM\LISGENCopyProductWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\CRM\LISCLICopyCustomerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\VALUTEWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\VALUTEView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\MERCEOLOGICOView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\RIVENDITORIView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\MERCEOLOGICOWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\RIVENDITORIWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\FILIALIWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\FILIALIView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\CLAZIONEView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Default\Tables\Accounting\CLAZIONEWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\ACC_PLAFONDWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\Invoicing\ACC_EINVOICE_HEADSView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\IVA\IVACloseWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\PDCAnniDetailView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\PDCContiDetailView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\PDCGruppiDetailView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\PDCSottoDetailView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\PDCView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\PortafoglioDistWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Accounting\PortafoglioView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\General\ABEView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\General\ABEWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\General\NOTECLI1Window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\CAUCONTWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\INCASSOView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\INCASSOWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\MANDATOWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\MANDATOView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\AGENTIView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\AGENTIWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\AREEView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\AREEWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\BANAZIENView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\BANAZIENWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\LIBRIIVAView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\LIBRIIVAWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\TAB_ACC_TIPINCView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\TAB_ACC_TIPINCWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\TCODLIQIVAView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\TCODLIQIVAWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\VETTORIView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modules\Ufp\Tables\Accounting\VETTORIWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

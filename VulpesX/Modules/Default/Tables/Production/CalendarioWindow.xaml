@@ -1,0 +1,549 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.Tables.Production.CalendarioWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:helpers="clr-namespace:VulpesX.Shared.Controls.Helpers;assembly=VulpesX.Shared.Controls"
+                        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.Tables.Production"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="Genera calendario"
+                        Width="1024"
+                        Height="800"
+                        Background="{DynamicResource VulpesXFirstBrush}"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+
+    <sc:FluentDefaultWindow.Resources>
+        <converters:LongToTimeSpanConverter x:Key="longToTimeSpanConverter" />
+    </sc:FluentDefaultWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <telerik:RadBusyIndicator x:Name="bsyGrid"
+                                      Grid.Row="4"
+                                      BusyContent="Generando il calendario..."
+                                      FontSize="40"
+                                      Foreground="{DynamicResource VulpesXBrush}"
+                                      IsBusy="{Binding IsBusy}"
+                                      OverlayStyle="{StaticResource WaitOverlayStyle}">
+                <Grid Margin="0,15,15,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="7*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Dal" />
+                    <telerik:RadDatePicker Grid.Row="0"
+                                           Grid.Column="1"
+                                           Margin="5,0,15,0"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"
+                                           SelectedDate="{Binding Dal, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Al" />
+                    <telerik:RadDatePicker Grid.Row="1"
+                                           Grid.Column="1"
+                                           Margin="5,0,15,0"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"
+                                           SelectedDate="{Binding Al, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Style="{StaticResource VulpesXLabel}"
+                               Text="Risorse" />
+                    <telerik:RadComboBox Grid.Row="2"
+                                         Grid.Column="1"
+                                         Margin="5,0,15,0"
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Center"
+                                         AllowMultipleSelection="True"
+                                         EmptyText="Seleziona"
+                                         ItemsSource="{Binding Risorse}"
+                                         MultipleSelectionSeparator="{Binding ElementName=MultipleSelectionSeparator, Path=Text, Mode=TwoWay}"
+                                         TextSearch.TextPath="Descrizione">
+
+                        <i:Interaction.Behaviors>
+                            <helpers:ComboBoxSelectedItems SelectedItems="{Binding SelectedRisorse}" />
+                        </i:Interaction.Behaviors>
+                        <telerik:RadComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding Descrizione}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType=telerik:RadComboBoxItem}, Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </telerik:RadComboBox.ItemTemplate>
+                    </telerik:RadComboBox>
+
+                    <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="140" />
+                                <RowDefinition Height="140" />
+                                <RowDefinition Height="140" />
+                                <RowDefinition Height="140" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <!--  LUNEDI  -->
+                            <Grid Grid.Row="0" Grid.Column="0" Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{StaticResource VulpesXLabel}" Text="LUNEDI'" />
+                                <telerik:RadToggleSwitchButton Grid.Row="1"
+                                                               Margin="5,0,0,0"
+                                                               HorizontalAlignment="Right"
+                                                               CheckedContent="Aperto"
+                                                               IsChecked="{Binding ELunediAperto}"
+                                                               IsThreeState="False"
+                                                               UncheckedContent="Chiuso" />
+                            </Grid>
+
+                            <telerik:RadGridView x:Name="rgvLunedi"
+                                                 Grid.Row="0"
+                                                 Grid.Column="1"
+                                                 Margin="5,0,15,0"
+                                                 AddingNewDataItem="rgvGiorni_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 GroupRenderMode="Flat"
+                                                 ItemsSource="{Binding Lunedi}"
+                                                 NewRowPosition="Bottom"
+                                                 RowValidated="rgvLunedi_RowValidated"
+                                                 RowValidating="rgvGiorni_RowValidating"
+                                                 ShowGroupPanel="False"
+                                                 Tag="{x:Static sys:DayOfWeek.Monday}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Dalle, Mode=TwoWay}" Header="Dalle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Dalle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Dalle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Alle, Mode=TwoWay}" Header="Alle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Alle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Alle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+
+                            <!--  MERCOLEDI  -->
+                            <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{StaticResource VulpesXLabel}" Text="MERCOLEDI'" />
+                                <telerik:RadToggleSwitchButton Grid.Row="1"
+                                                               Margin="5,0,0,0"
+                                                               HorizontalAlignment="Right"
+                                                               CheckedContent="Aperto"
+                                                               IsChecked="{Binding EMercolediAperto}"
+                                                               IsThreeState="False"
+                                                               UncheckedContent="Chiuso" />
+                            </Grid>
+
+                            <telerik:RadGridView x:Name="rgvMercoledi"
+                                                 Grid.Row="1"
+                                                 Grid.Column="1"
+                                                 Margin="5,0,15,0"
+                                                 AddingNewDataItem="rgvGiorni_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 GroupRenderMode="Flat"
+                                                 IsEnabled="False"
+                                                 ItemsSource="{Binding Mercoledi}"
+                                                 NewRowPosition="Bottom"
+                                                 RowValidating="rgvGiorni_RowValidating"
+                                                 ShowGroupPanel="False"
+                                                 Tag="{x:Static sys:DayOfWeek.Wednesday}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Dalle, Mode=TwoWay}" Header="Dalle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Dalle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Dalle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Alle, Mode=TwoWay}" Header="Alle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Alle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Alle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+
+                            <!--  VENERDI  -->
+                            <Grid Grid.Row="2" Grid.Column="0" Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{StaticResource VulpesXLabel}" Text="VENERDI'" />
+                                <telerik:RadToggleSwitchButton Grid.Row="1"
+                                                               Margin="5,0,0,0"
+                                                               HorizontalAlignment="Right"
+                                                               CheckedContent="Aperto"
+                                                               IsChecked="{Binding EVenerdiAperto}"
+                                                               IsThreeState="False"
+                                                               UncheckedContent="Chiuso" />
+                            </Grid>
+
+                            <telerik:RadGridView x:Name="rgvVenerdi"
+                                                 Grid.Row="2"
+                                                 Grid.Column="1"
+                                                 Margin="5,0,15,0"
+                                                 AddingNewDataItem="rgvGiorni_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 GroupRenderMode="Flat"
+                                                 IsEnabled="False"
+                                                 ItemsSource="{Binding Venerdi}"
+                                                 NewRowPosition="Bottom"
+                                                 RowValidating="rgvGiorni_RowValidating"
+                                                 ShowGroupPanel="False"
+                                                 Tag="{x:Static sys:DayOfWeek.Friday}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Dalle, Mode=TwoWay}" Header="Dalle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Dalle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Dalle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Alle, Mode=TwoWay}" Header="Alle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Alle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Alle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+
+                            <!--  DOMENICA  -->
+                            <Grid Grid.Row="3" Grid.Column="0" Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{StaticResource VulpesXLabel}" Text="DOMENICA" />
+                                <telerik:RadToggleSwitchButton Grid.Row="1"
+                                                               Margin="5,0,0,0"
+                                                               HorizontalAlignment="Right"
+                                                               CheckedContent="Aperto"
+                                                               IsChecked="{Binding EDomenicaAperto}"
+                                                               IsThreeState="False"
+                                                               UncheckedContent="Chiuso" />
+                            </Grid>
+
+                            <telerik:RadGridView x:Name="rgvDomenica"
+                                                 Grid.Row="3"
+                                                 Grid.Column="1"
+                                                 Margin="5,0,15,0"
+                                                 AddingNewDataItem="rgvGiorni_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 GroupRenderMode="Flat"
+                                                 IsEnabled="False"
+                                                 ItemsSource="{Binding Domenica}"
+                                                 NewRowPosition="Bottom"
+                                                 RowValidating="rgvGiorni_RowValidating"
+                                                 ShowGroupPanel="False"
+                                                 Tag="{x:Static sys:DayOfWeek.Sunday}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Dalle, Mode=TwoWay}" Header="Dalle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Dalle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Dalle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Alle, Mode=TwoWay}" Header="Alle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Alle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Alle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="140" />
+                                <RowDefinition Height="140" />
+                                <RowDefinition Height="140" />
+                                <RowDefinition Height="140" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  MARTEDI  -->
+                            <Grid Grid.Row="0" Grid.Column="0" Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{StaticResource VulpesXLabel}" Text="MARTEDI'" />
+                                <telerik:RadToggleSwitchButton Grid.Row="1"
+                                                               Margin="5,0,0,0"
+                                                               HorizontalAlignment="Right"
+                                                               CheckedContent="Aperto"
+                                                               IsChecked="{Binding EMartediAperto}"
+                                                               IsThreeState="False"
+                                                               UncheckedContent="Chiuso" />
+                            </Grid>
+
+                            <telerik:RadGridView x:Name="rgvMartedi"
+                                                 Grid.Row="0"
+                                                 Grid.Column="1"
+                                                 Margin="5,0,15,0"
+                                                 AddingNewDataItem="rgvGiorni_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 GroupRenderMode="Flat"
+                                                 IsEnabled="False"
+                                                 ItemsSource="{Binding Martedi}"
+                                                 NewRowPosition="Bottom"
+                                                 RowValidating="rgvGiorni_RowValidating"
+                                                 ShowGroupPanel="False"
+                                                 Tag="{x:Static sys:DayOfWeek.Tuesday}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Dalle, Mode=TwoWay}" Header="Dalle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Dalle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Dalle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Alle, Mode=TwoWay}" Header="Alle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Alle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Alle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+
+                            <!--  GIOVEDI  -->
+                            <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{StaticResource VulpesXLabel}" Text="GIOVEDI'" />
+                                <telerik:RadToggleSwitchButton Grid.Row="1"
+                                                               Margin="5,0,0,0"
+                                                               HorizontalAlignment="Right"
+                                                               CheckedContent="Aperto"
+                                                               IsChecked="{Binding EGiovediAperto}"
+                                                               IsThreeState="False"
+                                                               UncheckedContent="Chiuso" />
+                            </Grid>
+
+                            <telerik:RadGridView x:Name="rgvGiovedi"
+                                                 Grid.Row="1"
+                                                 Grid.Column="1"
+                                                 Margin="5,0,15,0"
+                                                 AddingNewDataItem="rgvGiorni_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 GroupRenderMode="Flat"
+                                                 IsEnabled="False"
+                                                 ItemsSource="{Binding Giovedi}"
+                                                 NewRowPosition="Bottom"
+                                                 RowValidating="rgvGiorni_RowValidating"
+                                                 ShowGroupPanel="False"
+                                                 Tag="{x:Static sys:DayOfWeek.Thursday}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Dalle, Mode=TwoWay}" Header="Dalle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Dalle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Dalle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Alle, Mode=TwoWay}" Header="Alle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Alle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Alle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+
+                            <!--  SABATO  -->
+                            <Grid Grid.Row="2" Grid.Column="0" Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{StaticResource VulpesXLabel}" Text="SABATO" />
+                                <telerik:RadToggleSwitchButton Grid.Row="1"
+                                                               Margin="5,0,0,0"
+                                                               HorizontalAlignment="Right"
+                                                               CheckedContent="Aperto"
+                                                               IsChecked="{Binding ESabatoAperto}"
+                                                               IsThreeState="False"
+                                                               UncheckedContent="Chiuso" />
+                            </Grid>
+
+                            <telerik:RadGridView x:Name="rgvSabato"
+                                                 Grid.Row="2"
+                                                 Grid.Column="1"
+                                                 Margin="5,0,15,0"
+                                                 AddingNewDataItem="rgvGiorni_AddingNewDataItem"
+                                                 AutoGenerateColumns="False"
+                                                 CanUserInsertRows="True"
+                                                 GroupRenderMode="Flat"
+                                                 IsEnabled="False"
+                                                 ItemsSource="{Binding Sabato}"
+                                                 NewRowPosition="Bottom"
+                                                 RowValidating="rgvGiorni_RowValidating"
+                                                 ShowGroupPanel="False"
+                                                 Tag="{x:Static sys:DayOfWeek.Saturday}">
+                                <telerik:RadGridView.Columns>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Dalle, Mode=TwoWay}" Header="Dalle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Dalle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Dalle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                    <telerik:GridViewDataColumn Width="*" DataMemberBinding="{Binding Alle, Mode=TwoWay}" Header="Alle">
+                                        <telerik:GridViewDataColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Alle}" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellTemplate>
+                                        <telerik:GridViewDataColumn.CellEditTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadTimePicker SelectedTime="{Binding Alle, Mode=TwoWay}" TimeInterval="0:30:0" />
+                                            </DataTemplate>
+                                        </telerik:GridViewDataColumn.CellEditTemplate>
+                                    </telerik:GridViewDataColumn>
+                                </telerik:RadGridView.Columns>
+                            </telerik:RadGridView>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </telerik:RadBusyIndicator>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+            <Button Name="cmdSave"
+                    Click="cmdSave_Click"
+                    Content="SALVA"
+                    Style="{StaticResource VulpesXConfirmButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

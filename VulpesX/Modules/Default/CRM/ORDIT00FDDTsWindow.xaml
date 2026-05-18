@@ -1,0 +1,276 @@
+﻿<sc:FluentDefaultWindow x:Class="VulpesX.Modules.Default.CRM.ORDIT00FDDTsWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:aggregates="clr-namespace:VulpesX.Shared.Controls.Aggregators;assembly=VulpesX.Shared.Controls"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:VulpesX.Modules.Default.CRM"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:sc="clr-namespace:VulpesX.Shared.Controls.CustomWindows;assembly=VulpesX.Shared.Controls"
+                        xmlns:selectors="clr-namespace:VulpesX.Shared.Controls.Selectors;assembly=VulpesX.Shared.Controls"
+                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                        Title="DDT collegati all'ordine"
+                        Width="1000"
+                        Height="650"
+                        Style="{StaticResource VulpesXDefaultWindow}"
+                        WindowStartupLocation="CenterScreen"
+                        mc:Ignorable="d">
+
+    <sc:FluentDefaultWindow.Resources>
+        <selectors:DDTListSelector x:Key="DDTListSelector">
+            <selectors:DDTListSelector.DefaultRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="ToolTip" Value="DDT stampato definitivamente" />
+                </Style>
+            </selectors:DDTListSelector.DefaultRowStyle>
+            <selectors:DDTListSelector.CanceledRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="{DynamicResource VulpesXRedBrush}" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="ToolTip" Value="Elemento annullato" />
+                </Style>
+            </selectors:DDTListSelector.CanceledRowStyle>
+            <selectors:DDTListSelector.PartialRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="{DynamicResource VulpesXYellowBrush}" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="ToolTip" Value="DDT completato parzialmente, manca l'assegnazione di alcuni articoli" />
+                </Style>
+            </selectors:DDTListSelector.PartialRowStyle>
+            <selectors:DDTListSelector.NotReadyRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="{DynamicResource VulpesXRedBrush}" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="ToolTip" Value="DDT non completato, manca l'assegnazione degli articoli" />
+                </Style>
+            </selectors:DDTListSelector.NotReadyRowStyle>
+            <selectors:DDTListSelector.NotSyncRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="{DynamicResource VulpesXVioletBrush}" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="ToolTip" Value="DDT non completato, c'e' una discrepanza tra il materiale realmente impegnato e quello assegnato" />
+                </Style>
+            </selectors:DDTListSelector.NotSyncRowStyle>
+            <selectors:DDTListSelector.ReadyRowStyle>
+                <Style BasedOn="{StaticResource GridViewRowStyle}" TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="{DynamicResource VulpesXGreenBrush}" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="ToolTip" Value="DDT completo, pronto per la stampa e l'evasione" />
+                </Style>
+            </selectors:DDTListSelector.ReadyRowStyle>
+        </selectors:DDTListSelector>
+    </sc:FluentDefaultWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <telerik:RadBusyIndicator x:Name="bsyWait"
+                                  Grid.Row="0"
+                                  BusyContent="Caricamento dati in corso..."
+                                  Foreground="{DynamicResource VulpesXBrush}"
+                                  IsBusy="{Binding IsBusy}"
+                                  OverlayStyle="{StaticResource WaitOverlayStyle}">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <Grid Margin="5,5,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <telerik:RadGridView x:Name="GridView"
+                                         Grid.Row="0"
+                                         Margin="0,5,0,0"
+                                         AutoGenerateColumns="False"
+                                         CanUserFreezeColumns="False"
+                                         CanUserResizeColumns="False"
+                                         ColumnAggregatesAlignment="NextToGroupKey"
+                                         GroupRenderMode="Flat"
+                                         IsReadOnly="True"
+                                         IsSynchronizedWithCurrentItem="False"
+                                         ItemsSource="{Binding PagedSource, ElementName=rdpGrid}"
+                                         RowIndicatorVisibility="Collapsed"
+                                         RowStyleSelector="{StaticResource DDTListSelector}"
+                                         SelectionMode="Single"
+                                         ShowColumnFooters="True"
+                                         ShowGroupFooters="True"
+                                         ShowGroupPanel="False">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewColumn Width="90">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton x:Name="cmdDelete"
+                                                           telerik:TouchManager.TouchMode="HitTestHidden"
+                                                           BorderBrush="{DynamicResource VulpesXRedBrush}"
+                                                           Click="cmdDelete_Click"
+                                                           Content="Elimina"
+                                                           Style="{StaticResource VulpesXButton}"
+                                                           Visibility="{Binding CanDeleteVisibility, Converter={StaticResource boolToVisibilityConverter}}" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewColumn Width="25">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadGlyph x:Name="rgPrintPreview"
+                                                          Cursor="Hand"
+                                                          FontSize="18"
+                                                          Foreground="{DynamicResource VulpesXGreenBrush}"
+                                                          Glyph="&#xe13d;"
+                                                          MouseDown="rgPrintPreview_MouseDown"
+                                                          ToolTip="Apri il PDF con l'anteprima del DDT"
+                                                          Visibility="{Binding CanPrintPreviewVisibility, Converter={StaticResource boolToVisibilityConverter}}" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewColumn Width="25">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadGlyph x:Name="rgPrint"
+                                                          Cursor="Hand"
+                                                          FontSize="18"
+                                                          Foreground="{DynamicResource VulpesXGreenBrush}"
+                                                          Glyph="&#xe90e;"
+                                                          MouseDown="rgPrint_MouseDown"
+                                                          ToolTip="Apri il PDF del DDT" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding StatusDescription}" Header="Stato" IsFilterable="False" />
+                            <telerik:GridViewDataColumn Width="90"
+                                                        DataMemberBinding="{Binding BTBOLL}"
+                                                        Header="N. provv."
+                                                        HeaderTextAlignment="Right"
+                                                        IsCustomSortingEnabled="True"
+                                                        TextAlignment="Right">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="cmdEdit"
+                                                Margin="3"
+                                                HorizontalContentAlignment="Right"
+                                                BorderBrush="{DynamicResource VulpesXBrush}"
+                                                Click="cmdEdit_Click"
+                                                Content="{Binding Path=BTBOLL}"
+                                                Cursor="Hand"
+                                                Foreground="{DynamicResource VulpesXBrush}"
+                                                ToolTip="Clicca per accedere alla testata del DDT" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Width="100"
+                                                        DataFormatString="dd/MM/yyyy"
+                                                        DataMemberBinding="{Binding BTDATP}"
+                                                        Header="Data provv."
+                                                        HeaderTextAlignment="Center"
+                                                        IsCustomSortingEnabled="True"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding DefinitiveID}"
+                                                        Header="Numero def."
+                                                        IsFilterable="False"
+                                                        IsSortable="False" />
+                            <telerik:GridViewDataColumn Width="100"
+                                                        DataFormatString="dd/MM/yyyy"
+                                                        DataMemberBinding="{Binding BTDATA}"
+                                                        Header="Data def."
+                                                        HeaderTextAlignment="Center"
+                                                        IsCustomSortingEnabled="True"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn Width="60"
+                                                        DataMemberBinding="{Binding BTCOLL}"
+                                                        Header="Colli"
+                                                        HeaderTextAlignment="Right"
+                                                        IsCustomSortingEnabled="True"
+                                                        TextAlignment="Right">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="cmdEditRows"
+                                                Margin="3"
+                                                HorizontalContentAlignment="Right"
+                                                BorderBrush="{DynamicResource VulpesXBrush}"
+                                                Click="cmdEditRows_Click"
+                                                Content="{Binding Path=BTCOLL}"
+                                                Cursor="Hand"
+                                                Foreground="{DynamicResource VulpesXBrush}"
+                                                ToolTip="Clicca per accedere alle righe del DDT" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Width="75"
+                                                        DataMemberBinding="{Binding Causal.bolcod}"
+                                                        Header="Causale"
+                                                        IsCustomSortingEnabled="True" />
+                            <telerik:GridViewDataColumn MinWidth="250"
+                                                        DataMemberBinding="{Binding Causal.boldes}"
+                                                        Header=""
+                                                        IsCustomSortingEnabled="True">
+                                <telerik:GridViewColumn.AggregateFunctions>
+                                    <telerik:CountFunction Caption="NUMERO DDT: " ResultFormatString="{}{0:N0}" />
+                                    <telerik:SumFunction Caption="NUMERO COLLI: " ResultFormatString="{}{0:N2}" SourceField="BTCOLL" />
+                                    <telerik:SumFunction Caption="TOTALE IMPONIBILE: " ResultFormatString="{}{0:N2}" SourceField="Imponibile" />
+                                    <aggregates:DDTCustomSum />
+                                </telerik:GridViewColumn.AggregateFunctions>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Width="200"
+                                                        DataFormatString="N2"
+                                                        DataMemberBinding="{Binding Imponibile, StringFormat=N2}"
+                                                        Header="Imponibile"
+                                                        HeaderTextAlignment="Right"
+                                                        IsVisible="False"
+                                                        TextAlignment="Right" />
+                            <telerik:GridViewDataColumn Width="80"
+                                                        DataMemberBinding="{Binding CustomerID}"
+                                                        Header="Cliente"
+                                                        IsCustomSortingEnabled="True" />
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding CustomerDescription}" Header="" IsCustomSortingEnabled="True">
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="cmdEdit"
+                                                Margin="3"
+                                                HorizontalContentAlignment="Left"
+                                                BorderBrush="{DynamicResource VulpesXBrush}"
+                                                Click="cmdEditCustomer_Click"
+                                                Content="{Binding Path=CustomerDescription}"
+                                                Cursor="Hand"
+                                                Foreground="{DynamicResource VulpesXBrush}" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Width="60"
+                                                        DataMemberBinding="{Binding RecipientID}"
+                                                        Header="Dest."
+                                                        IsCustomSortingEnabled="True" />
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding RecipientDescription}" Header="" IsCustomSortingEnabled="True" />
+                            <telerik:GridViewDataColumn Width="200"
+                                                        DataMemberBinding="{Binding BTDE25}"
+                                                        Header="Riferimenti cliente"
+                                                        IsCustomSortingEnabled="True" />
+                            <telerik:GridViewDataColumn Width="150"
+                                                        DataFormatString="dd/MM/yyyy HH:mm:ss"
+                                                        DataMemberBinding="{Binding BTDASP}"
+                                                        Header="Data spedizione"
+                                                        HeaderTextAlignment="Center"
+                                                        IsCustomSortingEnabled="True"
+                                                        TextAlignment="Center" />
+                            <telerik:GridViewDataColumn DataMemberBinding="{Binding BTDEBE}" Header="Aspetto dei beni" IsCustomSortingEnabled="True" />
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <telerik:RadDataPager x:Name="rdpGrid"
+                                          Grid.Row="1"
+                                          Margin="0,-1,0,0"
+                                          DisplayMode="FirstLastPreviousNextNumeric, Text"
+                                          FontSize="12"
+                                          IsTotalItemCountFixed="True"
+                                          PageSize="20"
+                                          Source="{Binding Heads}" />
+                </Grid>
+            </ScrollViewer>
+        </telerik:RadBusyIndicator>
+
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Name="cmdCancel" Content="USCIRE" Style="{StaticResource VulpesXCancelButton}" />
+        </StackPanel>
+    </Grid>
+</sc:FluentDefaultWindow>

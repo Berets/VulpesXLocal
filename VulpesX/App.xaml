@@ -1,0 +1,57 @@
+﻿<Application x:Class="VulpesX.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:VulpesX.Shared.Controls.Converters;assembly=VulpesX.Shared.Controls"
+             xmlns:local="clr-namespace:VulpesX"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/System.Windows.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.Chart.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.Input.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.Data.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.DataVisualization.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.Diagrams.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.Navigation.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.Docking.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.FixedDocumentViewers.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.GanttView.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.GridView.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.Pivot.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.PivotFieldList.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Office2019;component/Themes/Telerik.Windows.Controls.ScheduleView.xaml" />
+                <ResourceDictionary Source="/Telerik.Windows.Controls;component/Themes/FontResources.xaml" />
+
+                <ResourceDictionary Source="/VulpesX.Shared.Controls;component/Themes/Colors.xaml" />
+                <ResourceDictionary Source="/VulpesX.Shared.Controls;component/Themes/Icons.xaml" />
+                <ResourceDictionary Source="/VulpesX.Shared.Controls;component/Themes/ThemeDark.xaml" />
+                <ResourceDictionary Source="/VulpesX.Shared.Controls;component/Themes/TelerikCustom.xaml" />
+                <ResourceDictionary Source="/VulpesX.Shared.Controls;component/Themes/VulpesXCustom.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <telerik:StringToGlyphConverter x:Key="StringToGlyphConverter" />
+
+            <system:Double x:Key="DisabledOpacity">1</system:Double>
+
+            <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+            <converters:BoolNegateConverter x:Key="boolNegateConverter" />
+            <converters:StringToBoolConverter x:Key="stringToBoolConverter" />
+            <converters:StringNullabilityToVisibilityConverter x:Key="stringNullabilityToVisibilityConverter" />
+            <converters:StringToColorConverter x:Key="stringToColorConverter"
+                                               BlueColor="{StaticResource VulpesXBlueBrush}"
+                                               DefaultColor="{StaticResource VulpesXSecondBrush}"
+                                               GreenColor="{StaticResource VulpesXGreenBrush}"
+                                               OrangeRedColor="{StaticResource VulpesXOrangeBrush}"
+                                               RedColor="{StaticResource VulpesXRedBrush}"
+                                               VulpesColor="{StaticResource VulpesXBrush}"
+                                               YellowColor="{StaticResource VulpesXYellowBrush}" />
+            <converters:TrimEndConverter x:Key="trimEndConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
